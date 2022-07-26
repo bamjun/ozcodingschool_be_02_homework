@@ -173,3 +173,25 @@
 - 찾기 기능 find [찾을 파일]  
 ![alt text](images/markdown-image-41.png)  
 - find는 데이터베이스에서찾는게 아니라서 느릴수있음. locate는 파일경로를 db에 저장해서 db에서 검색.  
+
+# vi 편집기
+- 확장자 없어도 열리고 어떤 종류의 파일이든 다열림.  
+- vi [파일명] 파일이없으면 새로 생성됨.  
+- 왼쪽아래 new라고 새로생긴파일 임을 알려줌.  
+  ![alt text](images/markdown-image-42.png)  
+- insert 눌러서 수정가능. esc 눌러서 기능 선택모드.  
+  ![alt text](images/markdown-image-43.png)  
+
+  ![alt text](images/markdown-image-44.png)
+
+
+# tar.gz (리눅스용 압축 파일)
+- tar 폴더를 묶는 용도  
+- gz 압축만 가능.  
+- 동시에 사용.  
+
+![alt text](images/markdown-image-45.png)
+
+![alt text](images/markdown-image-46.png)
+
+# yum , apt 파일설치   
