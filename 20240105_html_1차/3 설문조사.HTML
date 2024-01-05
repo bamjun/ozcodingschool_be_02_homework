@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>설문조사 양식</title>
+  </head>
+  <body>
+    <h2>설문조사 양식</h2>
+    <p>모든 항목에 빠짐없이 체크해주십시오</p>
+    <hr />
+
+    <form action="/submit_form" method="post">
+      <fieldset>
+        <legend>개인정보</legend>
+        <label for="name">이름</label>
+        <input type="text" id="name" /><br />
+        <label for="email">이메일주소</label>
+        <input type="email" id="email" />
+      </fieldset>
+      <fieldset>
+        <legend>설문</legend>
+        <label for="age">연력대가 어떻게 되십니까?</label>
+        <div id="age">
+          <input type="radio" id="under20" name="age" value="under20" />
+          <label for="under20">20세 미만</label><br />
+
+          <input type="radio" id="from20to40" name="age" value="from20to40" />
+          <label for="from20to40">20세 ~ 40세</label><br />
+
+          <input type="radio" id="over40" name="age" value="over40" />
+          <label for="over40">40세 이상</label><br />
+        </div>
+
+        <label for="important"
+          >학원을 선택할 때 가장 중요하게 생각하는 것은 무엇입니가? 모두
+          고르시오.</label
+        >
+        <div id="important">
+          <input type="checkbox" id="apple" name="fruits" value="apple" />
+          <label for="apple">간식</label><br />
+
+          <input type="checkbox" id="banana" name="fruits" value="banana" />
+          <label for="banana">온라인강의</label><br />
+
+          <input type="checkbox" id="orange" name="fruits" value="orange" />
+          <label for="orange">학원비</label><br />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>기타 의견</legend>
+        <textarea></textarea>
+      </fieldset>
+      <input type="submit" value="제출" />
+    </form>
+    <hr />
+    입력하느라 수고하셨습니다.
+  </body>
+</html>

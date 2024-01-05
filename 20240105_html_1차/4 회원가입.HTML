@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>필수 입력 사항</legend>
+      <form action="/submit_form" method="post">
+        <ul>
+          <li>
+            <label for="name">이름</label>
+            <input type="text" id="name" />
+          </li>
+          <li>
+            <label for="id"></label>
+            <input type="text" id="id" />
+          </li>
+          <li>
+            <label for="password"></label>
+            <input type="password" id="password" />
+          </li>
+          <li>
+            <label for="email"></label>
+            <input type="email" id="email" />
+          </li>
+          <li>
+            <label for="number"></label>
+            <input type="text" id="number" />
+          </li>
+        </ul>
+        <input type="submit" value="가입하기" />
+        <input type="reset" value="취소하기" />
+      </form>
+    </fieldset>
+
+    <fieldset>
+      <legend>취미</legend>
+      <ul>
+        <li>
+          <div id="hobby">
+            <input type="checkbox" id="coding" name="hobby" value="coding" />
+            <label for="coding">코딩</label>
+
+            <input type="checkbox" id="exercise" name="hobby" value="exercise" />
+            <label for="exercise">운동</label>
+
+            <input type="checkbox" id="breath" name="hobby" value="breath" />
+            <label for="breath">숨쉬기</label>
+          </div>
+        </li>
+        <li>
+          <div id="sex">
+            <input type="radio" id="man" name="sex" value="man" />
+            <label for="man">남</label>
+
+            <input type="radio" id="woman" name="sex" value="woman" />
+            <label for="woman">여</label>
+
+            <input type="radio" id="secret" name="sex" value="secret" />
+            <label for="secret">비밀</label>
+          </div>
+        </li>
+      </ul>
+    </fieldset>
+  </body>
+</html>
