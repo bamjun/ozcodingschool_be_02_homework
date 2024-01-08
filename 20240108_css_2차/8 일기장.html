@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>일기장</title>
+    <style>
+        body {
+            background: rgb(255, 216, 250);
+            
+        }
+      table {
+        width: 700px;
+        height: 500px;
+      }
+      table,
+      th,
+      td {
+        border: 5px solid black; /* 테두리를 굵게 설정 */
+      }
+
+      th,
+      td {
+        text-align: center;
+        padding: 10px; /* 셀 내부 여백 설정 */
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr class="page" id="page-001">
+        <td style="display: none;">
+          <tr class="page_date" id="date-001">
+            <td colspan="4">2023년 12월</td>
+            <td colspan="9">날씨 : <input type="radio" name="weather"><label>☀️</label>
+                <input type="radio" name="weather"><label>🌥️</label>
+                <input type="radio" name="weather"><label>🌦️</label>
+                <input type="radio" name="weather"><label>❄️</label></td>
+          </tr>
+          <tr class="page_main" id="main-001">
+            <td style="display: none;">
+              <tr>
+                <td colspan="13">제목 : 처음 CSS 배운 날</td>
+                
+              </tr>
+              <tr>
+                <td colspan="13"><img src="../20240105_html_1차/cat.jpg" alt="냥이" /></td>
+              </tr>
+            </td>
+          </tr>
+          <tr style="height: 10px; border:2px solid transparent;">
+            <td colspan="13" style="border:2px solid transparent;"></td>
+          </tr>
+          <tr class="page_content" id="content-001">
+            <tr>
+                <td style="width: 10px; height: 10px;">이</td>
+                <td style="width: 10px; height: 10px;">것</td>
+                <td style="width: 10px; height: 10px;">은</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">다</td>
+                <td style="width: 10px; height: 10px;">닌</td>
+                <td style="width: 10px; height: 10px;">지</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">3</td>
+                <td style="width: 10px; height: 10px;">일</td>
+                <td style="width: 10px; height: 10px;">만</td>
+                <td style="width: 10px; height: 10px;">에</td>
+                <td style="width: 10px; height: 10px;"></td>
+            </tr>
+            <tr>
+                <td style="width: 10px; height: 10px;">C</td>
+                <td style="width: 10px; height: 10px;">S</td>
+                <td style="width: 10px; height: 10px;">S</td>
+                <td style="width: 10px; height: 10px;">를</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">처</td>
+                <td style="width: 10px; height: 10px;">음</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">배</td>
+                <td style="width: 10px; height: 10px;">우</td>
+                <td style="width: 10px; height: 10px;">고</td>
+                                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">만</td>
+            </tr>
+            <tr>
+                <td style="width: 10px; height: 10px;">든</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">것</td>
+                <td style="width: 10px; height: 10px;">입</td>
+                <td style="width: 10px; height: 10px;">니</td>
+                <td style="width: 10px; height: 10px;">다</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">그</td>
+                <td style="width: 10px; height: 10px;">러</td>
+                <td style="width: 10px; height: 10px;">니</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">여</td>
+                <td style="width: 10px; height: 10px;">러</td>
+            </tr>
+            <tr>
+                <td style="width: 10px; height: 10px;">분</td>
+                <td style="width: 10px; height: 10px;">도</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">더</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">멋</td>
+                <td style="width: 10px; height: 10px;">있</td>
+                <td style="width: 10px; height: 10px;">게</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">만</td>
+                <td style="width: 10px; height: 10px;">드</td>
+                <td style="width: 10px; height: 10px;">실</td>
+                <td style="width: 10px; height: 10px;"></td>
+            </tr>
+            <tr>
+                <td style="width: 10px; height: 10px;"수></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">있</td>
+                <td style="width: 10px; height: 10px;">으</td>
+                <td style="width: 10px; height: 10px;">실</td>
+                <td style="width: 10px; height: 10px;">겁</td>
+                <td style="width: 10px; height: 10px;">니</td>
+                <td style="width: 10px; height: 10px;">다</td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;">화</td>
+                <td style="width: 10px; height: 10px;">이</td>
+                <td style="width: 10px; height: 10px;">팅</td>
+                <td style="width: 10px; height: 10px;">!</td>
+            </tr>
+            <tr>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+            </tr>
+            <tr>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+                <td style="width: 10px; height: 10px;"></td>
+            </tr>
+
+          </tr>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
