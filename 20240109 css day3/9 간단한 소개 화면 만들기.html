@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자기소개</title>
+    <style>
+      body {
+        background-color: rgb(220, 255, 189);
+      }
+      .card {
+        display: inline-block;
+        margin: 0 20px;
+      }
+      .left {
+        width: 150px;
+        height: 200px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        background-color: #ffc400;    
+        float: left;    
+        text-align: center;
+        padding: 15px;
+        box-sizing: border-box;
+        overflow: hidden;
+        
+      }
+      .right{
+        width: 500px;
+        height: 200px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        background-color: #ffffff;     
+        float: right;   
+        padding: 15px;
+        box-sizing: border-box;
+      }
+      .left_content {
+        margin: 5px;
+      }
+      
+      .left_content:nth-child(1){
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 30px;
+      }
+      .left_content:nth-child(2){
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .left_content:nth-child(3){
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 10px;
+        margin: 15px;
+      }
+      .left_content_bottom, .right_content_bottom {
+        color: aqua;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .right > div {
+        margin: 10px;
+      }
+      .right_content:nth-child(1){
+        font-size: 20px;
+        font-weight: bolder;
+      }
+      .right_content:nth-child(2){
+        font-size: 10px;
+        font-weight: bolder;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="left">
+        <div class="left_content">😊</div>
+        <div class="left_content">코딩학원</div>
+        <div class="left_content">즐겁게 배우는 코딩, 아무도 따라올수없는 초격차 초딩 배우기</div>
+        <div class="left_content_bottom">게임 앱 만들기</div>
+        <div class="left_content_bottom">뮤직 앱 만들기</div>
+        <div class="left_content_bottom">유튜브 앱 만들기</div>
+      </div>
+      <div class="right">
+        <div class="right_content">초격차 실력을 위한 다양한 커리큘럼</div>
+        <div class="right_content">코딩교실에 오신것을 환영합니다.</div>
+        <div class="right_content_bottom">자기소개</div>
+        <div class="right_content_bottom">교육과정</div>
+        <div class="right_content_bottom">커피타임</div>
+      </div>
+    </div>
+  </body>
+</html>

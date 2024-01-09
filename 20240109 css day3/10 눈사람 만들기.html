@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변형과 전환</title>
+    <style>
+      body {
+        background-color: rgb(71, 215, 255);
+        position: relative;
+        margin: 0;
+        height: 100vh;
+      }
+      #snowman {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .parent {
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        text-align: center; 
+        
+      }
+      .child,
+      .hat {
+        margin: 0px;
+        padding: 0px;
+      }
+      .child {
+        background-color: rgb(255, 255, 255);
+        z-index: 48;
+        display: inline-block;
+        margin: 0px;
+        padding: 0px;
+      }
+      .parent:nth-child(2) > .child{
+        border-radius: 50px;
+        width: 100px;
+        height: 100px;
+
+
+      }
+      .parent:nth-child(3) > .child{
+        border-radius: 60px;
+        width: 120px;
+        height: 120px;
+
+
+      }
+      .parent:nth-child(4) > .child{
+        border-radius: 90px;
+        width: 180px;
+        height: 180px;
+
+
+
+
+      }
+
+      .hat:nth-child(2) {
+        position: absolute;
+        border-radius: 0px;
+        width: 100px;
+        height: 25px;
+        left: 50%;
+        top: 0%; /* 두 번째 child의 상단 바깥쪽에 위치 */
+        transform: translate(-50%, -80%);
+        background-color: black;
+        z-index: 50;
+      }
+      .hat:nth-child(1) {
+        position: absolute;
+        border-radius: 0px;
+        width: 60px;
+        height: 50px;
+        left: 50%;
+        top: 0%; /* 두 번째 child의 상단 바깥쪽에 위치 */
+        transform: translate(-50%, -120%);
+        background-color: black;
+        z-index: 49;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="snowman">
+      <div class="parent">
+        <div class="hat"></div>
+        <div class="hat"></div>
+      </div>
+      <div class="parent">
+        <div class="child"></div>
+      </div>
+      <div class="parent">
+        <div class="child"></div>
+      </div>
+      <div class="parent">
+        <div class="child"></div>
+      </div>
+    </div>
+  </body>
+</html>
