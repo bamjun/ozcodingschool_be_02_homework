@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배경색 변경하기</title>
+
+  </head>
+  <body>
+    <button id="one">검정색 배경</button>
+    <button id="two">보라색 배경</button>
+
+    <script>
+      let one, two;
+      one = document.querySelector("#one");
+      two = document.querySelector("#two");
+
+      one.addEventListener("click", function () {
+        document.body.style.backgroundColor = 'black';
+      });
+
+      two.addEventListener("click", function () {
+        document.body.style.backgroundColor = 'purple';
+      });
+    </script>
+  </body>
+</html>

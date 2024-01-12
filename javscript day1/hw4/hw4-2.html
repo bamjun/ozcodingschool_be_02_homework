@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>그림 바꾸기</title>
+    <style>
+      .image-container {
+        width: 500px; /* 이미지의 너비에 맞추어 조정하세요 */
+        height: 500px; /* 이미지의 높이에 맞추어 조정하세요 */
+        overflow: hidden;
+      }
+
+      #carousel-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <img
+        id="carousel-image"
+        src="b.jpg"
+        alt="카루셀 이미지"
+      />
+    </div>
+    <button id="home-button">home</button>
+    <button id="a-button">고</button>
+    <button id="b-button">냥</button>
+    <button id="c-button">이</button>
+    
+    <button id="next-button">다음</button>
+
+    <script>
+      // 이미지 경로를 배열로 정의
+      const images = [
+        "a.png",
+        "b.jpg",
+        "c.png",
+      ];
+      let currentImageIndex = 0;
+
+      // 다음 버튼 선택
+      const nextButton = document.getElementById("next-button");
+      const carouselImage = document.getElementById("carousel-image");
+
+      // 다음 버튼 클릭 이벤트 리스너 추가
+      nextButton.addEventListener("click", function () {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        carouselImage.src = images[currentImageIndex];
+      });
+    </script>
+  </body>
+</html>

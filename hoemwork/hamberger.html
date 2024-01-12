@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bamberger</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 16px;
+      }
+      body {
+        margin: 0;
+      }
+      .flex {
+        display: flex;
+      }
+      /* start header.css */
+      header.header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 998;
+        background-color: #ff00d0;
+        color: #000000;
+      }
+
+      .header-content {
+        width: 100%;
+        max-width: 80rem;
+        height: 4rem;
+        padding: 0.75rem 1rem;
+        margin: auto;
+
+        justify-content: space-between;
+      }
+
+      .header-content__logo {
+        color: rgb(98, 255, 0);
+        font-size: 2rem;
+        font-weight: 900;
+
+        height: 1em;
+        margin-right: 40px;
+        line-height: 40px;
+      }
+
+      .header-content__nav {
+        align-items: center;
+        padding: 0 2.5rem 0 0;
+        flex-grow: 1;
+      }
+
+      .header-content__nav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .header-content__nav ul li {
+        display: inline-block;
+        margin-right: 30px;
+        font-size: 1.13rem;
+        font-weight: 900;
+      }
+
+      .header-content__nav ul li.active {
+        color: rgb(255, 238, 0);
+      }
+
+      .header-content2 {
+        width: 100%;
+        max-width: 80rem;
+        height: 4rem;
+        padding: 0.75rem 1rem;
+        margin: auto;
+
+        justify-content: space-between;
+      }
+
+      .header-content2__logo {
+        color: rgb(98, 255, 0);
+        font-size: 2rem;
+        font-weight: 900;
+
+        height: 1em;
+        margin-right: 40px;
+        line-height: 40px;
+      }
+
+      .header-content2__nav {
+        align-items: center;
+        padding: 0 2.5rem 0 0;
+        flex-grow: 1;
+      }
+
+      .header-content2__nav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .header-content2__nav ul li {
+        display: block;
+        margin-right: 30px;
+        font-size: 1.13rem;
+        font-weight: 900;
+      }
+
+      .header-content2__nav ul li.active {
+        color: rgb(255, 238, 0);
+      }
+
+      .hamberher_button {
+        width: 6rem;
+        border: 1rem #ffffff;
+        background-color: aqua;
+        height: 4rem;
+        display: none;
+        text-align: center; /* 텍스트 수평 가운데 정렬 */
+        line-height: 4rem; /* 텍스트 수직 가운데 정렬 */
+      }
+      .header-content2 {
+        display: none;
+      }
+
+      .toggle-menu {
+        display: none;
+      }
+
+      @media screen and (max-width: 550px) {
+        .header-content {
+          display: none;
+        }
+        .header {
+          display: flex;
+          justify-content: center; /* 가로축 중앙 정렬 */
+          align-items: center;
+        }
+        .hamberher_button {
+          display: block;
+        }
+        .hamberher_button:hover {
+          .header-content2 {
+            display: block;
+          }
+        }
+        .toggle-menu:checked + .hamberher_button + .header-content2 {
+          display: flex; /* 체크박스가 체크될 때 header-content2를 보여줌 */
+          flex-direction: column; /* 세로 방향으로 정렬 */
+        }
+        .header-content2 {
+          height: 10rem;
+        }
+      }
+
+      /* end header.css */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header-content flex">
+          <div class="header-content__logo">HamBerGer</div>
+          <nav class="header-content__nav flex">
+            <ul>
+              <li class="active">홈</li>
+              <li>배달하기</li>
+              <li>드라이브 스루</li>
+              <li>예약하기</li>
+            </ul>
+          </nav>
+        </div>
+        <input type="checkbox" id="toggle-menu" class="toggle-menu" />
+        <label for="toggle-menu" class="hamberher_button">🍔🍔🍔</label>
+        <div class="header-content2 flex">
+          <div class="header-content2__logo">HamBerGer</div>
+          <nav class="header-content2__nav flex">
+            <ul>
+              <li class="active2">홈</li>
+              <li>배달하기</li>
+              <li>드라이브 스루</li>
+              <li>예약하기</li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .conta {
+        margin: 0;
+        width: 250px;
+        height: 250px;
+      }
+      .slide {
+        width: 250px;
+        height: 100%;
+        display: flex;
+      }
+
+      /* .slide * {display: inline-block;} */
+      .toleft,
+      .toright {
+        width: 10%;
+        text-align: center;
+        padding-top: 5em;
+        cursor: pointer;
+      }
+      .toleft {
+        float: left;
+      }
+      .toright {
+        float: right;
+      }
+
+      .content {
+        width: 80%;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .slides {
+        display: inline-block;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s;
+        padding: 0;
+      }
+      .slides img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="conta">
+      <div class="slide">
+        <div class="toleft">
+          <i class="fa-solid fa-angle-left fa-2xl"></i>
+        </div>
+        <div class="content">
+          <div class="slides" id="slide0">
+            <img
+              src="https://cdn.pixabay.com/photo/2021/08/22/06/24/bird-6564285__340.jpg"
+            />
+          </div>
+          <div class="slides" id="slide1">
+            <img
+              src="https://cdn.pixabay.com/photo/2022/03/30/17/54/seagull-7101611__340.jpg"
+            />
+          </div>
+          <div class="slides" id="slide2">
+            <img
+              src="https://cdn.pixabay.com/photo/2022/05/29/05/36/otter-7228458__340.jpg"
+            />
+          </div>
+          <div class="slides" id="slide3">
+            <img
+              src="https://cdn.pixabay.com/photo/2022/06/02/06/43/flowers-7237133__340.jpg"
+            />
+          </div>
+          <div class="slides" id="slide4">55</div>
+        </div>
+        <div class="toright">
+          <i class="fa-solid fa-angle-right fa-2xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const slides = document.querySelector(".slides");
+      const leftbtn = document.querySelector(".toleft");
+      const rightbtn = document.querySelector(".toright");
+      let slideNo = 0;
+      rightbtn.addEventListener("click", function goSlide() {
+        if (slideNo < 4) {
+          slideNo += 1;
+          document.querySelector(
+            `#slide${slideNo}`
+          ).style.transform = `translateX(${-102.7 * slideNo}%)`;
+        }
+      });
+      leftbtn.addEventListener("click", function goSlide() {
+        if (slideNo > 0) {
+          slideNo -= 1;
+          const whatwillchange = document.querySelector(
+            `#slide${slideNo + 1}`
+          ).style;
+          whatwillchange.transform = `translateX(0%)`;
+        }
+      });
+    </script>
+  </body>
+</html>

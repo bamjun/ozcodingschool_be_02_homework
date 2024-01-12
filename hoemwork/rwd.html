@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bamberger</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 16px;
+      }
+      body {
+        margin: 0;
+        background-color: aqua;
+      }
+      .main {
+        display: flex;
+        justify-content: center; /* 수평 중앙 정렬 */
+        align-items: center; /* 수직 중앙 정렬 */
+        height: 100vh; /* 전체 뷰포트 높이 */
+      }
+
+      .section_2,
+      .section_3,
+      .section_4 {
+        display: none;
+      }
+
+      @media screen and (max-width: 1100px) {
+        body {
+          background-color: rgb(38, 255, 0);
+        }
+        .section_1,
+        .section_3,
+        .section_4 {
+          display: none;
+        }
+        .section_2 {
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        body {
+          background-color: rgb(144, 0, 255);
+        }
+        .section_1,
+        .section_2,
+        .section_4 {
+          display: none;
+        }
+        .section_3 {
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        body {
+          background-color: rgb(135, 135, 135);
+        }
+        .section_1,
+        .section_2,
+        .section_3 {
+          display: none;
+        }
+        .section_4 {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main class="main flex">
+        <section class="section_1">
+          <div class="title">안녕하세요</div>
+          <div class="content">반갑습니다</div>
+        </section>
+        <section class="section_2">
+          <div class="title">초록색 화면입니다</div>
+          <div class="content">정글 탐험 하고싶네요.</div>
+        </section>
+        <section class="section_3">
+          <div class="title">보라색 화면입니다.</div>
+          <div class="content">클럽 가고 싶네요.</div>
+        </section>
+        <section class="section_4">
+          <div class="title">회색 화면입니다.</div>
+          <div class="content">졸립네요.</div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="one"></div>
+    <div id="two" style="color: blueviolet;"></div>
+    <div id="three"></div>
+
+    <script>
+        let one, two, three;
+        one = document.querySelector('#one');
+        two = document.querySelector('#two');
+        three = document.querySelector('#three');
+        one.textContent =  prompt("이름을 입력해주세요.");
+        two.textContent = prompt("취미를 입력해주세요.");
+        three.textContent = prompt("좋아하는 노래를 입력해주세요.");
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 슬라이드</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin: 0;
+        width: 250px;
+        height: 250px;
+      }
+
+      .slides {
+        width: 250px;
+        height: 250px;
+        display: flex;
+      }
+      .previous,
+      .next {
+        cursor: pointer;
+      }
+      .previous {
+        float: left;
+      }
+      .next {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="toleft">
+        <div></div>
+      </div>
+      <div class="image-container">
+        <div class="slides" id="slide0">
+          <img src="a.png" alt="" />
+        </div>
+        <div class="slides" id="slide1">
+          <img src="b.jpg" alt="" />
+        </div>
+        <div class="slides" id="slide2">
+          <img src="c.png" alt="" />
+        </div>
+      </div>
+      <div class="toright">
+        <div></div>
+      </div>
+    </div>
+    <button id="home">home</button>
+    <button id="a">a</button>
+    <button id="b">b</button>
+    <button id="c">c</button>
+    <button id="previous">previous</button>
+    <button id="next">next</button>
+
+    <script>
+      const slides = document.querySelector(".home");
+      const leftbtn = document.querySelector(".previous");
+      const rightbtn = document.querySelector(".next");
+      let slideNo = 0;
+      rightbtn.addEventListener("click", function goSlide() {
+        if (slideNo < 3) {
+          slideNo += 1;
+          document.querySelector(
+            `#slide${slideNo}`
+          ).style.transform = `translateX(${-102.7 * slideNo}%)`;
+        }
+      });
+      leftbtn.addEventListener("click", function goSlide() {
+        if (slideNo > 0) {
+          slideNo -= 1;
+          const whatwillchange = document.querySelector(
+            `#slide${slideNo + 1}`
+          ).style;
+          whatwillchange.transform = `translateX(0%)`;
+        }
+      });
+    </script>
+  </body>
+</html>
