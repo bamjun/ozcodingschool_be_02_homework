@@ -81,6 +81,23 @@
           whatwillchange.transform = `translateX(0%)`;
         }
       });
+            // 이미지 경로를 배열로 정의
+            const images = [
+        "a.png",
+        "b.jpg",
+        "c.png",
+      ];
+      let currentImageIndex = 0;
+
+      // 다음 버튼 선택
+      const nextButton = document.getElementById("next-button");
+      const carouselImage = document.getElementById("carousel-image");
+
+      // 다음 버튼 클릭 이벤트 리스너 추가
+      nextButton.addEventListener("click", function () {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        carouselImage.src = images[currentImageIndex];
+      });
     </script>
   </body>
 </html>

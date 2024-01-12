@@ -25,7 +25,7 @@
       .toright {
         width: 10%;
         text-align: center;
-        padding-top: 5em;
+        padding-top: 0em;
         cursor: pointer;
       }
       .toleft {
@@ -59,33 +59,27 @@
     <div class="conta">
       <div class="slide">
         <div class="toleft">
-          <i class="fa-solid fa-angle-left fa-2xl"></i>
+          <button class="fa-solid fa-angle-left fa-2xl" style="height: 100%;">이전</button>
         </div>
         <div class="content">
           <div class="slides" id="slide0">
             <img
-              src="https://cdn.pixabay.com/photo/2021/08/22/06/24/bird-6564285__340.jpg"
+              src="a.png"
             />
           </div>
           <div class="slides" id="slide1">
             <img
-              src="https://cdn.pixabay.com/photo/2022/03/30/17/54/seagull-7101611__340.jpg"
+              src="b.jpg"
             />
           </div>
           <div class="slides" id="slide2">
             <img
-              src="https://cdn.pixabay.com/photo/2022/05/29/05/36/otter-7228458__340.jpg"
+              src="c.png"
             />
           </div>
-          <div class="slides" id="slide3">
-            <img
-              src="https://cdn.pixabay.com/photo/2022/06/02/06/43/flowers-7237133__340.jpg"
-            />
-          </div>
-          <div class="slides" id="slide4">55</div>
         </div>
         <div class="toright">
-          <i class="fa-solid fa-angle-right fa-2xl"></i>
+          <button class="fa-solid fa-angle-right fa-2xl" style="height: 100%;">다음</button>
         </div>
       </div>
     </div>
@@ -96,7 +90,7 @@
       const rightbtn = document.querySelector(".toright");
       let slideNo = 0;
       rightbtn.addEventListener("click", function goSlide() {
-        if (slideNo < 4) {
+        if (slideNo < 3) {
           slideNo += 1;
           document.querySelector(
             `#slide${slideNo}`
