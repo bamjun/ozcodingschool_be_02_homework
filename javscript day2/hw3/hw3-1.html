@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성적표</title>
+</head>
+<body>
+
+  <div id="container">
+
+  </div>
+  
+  
+  <script>
+    let score = parseInt(prompt('중간고사 점수를 입력하세요.'));
+    let h1 = document.createElement('h1');
+    let container = document.getElementById('container');
+    let rank;
+    if ( score >= 90) {
+      rank = 'A';
+
+    } else if ( score >= 80) {
+      rank = 'B';
+    } else if ( score >= 70) {
+      rank = 'C';
+    } else if ( score >= 60) {
+      rank = 'D';
+    } else {
+      rank = 'F';
+    }
+    h1.textContent = `나의 기말고사 점수는 ${score}점, 학점은${rank}!!!`
+    container.appendChild(h1)
+
+
+  </script>
+
+  
+</body>
+</html>

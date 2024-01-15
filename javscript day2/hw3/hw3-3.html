@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4배수</title>
+  <style>
+    #container {
+      width: 500px;
+    }
+    #container div {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    let container = document.getElementById('container')
+
+    for (i=1;i<=500;i++){
+      if (i%4==0) {
+        let div = document.createElement('div')
+        div.textContent = i + '__';
+        container.appendChild(div)
+      }
+    }
+
+  </script>
+</body>
+</html>

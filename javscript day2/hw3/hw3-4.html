@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미스테리 숫자</title>
+    <style>
+      body {
+        background-color: aqua;
+      }
+      #container {
+        width: 600px;
+        text-align: center;
+      }
+      #form {
+        margin: 10px ;
+      }
+      #btn-reset {
+        display: none;
+        margin: 10px;
+      }
+      #btn-dd{
+        width: 100px;
+        height: 30px;
+      }
+      #btn-dd:hover {
+        width: 140px;
+        height: 42px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <main id="main">
+        <div id="title"><h1>Mystery Number 맞추기</h1></div>
+        <div id="content">1부터 100사이의 숫자를 입력하세요!</div>
+        <div id="form">
+          <input type="text" id="inputText" />
+          <button id="btn-dd">뚜둥!</button>
+        </div>
+        <div id="hint"></div>
+        <button id="btn-reset">다시시작하기</button>
+      </main>
+    </div>
+
+    <script>
+      let answer = Math.floor(Math.random() * 100) + 1;
+      let btn_dd = document.getElementById("btn-dd");
+      let btn_reset = document.getElementById("btn-reset");
+
+
+      btn_dd.addEventListener("click", function () {
+        let inputText = document.getElementById("inputText");
+        let hint = document.getElementById("hint");
+        if (inputText.value > answer) {
+          hint.textContent = `${inputText.value} 숫자가 커요! 줄여볼까요 ?`
+
+        } else if ( inputText.value < answer ) {
+          hint.textContent = `${inputText.value} 숫자가 작아요.. 올려주세요.`
+        } else {
+          hint.textContent = `${inputText.value} 정답입니다.`
+          btn_reset.style.display = 'inline-block';
+        }
+
+        btn_reset.addEventListener('click', function() {
+          let inputText = document.getElementById("inputText");
+          answer = Math.floor(Math.random() * 100) + 1;
+          btn_reset.style.display = 'none';
+          inputText.textContent = '';
+        })
+        
+      });
+    </script>
+  </body>
+</html>

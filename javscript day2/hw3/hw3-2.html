@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>별트리</title>
+    <style>
+      .star {
+        width: 200px;
+      }
+      #star3 div {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="star1" class="star">1번 별</div>
+      <div id="star2" class="star">2번 별</div>
+      <div id="star3" class="star">3번 별</div>
+    </div>
+
+    <script>
+      let s1 = document.getElementById("star1");
+      let s2 = document.getElementById("star2");
+      let s3 = document.getElementById("star3");
+      let starsCount;
+
+      for (i = 1; i < 7; i++) {
+        let div = document.createElement("div");
+        div.textContent = "*".repeat(i);
+        s1.appendChild(div);
+      }
+
+      let maxStars = 5;
+      for (let i = 1; i < maxStars * 2; i++) {
+        let div = document.createElement("div");
+        if (i <= maxStars) {
+          starsCount = i;
+        }else{
+          starsCount = maxStars * 2 - i;
+        }
+        div.textContent = "*".repeat(starsCount);
+        s2.appendChild(div)
+      }
+
+      maxStars = 5;
+      for (let i = 1; i < maxStars * 2; i++) {
+        let div = document.createElement("div");
+        if (i <= maxStars) {
+          starsCount = i;
+        }else{
+          starsCount = maxStars * 2 - i;
+        }
+        div.textContent = "*".repeat(starsCount);
+        s3.appendChild(div)
+      }
+    </script>
+  </body>
+</html>

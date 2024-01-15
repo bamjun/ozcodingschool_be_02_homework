@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+
+  </div>
+
+  <script>
+    let container = document.getElementById('container');
+    let hp = 100;
+    let count = 0;
+
+    let input = parseInt(prompt('1회 공격시 대미지는? (양의정수)'));
+
+    while (hp > 0) {
+      let divcount = document.createElement('div');
+      let divhp = document.createElement('div');
+      hp -= input;
+      count += 1;
+      if (hp <= 0 ) {
+        hp = 0
+      } 
+      divcount.textContent = `몬스터를 ${count}회 공격했다.`;
+      divhp.textContent = `몬스터의 남은 HP는 ${hp} 입니다.`;
+      container.appendChild(divcount)
+      container.appendChild(divhp)
+    }
+
+    let finish = document.createElement('h1');
+    finish.textContent = `몬스터잡기 완료! 수고 하셨습니다. !!`;
+    finish.style.color = 'red';
+    container.appendChild(finish)
+
+
+  </script>
+  
+</body>
+</html>
