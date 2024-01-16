@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="title">스톱워치</div>
+      <div id="time">경과시간 00:00:00:00</div>
+      <div id="buttons">
+        <button id="start">시작</button>
+        <button id="stop">중지</button>
+        <button id="reset">초기화</button>
+      </div>
+    </div>
+    <script>
+      let time = document.getElementById("time");
+      let startBtn = document.getElementById("start");
+      let stopBtn = document.getElementById("stop");
+      let resetBtn = document.getElementById("reset");
+      let startTime,
+        updatedTime,
+        difference,
+        tInterval,
+        running = false;
+      let savedTime;
+      let hours, minutes, seconds, milliseconds;
+
+      startBtn.addEventListener("click", start);
+      stopBtn.addEventListener("click", stop);
+      resetBtn.addEventListener("click", reset);
+
+      function start() {
+        if (!running) {
+          startTime = new Date().getTime();
+          tInterval = setInterval(getShowTime, 1);
+          running = true;
+        }
+      }
+
+      function stop() {
+        if (running) {
+          clearInterval(tInterval);
+          savedTime = difference;
+          running = false;
+        }
+      }
+
+      function reset() {
+        clearInterval(tInterval);
+        running = false;
+        savedTime = 0;
+        time.textContent = "경과시간 00:00:00:00";
+      }
+
+      function getShowTime() {
+        updatedTime = new Date().getTime();
+        if (savedTime) {
+          difference = updatedTime - startTime + savedTime;
+        } else {
+          difference = updatedTime - startTime;
+        }
+        hours = Math.floor(
+          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        milliseconds = Math.floor((difference % 1000) / 10); // 밀리초 추가
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        milliseconds = milliseconds < 10 ? "0" + milliseconds : milliseconds;
+        time.textContent =
+          "경과시간 " +
+          hours +
+          ":" +
+          minutes +
+          ":" +
+          seconds +
+          ":" +
+          milliseconds;
+      }
+    </script>
+  </body>
+</html>
