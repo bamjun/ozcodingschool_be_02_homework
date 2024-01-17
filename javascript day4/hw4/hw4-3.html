@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="btns">
+        <button id="btnAdd">아이스크림 추가하기</button>
+        <button id="btnlog">아이스크림 이름 출력</button>
+        <button id="btnresult">아이스크림 목록 출력</button>
+      </div>
+      <h1 id="instruction">입력한 아이스크림 목록 :</h1>
+      <h1 id="list"></h1>
+    </div>
+
+    <script>
+      let listOfice = new Array();
+
+      const btnadd = document.getElementById("btnAdd");
+      const btnlog = document.getElementById("btnlog");
+      const btnresult = document.getElementById("btnresult");
+      const list = document.getElementById("list");
+
+      btnadd.addEventListener("click", () => {
+        let iceCream = prompt("추가하고 싶은 아이스크림을 입력하세요.");
+        listOfice.push(iceCream);
+      });
+
+      btnlog.addEventListener("click", () => {
+        listOfice.forEach(function (item) {
+          alert(item);
+        });
+      });
+
+      btnresult.addEventListener("click", () => {
+        list.textContent = listOfice;
+      });
+    </script>
+  </body>
+</html>

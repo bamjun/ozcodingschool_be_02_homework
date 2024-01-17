@@ -3,16 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RPS</title>
+    <title>Rock Paper Scissors</title>
   </head>
   <body>
     <div id="container">
-      <div id="title"></div>
-      <div id="instruction"></div>
+      <h1 id="title">가위 바위 보 게임</h1>
+      <div id="instruction">가위, 바위, 보 중 하나를 입력하세요:</div>
       <div id="content">
-        <input type="text"> <button></button>
+        <input type="text" id="text" /> <button id="btn">결과 확인</button>
       </div>
       <div id="textresult"></div>
     </div>
+    <script>
+      const title = document.getElementById("title");
+      const text = document.getElementById("text");
+      const btn = document.getElementById("btn");
+      const textresult = document.getElementById("textresult");
+
+      function computerSelectRPS() {
+        const rps = ["가위", "바위", "보"];
+        const randomIndex = Math.floor(Math.random() * 3);
+        return rps[randomIndex];
+      }
+
+      function determineWinner(userChoice, computerChoice) {
+        if (userChoice === computerChoice) {
+          return "무승부입니다!";
+        } else if (
+          (userChoice === "가위" && computerChoice === "보") ||
+          (userChoice === "바위" && computerChoice === "가위") ||
+          (userChoice === "보" && computerChoice === "바위")
+        ) {
+          return "이겼습니다!";
+        } else {
+          return "졌습니다!";
+        }
+      }
+
+      btn.addEventListener("click", () => {
+        const userChoice = text.value;
+        const computerChoice = computerSelectRPS();
+        const result = determineWinner(userChoice, computerChoice);
+        textresult.textContent = `당신의 선택: ${userChoice} / 컴퓨터의 선택: ${computerChoice} / 결과: ${result}`;
+      });
+    </script>
   </body>
 </html>
