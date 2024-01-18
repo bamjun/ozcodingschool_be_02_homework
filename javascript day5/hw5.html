@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOG info</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      #container {
+        width: 100%;
+        max-width: 650px;
+        margin: auto;
+      }
+      header {
+        width: 100%;
+        max-width: 650px;
+        height: 60px;
+        border-bottom: 1px solid #00000033;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        top: 0;
+      }
+
+      .header__search {
+        display: flex;
+        align-items: center;
+      }
+      input,
+      button,
+      select {
+        height: 30px;
+        border: 0.5px solid rgb(255, 0, 0);
+      }
+
+      main {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin-top: 60px;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .more,
+      .tothetop,
+      .reset {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        cursor: pointer;
+      }
+      .reset {
+        color: #ffffff;
+        background-color: #ff00d9;
+        left: 100px;
+        bottom: 200px;
+      }
+      .more {
+        color: #ffffff;
+        background-color: #cd8f6b;
+        left: 100px;
+        bottom: 100px;
+      }
+      .tothetop {
+        color: #ffffff;
+        background-color: #ab4a12;
+        right: 100px;
+        bottom: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <header class="header" id="header">
+        <div class="header__search">
+          <input id="filter-text" />
+          <button id="filter-button">필터링</button>
+        </div>
+        <select id="filter-select">
+          <option value="">all</option>
+        </select>
+      </header>
+
+      <main class="main" id="main"></main>
+
+      <div class="more" id="more">MORE</div>
+      <div class="tothetop" id="tothetop">TOP</div>
+      <div class="reset" id="reset">RESET</div>
+    </div>
+
+    <script>
+      const apiRandomDogs = "https://dog.ceo/api/breeds/image/random/42";
+      const apiAllBreeds = "https://dog.ceo/api/breeds/list/all";
+
+      const request1 = new XMLHttpRequest();
+      const request2 = new XMLHttpRequest();
+
+      const header = document.getElementById("header");
+      const main = document.getElementById("main");
+      const input = document.getElementById("filter-text");
+      const button = document.getElementById("filter-button");
+      const select = document.getElementById("filter-select");
+      const more = document.getElementById("more");
+      const reset = document.getElementById("reset");
+      const tothetop = document.getElementById("tothetop");
+
+      const currentDogs = [];
+
+      function displayDocs(item) {
+        const dogImgDiv = document.createElement("div");
+        dogImgDiv.classList.add("flex-item");
+        dogImgDiv.innerHTML = `<img src=${item}>`;
+        main.appendChild(dogImgDiv);
+      }
+
+      window.addEventListener("load", function () {
+        //강아지 사진 뿌리기
+        request1.open("get", apiRandomDogs);
+        request1.addEventListener("load", function () {
+          const response = JSON.parse(request1.response);
+          response.message.forEach((item) => {
+            currentDogs.push(item);
+            displayDocs(item);
+          });
+        });
+        request1.send();
+        // select에 견종 정보 뿌리기
+        request2.open("get", apiAllBreeds);
+        request2.addEventListener("load", function () {
+          const response = JSON.parse(request2.response);
+          Object.keys(response.message).forEach(function (item) {
+            const option = document.createElement("option");
+            option.textContent = item;
+            option.value = item;
+            select.appendChild(option);
+          });
+        });
+        request2.send();
+      });
+
+      button.addEventListener("click", function () {
+        main.innerHTML = "";
+        let filteredDogs = currentDogs.filter(function (item) {
+          return item.indexOf(input.value) !== -1;
+        });
+
+        input.value = "";
+
+        filteredDogs.forEach(function (item) {
+          displayDocs(item);
+        });
+      });
+
+      select.addEventListener("change", function () {
+        main.innerHTML = "";
+        let filteredDogs = currentDogs.filter(function (item) {
+          return item.indexOf(select.value) !== -1;
+        });
+
+        filteredDogs.forEach(function (item) {
+          displayDocs(item);
+        });
+        r;
+      });
+
+      more.addEventListener("click", function () {
+        request1.open("get", apiRandomDogs);
+        request1.addEventListener("load", function () {
+          const response = JSON.parse(request1.response);
+          response.message.forEach(function (item) {
+            currentDogs.push(item);
+            displayDocs(item);
+          });
+        });
+        request1.send();
+      });
+
+      reset.addEventListener("click", function () {
+        main.innerHTML = "";
+        request1.open("get", apiRandomDogs);
+        request1.addEventListener("load", function () {
+          const response = JSON.parse(request1.response);
+          response.message.forEach(function (item) {
+            currentDogs.push(item);
+            displayDocs(item);
+          });
+        });
+        request1.send();
+      });
+
+      tothetop.addEventListener("click", function () {
+        window.scrollTo({ top: 0 });
+      });
+    </script>
+  </body>
+</html>

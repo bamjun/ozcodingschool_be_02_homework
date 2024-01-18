@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생 점수 목록</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+      th,
+      td {
+        width: 80px;
+        height: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>학생 점수 목록</h1>
+    <table>
+      <tbody id="table">
+        <tr>
+          <th>이름</th>
+          <th>점수</th>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>75점이 넘는 사람:</p>
+    <div id="Score"></div>
+
+    <script>
+      const table = document.getElementById("table");
+      const Score = document.getElementById("Score");
+      let dict = {};
+
+      for (i = 0; i <= 10; i++) {
+        const tr = document.createElement("tr");
+        const tdname = document.createElement("td");
+        const tdnum = document.createElement("td");
+        tdname.classList = "name";
+        tdnum.classList = "num";
+        const name = String.fromCharCode(65 + i);
+        const num = Math.floor(Math.random() * 90) + 10;
+        tdname.textContent = name;
+        tdnum.textContent = num;
+        dict[name] = num;
+        tr.appendChild(tdname);
+        tr.appendChild(tdnum);
+        table.appendChild(tr);
+      }
+
+      const sortedEntries = Object.entries(dict).sort((a, b) => b[1] - a[1]);
+      for (let i = 0; i < sortedEntries.length; i++) {
+        let item = sortedEntries[i];
+        if (item[1] >= 75) {
+          // 마지막 항목이 아닌 경우에만 콤마를 추가합니다.
+          Score.textContent += `이름:${item[0]} 점수:${item[1]}`;
+          if (i < sortedEntries.length - 1 && sortedEntries[i + 1][1] >= 75) {
+            Score.textContent += ", ";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
