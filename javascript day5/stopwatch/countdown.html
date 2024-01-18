@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.ico" />
+    <title>countdown-timer</title>
+    <style>
+      body {
+        background: linear-gradient(to right, #dabafd, #7600de);
+        text-align: center;
+      }
+      #container {
+        display: inline-block;
+      }
+      .footer {
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        font-size: 12px;
+        text-align: center;
+      }
+      .footer a {
+        color: hsl(290, 100%, 21%);
+        text-decoration: none;
+      }
+      table {
+        display: inline-block;
+      }
+      #timer {
+        width: 420px;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        color: #fff;
+        border-radius: 10px;
+        padding: 30px 40px;
+      }
+
+      .btn {
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        color: #fff;
+        border-radius: 4px;
+      }
+      .btn:hover {
+        border: 2px solid rgba(255, 255, 255, 1);
+      }
+      .day,
+      .hour,
+      .min,
+      .sec {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <div id="container">
+      <h1 id="title">countdown-timer</h1>
+      <div id="timer">
+        <table onselectstart='return false'>
+          <tr>
+            <td class="day" id="daytitle">day</td>
+            <td class="hour" id="hourtitle">hour</td>
+            <td class="min" id="mintitle">min</td>
+            <td class="sec" id="sectitle">sec</td>
+          </tr>
+          <tr>
+            <td class="day" id="dayup">🔼</td>
+            <td class="hour" id="hourup">🔼</td>
+            <td class="min" id="minup">🔼</td>
+            <td class="sec" id="secup">🔼</td>
+          </tr>
+          <tr>
+            <td class="day" id="day">00</td>
+            <td class="hour" id="hour">00</td>
+            <td class="min" id="min">00</td>
+            <td class="sec" id="sec">00</td>
+          </tr>
+          <tr>
+            <td class="day" id="daydown">🔽</td>
+            <td class="hour" id="hourdown">🔽</td>
+            <td class="min" id="mindown">🔽</td>
+            <td class="sec" id="secdown">🔽</td>
+          </tr>
+        </table>
+        <div id="btns">
+          <button class="btn" id="start">시작</button>
+          <button class="btn" id="stop">중지</button>
+          <button class="btn" id="reset">초기화</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      © 2024 Developed by
+      <a href="https://github.com/bamjun" target="_blank">김범준</a>.
+    </footer>
+    <script>
+      let countdown;
+      const dayElement = document.getElementById("day");
+      const hourElement = document.getElementById("hour");
+      const minElement = document.getElementById("min");
+      const secElement = document.getElementById("sec");
+
+      function updateDisplay(days, hours, minutes, seconds) {
+        dayElement.textContent = String(days).padStart(2, "0");
+        hourElement.textContent = String(hours).padStart(2, "0");
+        minElement.textContent = String(minutes).padStart(2, "0");
+        secElement.textContent = String(seconds).padStart(2, "0");
+      }
+
+      function startTimer() {
+        clearInterval(countdown);
+        const end = new Date();
+        end.setSeconds(end.getSeconds() + parseInt(secElement.textContent));
+        end.setMinutes(end.getMinutes() + parseInt(minElement.textContent));
+        end.setHours(end.getHours() + parseInt(hourElement.textContent));
+        end.setDate(end.getDate() + parseInt(dayElement.textContent));
+
+        countdown = setInterval(() => {
+          const now = new Date();
+          const remainingTime = end - now;
+
+          if (remainingTime < 0) {
+            clearInterval(countdown);
+            return;
+          }
+
+          const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((remainingTime / 1000 / 60) % 60);
+          const seconds = Math.floor((remainingTime / 1000) % 60);
+          updateDisplay(days, hours, minutes, seconds);
+        }, 1000);
+      }
+
+      function stopTimer() {
+        clearInterval(countdown);
+      }
+
+      function resetTimer() {
+        stopTimer();
+        updateDisplay(0, 0, 0, 0);
+      }
+
+      function adjustTime(unit, direction) {
+        const element = {
+          day: dayElement,
+          hour: hourElement,
+          min: minElement,
+          sec: secElement,
+        }[unit];
+        const currentValue = parseInt(element.textContent);
+        element.textContent =
+          direction === "up" ? currentValue + 1 : currentValue - 1;
+      }
+
+      document
+        .getElementById("dayup")
+        .addEventListener("click", () => adjustTime("day", "up"));
+      document
+        .getElementById("hourup")
+        .addEventListener("click", () => adjustTime("hour", "up"));
+      document
+        .getElementById("minup")
+        .addEventListener("click", () => adjustTime("min", "up"));
+      document
+        .getElementById("secup")
+        .addEventListener("click", () => adjustTime("sec", "up"));
+
+      document
+        .getElementById("daydown")
+        .addEventListener("click", () => adjustTime("day", "down"));
+      document
+        .getElementById("hourdown")
+        .addEventListener("click", () => adjustTime("hour", "down"));
+      document
+        .getElementById("mindown")
+        .addEventListener("click", () => adjustTime("min", "down"));
+      document
+        .getElementById("secdown")
+        .addEventListener("click", () => adjustTime("sec", "down"));
+
+      document.getElementById("start").addEventListener("click", startTimer);
+      document.getElementById("stop").addEventListener("click", stopTimer);
+      document.getElementById("reset").addEventListener("click", resetTimer);
+    </script>
+  </body>
+</html>
