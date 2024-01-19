@@ -1,3 +1,5 @@
+<img src='notion_main.png'>
+
 숙제하기
 
 ## 깃복사하기
