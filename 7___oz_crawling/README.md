@@ -6,7 +6,32 @@ requests 와 bs4 를 활용해서, 크롤링 하기.
 
 # naver_1.py
 
-<img src="images/naver1.png">
+<img src="images/naver1.png">  
+  
+# naver_2.py  
+  
+  <img src="images/naver2.png">
+
+# naver_3.py
+
+  <img src="images/naver3.png">
+
+# naver_4.py
+
+  <img src="images/naver4.png">
+
+# naver_5.py
+
+  <img src="images/naver5.png">
+
+# naver_6.py
+
+find = select_one
+find_all = select
+
+# melon.py
+
+  <img src="images/melon.png">
 
 # selenuum
 
