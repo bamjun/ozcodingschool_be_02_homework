@@ -39,3 +39,8 @@ find_all = select
   pip install webdriver-manager
 - 아래 명령어로 셀레니움 설치  
   pip install selenium
+
+  # melon_rank
+
+  멜론 차트 데이터 크롤링해서, 버블 차트 만들기  
+  <img src="images/melonRankMain.png">

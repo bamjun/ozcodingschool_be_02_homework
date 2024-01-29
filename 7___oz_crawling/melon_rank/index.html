@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>멜론 급상승 버블차트</title>
+    <style>
+      body {
+        background-color: rgb(255, 255, 238);
+      }
+      .container {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="data.js"></script>
+    <script>
+      let maxY = 0;
+      data.datasets.forEach((dataset) => {
+        dataset.data.forEach((item) => {
+          if (item.y > maxY) {
+            maxY = item.y;
+          }
+        });
+      });
+      maxY += 1; // 최대 y값보다 1 높게 설정
+
+      const config = {
+        type: "bubble",
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  // context 객체에서 필요한 데이터를 추출
+                  let label = context.dataset.label || "";
+                  if (context.parsed.x !== null) {
+                    label += ", 순위: " + context.parsed.x;
+                  }
+                  // "r" 값은 포함하지 않음
+                  return label;
+                },
+              },
+            },
+
+            legend: {
+              position: "top",
+            },
+            title: {
+              display: true,
+              text: "멜론 급상승 버블차트 🦄" + crawltime,
+            },
+          },
+          scales: {
+            x: {
+              // type: "linear",
+              // position: "bottom",
+              min: 100, // x축의 최소값 설정
+              max: 0, // x축의 최대값 설정
+              reverse: true, // x축의 순서를 뒤집음
+              title: {
+                display: true,
+                text: "순위", // x축 설명
+              },
+            },
+            y: {
+              min: 0, // x축의 최소값 설정
+              max: maxY, // x축의 최대값 설정
+              reverse: false, // x축의 순서를 뒤집음
+              title: {
+                display: true,
+                text: "급등", // y축 설명
+              },
+            },
+          },
+        },
+      };
+
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, config);
+    </script>
+  </body>
+</html>
