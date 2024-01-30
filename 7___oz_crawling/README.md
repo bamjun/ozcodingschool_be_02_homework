@@ -39,6 +39,13 @@ find_all = select
   pip install webdriver-manager
 - 아래 명령어로 셀레니움 설치  
   pip install selenium
+- 셀레니움에 기능 추가하기,  
+  from selenium.webdriver.chrome.options import Options  
+  창크기나, 주소표시줄 바로 밑, 자동실행문 문구, 창크기등 크롬 브라우저 관련설정.  
+  from selenium.webdriver.common.by import By  
+   driver.find_element(By.CSS_SELECTOR, classText).send_keys(Keys.ENTER)  
+   from selenium.webdriver.common.keys import Keys  
+   셀레니움에서 키 입력관련.
 
   # melon_rank
 

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>멜론 순위</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      td {
+        vertical-align: middle;
+      }
+      img {
+        width: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-3">
+      <div>
+        <a
+          class="social-icon__link"
+          target="_blank"
+          href="https://github.com/bamjun/"
+        >
+          <ion-icon
+            name="logo-github"
+            style="color: rgb(207, 42, 207); font-size: 40px"
+          ></ion-icon>
+        </a>
+      </div>
+      <h1 class="mt-5 mb-3 titletime">멜론 순위 (2024-01-22)</h1>
+
+      <div class="container mt-3">
+        <table class="table table-sm table-hover">
+          <thead>
+            <tr>
+              <th style="width: 60px">썸네일</th>
+              <th style="width: 50px">순위</th>
+              <th style="width: 100px">업다운</th>
+              <th>가수</th>
+              <th>곡명</th>
+            </tr>
+            <!-- 열의 속성값을 나타내는 코드를 작성해주세요 (예 : 카테고리, 브랜드, 상품명, 가격) -->
+          </thead>
+          <tbody id="data-table" class="table-group-divider">
+            <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 페이지 네이션 코드를 넣어주세요 -->
+      <nav aria-label="...">
+        <ul class="pagination justify-content-center"></ul>
+      </nav>
+    </div>
+    <script src="data.js"></script>
+    <script>
+      // 크롤링한 데이터를 아래와 같은 형태의 객체 배열로 가정합니다.
+      // 추후 데이터베이스에 있는 데이터를 쿼리문으로 불러 올 수 있게 쿼리르 작성해 볼 수 있음
+      // data.js 에 크롤링한 데이터 저장. const data
+
+      // 전역 변수 설정
+      const itemsPerPage = 10;
+      let currentPage = 1;
+
+      const formattedTime = crawltime
+        .replace("멜론 순위", "")
+        .trim()
+        .slice(0, 16);
+      const displayText = `멜론 순위 (생성일 ${formattedTime})`;
+
+      // HTML 요소 찾기
+      const titleElement = document.querySelector(".titletime");
+
+      // HTML 요소에 텍스트 설정
+      titleElement.textContent = displayText;
+
+      // 페이지네이션을 위한 함수 정의
+      function paginateData(data) {
+        return data.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage
+        );
+      }
+
+      function displayData() {
+        const dataTable = document.getElementById("data-table");
+        dataTable.innerHTML = ""; // 테이블 초기화
+        checkboxes = []; // 체크박스 배열 초기화
+
+        paginateData(data).forEach((item, index) => {
+          const row = dataTable.insertRow();
+          row.insertCell(0).innerHTML = "<img src=" + item.image + ">";
+          row.insertCell(1).innerHTML = item.rank;
+          row.insertCell(2).innerHTML = item.updown;
+          row.insertCell(3).innerHTML = item.singer;
+          row.insertCell(4).innerHTML = item.title;
+        });
+      }
+
+      function setupPagination(data) {
+        const pagination = document.querySelector(".pagination");
+        pagination.innerHTML = ""; // 페이지네이션 초기화
+
+        // 이전페이지 버튼 넣기
+        const previous = document.createElement("li");
+        previous.classList.add("page-item");
+        if (currentPage == 1) {
+          previous.classList.add("disabled");
+        }
+        const previouspageLink = document.createElement("a");
+        previouspageLink.classList.add("page-link");
+        previouspageLink.href = "#";
+        previouspageLink.innerText = "Previous";
+        previouspageLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (currentPage > 1) {
+            currentPage--;
+            displayData();
+            setupPagination(data);
+          }
+        });
+
+        previous.appendChild(previouspageLink);
+        pagination.appendChild(previous);
+
+        const totalPages = Math.ceil(data.length / itemsPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const pageItem = document.createElement("li");
+          pageItem.classList.add("page-item");
+          if (i === currentPage) pageItem.classList.add("active");
+
+          const pageLink = document.createElement("a");
+          pageLink.classList.add("page-link");
+          pageLink.href = "#";
+          pageLink.innerText = i;
+          pageLink.addEventListener("click", function (e) {
+            e.preventDefault();
+            currentPage = i;
+            displayData();
+            setupPagination(data);
+          });
+
+          pageItem.appendChild(pageLink);
+          pagination.appendChild(pageItem);
+        }
+
+        // 다음페이지 버튼 넣기
+        const next = document.createElement("li");
+        next.classList.add("page-item");
+        if (totalPages == currentPage) {
+          next.classList.add("disabled");
+        }
+        const nextpageLink = document.createElement("a");
+        nextpageLink.classList.add("page-link");
+        nextpageLink.href = "#";
+        nextpageLink.innerText = "Next";
+        nextpageLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (currentPage < totalPages) {
+            currentPage++;
+            displayData();
+            setupPagination(data);
+          }
+        });
+        next.appendChild(nextpageLink);
+        pagination.appendChild(next);
+      }
+
+      // 데이터 표시 및 페이지네이션 설정
+      displayData();
+      setupPagination(data);
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
