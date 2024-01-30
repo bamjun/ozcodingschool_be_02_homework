@@ -21,6 +21,28 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="data.js"></script>
     <script>
+      let minR = Math.min(
+        ...data.datasets.flatMap((dataset) =>
+          dataset.data.map((item) => item.r)
+        )
+      );
+      let maxR = Math.max(
+        ...data.datasets.flatMap((dataset) =>
+          dataset.data.map((item) => item.r)
+        )
+      );
+
+      // r 값을 1에서 100 사이의 백분율로 스케일링
+      data.datasets.forEach((dataset) => {
+        dataset.data.forEach((item) => {
+          item.r = scaleToRange(item.r, minR, maxR, 10, 100);
+        });
+      });
+
+      function scaleToRange(value, min, max, newMin, newMax) {
+        return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
+      }
+
       let maxY = 0;
       data.datasets.forEach((dataset) => {
         dataset.data.forEach((item) => {
@@ -42,10 +64,6 @@
                 label: function (context) {
                   // context 객체에서 필요한 데이터를 추출
                   let label = context.dataset.label || "";
-                  if (context.parsed.x !== null) {
-                    label += ", 순위: " + context.parsed.x;
-                  }
-                  // "r" 값은 포함하지 않음
                   return label;
                 },
               },
@@ -68,7 +86,7 @@
               reverse: true, // x축의 순서를 뒤집음
               title: {
                 display: true,
-                text: "순위", // x축 설명
+                text: "순위 ( 버블크기 : 좋아요 )", // x축 설명
               },
             },
             y: {
