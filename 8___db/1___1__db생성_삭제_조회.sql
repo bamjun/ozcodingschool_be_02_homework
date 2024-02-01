@@ -1,0 +1,4 @@
+-- create database mydatabase; -- mydatabase라는 이름을 가진 데이터 베이스 생성
+-- show databases;
+-- use mydataba;
+-- drop database if exists mydataba;
