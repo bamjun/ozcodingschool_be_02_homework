@@ -38,3 +38,4 @@
         <img src='images/day4-주피터노트북에서_db로저장5.png'>
 
 - mini project sakila sql
+  - sakila는 mysql에서 제공하는 데이터베이스를 지칭함.[사이트](https://dev.mysql.com/doc/index-other.html)
