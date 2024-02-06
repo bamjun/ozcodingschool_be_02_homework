@@ -45,9 +45,23 @@ find_all = select
   from selenium.webdriver.common.by import By  
    driver.find_element(By.CSS_SELECTOR, classText).send_keys(Keys.ENTER)  
    from selenium.webdriver.common.keys import Keys  
-   셀레니움에서 키 입력관련.
+   셀레니움에서 키 입력관련.  
 
-  # melon_rank
+   
+---  
+
+
+# melon_rank  
+  <a href = "https://bamjun.github.io/ozcodingschool_be_02_homework/7___oz_crawling/melon_rank/index.html" style="color:red; font-size:30px;">예제 바로보기</a>  
 
   멜론 차트 데이터 크롤링해서, 버블 차트 만들기  
   <img src="images/melonRankMain.png">
+  
+---
+
+
+# 멜론 모바일 페이지에서 데이터 추출 후 리스트 만들기
+
+<a href = "https://bamjun.github.io/ozcodingschool_be_02_homework/7___oz_crawling/melon_m/index.html" style="color:red; font-size:30px;">예제 바로보기</a>
+
+<img src="images/melon_m.png">
