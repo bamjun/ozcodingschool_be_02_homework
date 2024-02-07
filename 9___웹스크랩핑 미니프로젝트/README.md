@@ -18,6 +18,8 @@
   <br>
 - 교보문고 크롤링 하기  
   - ~~yes24는 주간평균데이터만 제공하므로 비교를 위해 교보무고 주간~~```일간``` 데이터 가져오기  
+  - 2024 02 07 완료
+    <img src="images/sqlworkbench.png" width='500px'>  
   <br>    
 - yes24 크롤링 하기  
   - 데이터 크롤링.  
@@ -31,7 +33,12 @@
   <br>
 - aws window server에서 가동하게 구현하기  
   - aws lightsail windows server 개설하기  
+    - 2024 02 07 완료  
+    <img src="images/awsweb.png" width='500px'>  
   - RDP를 활용해서 윈도우즈 메인컴에 서버컴 리모트 연동하기  
+    - 2024 02 07 완료  
+    <img src="images/RDP_icon.png" width='500px'>  
+    <img src="images/awswindow.png" width='500px'>  
   - mysql 연동  
   - 파이썬 크롤링 스크립트 매일 1회 실행하게 하기.  
   - flask 실행하기  
