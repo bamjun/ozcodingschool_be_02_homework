@@ -13,12 +13,12 @@
 # TODO LIST  
 - DB 스키마 구조 설계  
   - 고유 책 ID인 ISBN으로 테이블 묶음.  
-  - 2024 02 07 완료  
+    - 2024 02 07 완료  
     <img src="images/sqlmap.png" width='500px'>  
   <br>
 - 교보문고 크롤링 하기  
   - ~~yes24는 주간평균데이터만 제공하므로 비교를 위해 교보무고 주간~~```일간``` 데이터 가져오기  
-  - 2024 02 07 완료  
+    - 2024 02 07 완료  
     <img src="images/sqlworkbench.png" width='500px'>  
   <br>    
 - yes24 크롤링 하기  
