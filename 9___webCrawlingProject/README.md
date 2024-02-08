@@ -12,7 +12,6 @@
 # $$\Huge\color{purple}\fbox{\Huge \color{pink}{TODO LIST}}$$  
 - DB 스키마 구조 설계  
   - 고유 책 ID인 ISBN으로 테이블 묶음.
-    - 
     ```diff
     - 2024 02 07 완료  
     ```    
@@ -45,14 +44,12 @@
   <br>    
 - yes24 크롤링 하기  
   - 데이터 크롤링.  
-  - 
-  ```diff
-  - 완료 2024 02 08  
-  ```    
+    ```diff
+    - 완료 2024 02 08  
+    ```    
   <img src="images/sqlworkbench_yes24.png" width='500px'>  
   <br>
 - mysql 데이터 베이스에 저장  
-  - 
   ```diff
   - 완료 2024 02 08  
   ```    
