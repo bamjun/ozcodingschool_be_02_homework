@@ -12,7 +12,7 @@
 
 # TODO LIST  
 - DB 스키마 구조 설계  
-  - <div>\style{background-color:yellow}{고유 책 ID인 ISBN으로 테이블 묶음.}</div>  
+  - <div>$\style{background-color:yellow}{고유 책 ID인 ISBN으로 테이블 묶음.}$</div>  
     - <span style='background-color:yellow; color:black;'>2024 02 07 완료</span>  
     <img src="images/sqlmap.png" width='500px'>  
   - 스키마 다시 만들어야 할듯...
