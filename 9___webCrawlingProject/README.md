@@ -59,6 +59,12 @@
   <br>
 - flask 웹페이지 연동  
   - mysql 연동  
+    ```diff  
+    - 완료 2024 02 08  
+    ```  
+    <img src="images/cmdflaskdb.png" width='500px'>  
+    <br>  
+
   - 부트스트렙을 활용해서 크롤링데이터 출력하기  
   - chart js 를 활용해서 차트 만들기  
   <br>
