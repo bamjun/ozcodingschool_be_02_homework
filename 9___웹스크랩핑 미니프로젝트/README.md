@@ -23,7 +23,7 @@
     저장하는게 비효율이고, 오류가 발생할 가능성이 많을꺼 같아서, price와 ranking 테이블을 교보와 yes24테이블로 각각 만들어야할듯..  
       ```diff
       + 수정 2024 02 08  
-      - 완료 2024 02 08
+      - 완료 2024 02 08  
       ```  
       <img src="images/sql_schema.png" width='500px'>  
       <img src="images/sqlmap2.png" width='500px'>  
@@ -39,7 +39,7 @@
   db에서 select count(*) as a from books where isbn = isbn 으로 중복확인  
     ```diff
     + 추가 2024 02 08 
-    - 완료 2024 02 08
+    - 완료 2024 02 08  
     ```    
     <img src="images/kyobo_crawl.png" width='500px'>  
   <br>    
