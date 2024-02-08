@@ -15,11 +15,21 @@
   - 고유 책 ID인 ISBN으로 테이블 묶음.  
     - 2024 02 07 완료  
     <img src="images/sqlmap.png" width='500px'>  
+  - 스키마 다시 만들어야 할듯...
+    - > 교보문고 크롤링완료하고 워크벤치 확인과정에서, 문제점 발견..  
+    교보문고 크롤링완료하고 yes24크롤링 후 데이터를 저장해야하는데, 한곳의 테이블에 교보문고와 yes24 데이터를  
+    저장하는게 비효율이고, 오류가 발생할 가능성이 많을꺼 같아서, price와 ranking 테이블을 교보와 yes24테이블로 각각 만들어야할듯..  
+      - 수정 2024 02 08  
+      <img src="images/sql_schema.png" width='500px'>  
   <br>
 - 교보문고 크롤링 하기  
   - ~~yes24는 주간평균데이터만 제공하므로 비교를 위해 교보무고 주간~~```일간``` 데이터 가져오기  
     - 2024 02 07 완료  
     <img src="images/sqlworkbench.png" width='500px'>  
+  - > 매일 크롤링 하는과정에서 동일한 책은 books 테이블에 데이터 삽입 하지 않도록 수정  
+  db에서 select count(*) as a from books where isbn = isbn 으로 중복확인  
+    - 추가 2024 02 08 완료 2024 02 08  
+    <img src="images/kyobo_crawl.png" width='500px'>  
   <br>    
 - yes24 크롤링 하기  
   - 데이터 크롤링.  
