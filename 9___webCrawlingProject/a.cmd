@@ -1,0 +1,1 @@
+C:\Projects\oz_coding\ozcodingschool_be_02_homework\9___webCrawlingProject\venv\Scripts\activate
