@@ -35,7 +35,8 @@ conn = pymysql.connect(
 )
 
 with conn.cursor() as cur:
-    for link in link_list:
+    for x in range(len(link_list)):
+        link = link_list[x]
         max_attempts = 2
         attempts = 0
 
@@ -85,13 +86,7 @@ with conn.cursor() as cur:
                 yes24Point = int(match.group(1).replace(',', ''))
 
 
-                yes24Rank = browser.find_elements(By.CSS_SELECTOR, '.gd_best.gd_best_tp02 dl dd a')
-                if len(yes24Rank) > 0:
-                    yes24Rank = yes24Rank[0].text
-                    match = re.search(r"([\d,]+)위", yes24Rank)
-                    yes24Rank = int(match.group(1))
-                else:
-                    yes24Rank = 0
+                yes24Rank = x + 1
 
 
                 yes24Rating = browser.find_elements(By.CSS_SELECTOR, '.gd_rating a em.yes_b')
@@ -147,7 +142,7 @@ with conn.cursor() as cur:
 
 
 
-        sql = """INSERT INTO yes24price(
+        sql = """INSERT INTO yes24_price(
             isbn,inputDate,yes24Price,yes24SalePrice,yes24Point, yes24url
             )
             VALUES(
@@ -157,7 +152,7 @@ with conn.cursor() as cur:
         cur.execute(sql, (isbn,inputDate,yes24Price,yes24SalePrice,yes24Point, link))
 
 
-        sql = """INSERT INTO yes24ranking(
+        sql = """INSERT INTO yes24_ranking(
             isbn,inputDate,yes24Rank,yes24Rating,yes24Review
             )
             VALUES(

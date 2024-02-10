@@ -10,7 +10,7 @@ CREATE TABLE Books (
     coverUrl LONGTEXT
 );
 
-CREATE TABLE kyoboRanking (
+CREATE TABLE kyobo_ranking (
     rankingId INT AUTO_INCREMENT PRIMARY KEY,
     isbn VARCHAR(13),
     inputDate DATE,
@@ -20,7 +20,7 @@ CREATE TABLE kyoboRanking (
     FOREIGN KEY (isbn) REFERENCES books(isbn) ON DELETE CASCADE
 );
 
-CREATE TABLE kyoboPrice (
+CREATE TABLE kyobo_price (
     priceId INT AUTO_INCREMENT PRIMARY KEY,
     isbn VARCHAR(13),
     inputDate DATE,
@@ -32,7 +32,7 @@ CREATE TABLE kyoboPrice (
 );
 
 
-CREATE TABLE yes24Ranking (
+CREATE TABLE yes24_ranking (
     rankingId INT AUTO_INCREMENT PRIMARY KEY,
     isbn VARCHAR(13),
     inputDate DATE,
@@ -42,7 +42,7 @@ CREATE TABLE yes24Ranking (
     FOREIGN KEY (isbn) REFERENCES books(isbn) ON DELETE CASCADE
 );
 
-CREATE TABLE yes24Price (
+CREATE TABLE yes24_rrice (
     priceId INT AUTO_INCREMENT PRIMARY KEY,
     isbn VARCHAR(13),
     inputDate DATE,

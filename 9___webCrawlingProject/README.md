@@ -54,6 +54,15 @@
   - 완료 2024 02 08  
   ```    
   <br>
+
+- 교보문고, yes24 데이터 평균값 average 테이블에 저장  
+  ```diff  
+  - 완료 2024 02 10  
+  ```  
+  <img src="images/sqlaverage.png" width='500px'>  
+
+  <br>
+
 - flask 웹페이지 연동  
   - mysql 연동  
     ```diff  

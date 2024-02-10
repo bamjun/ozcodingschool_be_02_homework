@@ -22,6 +22,7 @@ for x in range(1, 6):
         link_list.append(link)
     time.sleep(3)
 
+
 conn = pymysql.connect(
     host='localhost',
     user='root',
@@ -31,7 +32,8 @@ conn = pymysql.connect(
 )
 
 with conn.cursor() as cur:
-    for link in link_list:
+    for x in range(len(link_list)):
+        link = link_list[x]
         max_attempts = 2
         attempts = 0
 
@@ -73,7 +75,7 @@ with conn.cursor() as cur:
                 price = browser.find_element(By.CSS_SELECTOR, '.sale_price s.val').text[:-1]
                 kyoboPrice = int(price.replace(',', '').strip())
 
-                kyoboRank = browser.find_element(By.CSS_SELECTOR, '.prod_best_text span.rank').text
+                kyoboRank = x + 1
 
                 price = browser.find_element(By.CSS_SELECTOR, '.prod_price span.price span.val').text[:-1]
                 kyoboSalePrice = int(price.replace(',', '').strip())
@@ -125,7 +127,7 @@ with conn.cursor() as cur:
 
 
 
-        sql = """INSERT INTO kyoboprice(
+        sql = """INSERT INTO kyobo_price(
             isbn,inputDate,kyoboPrice,kyoboSalePrice,kyoboPoint, kyobourl
             )
             VALUES(
@@ -135,7 +137,7 @@ with conn.cursor() as cur:
         cur.execute(sql, (isbn,inputDate,kyoboPrice,kyoboSalePrice,kyoboPoint, link))
 
 
-        sql = """INSERT INTO kyoboranking(
+        sql = """INSERT INTO kyobo_ranking(
             isbn,inputDate,kyoboRank,kyoboRating,kyoboReview
             )
             VALUES(

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books List</title>
+</head>
+<body>
+    <h1>Books List</h1>
+    <ul>
+        {% for book, price, rank  in books_info %}
+            <li>
+                <strong>{{ book.title }}</strong> by {{ book.author }} - {{ price.kyoboPrice }} (Sale Price: {{ price.kyoboSalePrice }} Point: {{price.kyoboPoint}} )
+                <br>
+                Rank: {{ rank.kyoboRank }}, Rating: {{ rank.kyoboRating }}, Reviews: {{ rank.kyoboReview }}
+                <br>
+                <a href="{{ price.kyobourl }}">More Info</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

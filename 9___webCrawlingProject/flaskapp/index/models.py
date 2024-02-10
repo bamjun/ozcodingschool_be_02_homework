@@ -53,6 +53,6 @@ class Average(db.Model):
     inputDate = db.Column(db.Date, default=datetime.utcnow)
     averageRating = db.Column(db.Numeric(3, 1))
     averageRanking = db.Column(db.Numeric(3, 1))
-    averageWeekRanking = db.Column(db.Numeric(3, 1))
+    averageWeekRanking = db.Column(db.Integer)
     book = db.relationship('Books', backref=db.backref('averages', cascade='all, delete-orphan'))
 
