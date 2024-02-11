@@ -116,4 +116,9 @@
     ```diff  
     - 완료 2024 02 11  
     ```  
-    
+
+  - nginx 켜져있는 상태에서 크롤링한 데이터 mysql에 정상적으로 저장되는지 테스트 하기 위해. nginx 적용.  
+    ```diff 
+    - 완료 2024 02 11
+    ```
+    <img src="images/nginx.png" width='500px'>  
