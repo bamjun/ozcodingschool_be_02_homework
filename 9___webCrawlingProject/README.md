@@ -88,8 +88,20 @@
     ```    
     <img src="images/RDP_icon.png" width='500px'>  
     <img src="images/awswindow.png" width='500px'>  
+  - aws ubuntu 개설  
+    - 윈도우 환경에서 mysql 셀레니움 개발해서, aws 윈도우 서버로 하려고 했으나, 웹 개설할때 어려울꺼같아서, 우분투로 변경  
+    - 셀레니움 코드 통합하기  
+    ```diff  
+    완료 2024 02 11  
+    ```  
+    <img src="images/ubuntu.jpg" width='500px'>  
+
+    - mysql 설치 & 크롤링 코드 연동하기    
+
+    - flask 설치 & 코드 연동하기   
+
   - mysql 연동  
   - 파이썬 크롤링 스크립트 매일 1회 실행하게 하기.  
   - flask 실행하기  
-  - 윈도우용 nginx 설치  
+  - ~~~윈도우용~~~ nginx 설치  
   - 웹 개설 하기  

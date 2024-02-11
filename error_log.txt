@@ -7373,3 +7373,267 @@ Stacktrace:
 	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
 	RtlUserThreadStart [0x00007FFC30AAAA58+40]
 
+2024-02-11 14:51:00 - https://product.kyobobook.co.kr/detail/S000208779631 - 오류 발생(1번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:02 - https://product.kyobobook.co.kr/detail/S000208779631 - 오류 발생(2번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:02 - https://product.kyobobook.co.kr/detail/S000211925133 - 오류 발생(1번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:04 - https://product.kyobobook.co.kr/detail/S000211925133 - 오류 발생(2번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:04 - https://product.kyobobook.co.kr/detail/S000212215628 - 오류 발생(1번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:06 - https://product.kyobobook.co.kr/detail/S000212215628 - 오류 발생(2번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:06 - https://product.kyobobook.co.kr/detail/S000211352514 - 오류 발생(1번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:08 - https://product.kyobobook.co.kr/detail/S000211352514 - 오류 발생(2번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:08 - https://product.kyobobook.co.kr/detail/S000211788361 - 오류 발생(1번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:10 - https://product.kyobobook.co.kr/detail/S000211788361 - 오류 발생(2번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
+2024-02-11 14:51:10 - https://product.kyobobook.co.kr/detail/S000212169908 - 오류 발생(1번째 시도): Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64BED5E42+3538674]
+	(No symbol) [0x00007FF64BAF4C02]
+	(No symbol) [0x00007FF64B9A5AEB]
+	(No symbol) [0x00007FF64B98288C]
+	(No symbol) [0x00007FF64BA15DD7]
+	(No symbol) [0x00007FF64BA2B40F]
+	(No symbol) [0x00007FF64BA0EE53]
+	(No symbol) [0x00007FF64B9DF514]
+	(No symbol) [0x00007FF64B9E0631]
+	GetHandleVerifier [0x00007FF64BF06CAD+3738973]
+	GetHandleVerifier [0x00007FF64BF5C506+4089270]
+	GetHandleVerifier [0x00007FF64BF54823+4057299]
+	GetHandleVerifier [0x00007FF64BC25C49+720121]
+	(No symbol) [0x00007FF64BB0126F]
+	(No symbol) [0x00007FF64BAFC304]
+	(No symbol) [0x00007FF64BAFC432]
+	(No symbol) [0x00007FF64BAEBD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
