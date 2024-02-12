@@ -122,3 +122,24 @@
     - 완료 2024 02 11
     ```
     <img src="images/nginx.png" width='500px'>  
+  
+  - 웹게시중, 크롤링 가능함.  
+    ```diff 
+    - 완료 2024 02 11
+    ```
+    <img src="images/webimage.png" width='500px'>  
+
+  - 우분투로 크롤링가능 한지 확인하기 위해서, mysql 정리가 안됬는데, 작동하는지만 확읺고, nginx 까지 넘어감...  정리해야할듯..  
+  - aws 서버 지우고 다시 정리하기..  
+  
+
+
+  스케줄러
+  https://wikidocs.net/48485
+
+  리눅스 mysql
+  https://noanomal.tistory.com/328
+
+  리눅스 셀레니움
+  https://sogogi1000inbun.tistory.com/145
+

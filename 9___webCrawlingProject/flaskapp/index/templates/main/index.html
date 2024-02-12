@@ -40,7 +40,7 @@
         <table class="table table-sm table-hover">
           <thead>
             <tr>
-              <th style="width: 60px">a</th>
+              <th style="width: 60px">image</th>
               <th style="width: 50px">b</th>
               <th style="width: 100px">c</th>
               <th>d</th>
@@ -48,6 +48,8 @@
             </tr>
           </thead>
           <tbody id="data-table" class="table-group-divider">
+            {% for book, price, rank in books_info %}
+            
             <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
           </tbody>
         </table>
