@@ -18,6 +18,10 @@
       img {
         width: 50px;
       }
+      p {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
     </style>
   </head>
   <body>
@@ -40,16 +44,45 @@
         <table class="table table-sm table-hover">
           <thead>
             <tr>
-              <th style="width: 60px">image</th>
-              <th style="width: 50px">b</th>
-              <th style="width: 100px">c</th>
-              <th>d</th>
-              <th>e</th>
+              <th style="width: 60px">cover</th>
+              <th>
+                <p>순위</p>
+                <p>undown</p>
+              </th>
+              <th>
+                <p>제목 | 평점 | 리뷰수</p>
+                <p>작가</p>
+                <p>ISBN | 출판사 | 출판일</p>
+              </th>
+              <th>
+                <p>정가</p>
+                <p>판매가</p>
+                <p>적립금</p>
+              </th>
             </tr>
           </thead>
           <tbody id="data-table" class="table-group-divider">
             {% for book, price, rank in books_info %}
-            
+            <tr data-href="{{ price.kyobourl }}" style="cursor: pointer;" onclick="window.open(this.getAttribute('data-href'), '_blank');">
+              <td><img src="{{ book.coverurl }}" /></td>
+              <td>
+                <p>{{ rank.kyoborank }}</p>
+                <p>{{ rank.kyoboupdown }}</p>
+              </td>
+              <td>
+                <p>{{ book.title }} | {{ rank.kyoborating }} | {{ rank.kyoboreview }}</p>
+                <p>{{ book.author }}</p>
+                <p>{{ book.isbn }} | {{ book.publisher }} | {{ book.publishing }} </p>
+              </td>
+              <td>
+                <p>{{ price.kyoboprice }}</p>
+                <p>{{ price.kyobosaleprice }}</p>
+                <p>{{ price.kyobopoint }}</p>
+              </td>
+            </tr>
+
+            {% endfor %}
+
             <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
           </tbody>
         </table>
@@ -60,39 +93,5 @@
         <ul class="pagination justify-content-center"></ul>
       </nav>
     </div>
-
-
-  </body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Books List</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <h1>Books List</h1>
-    <ul>
-      {% for book, price, rank in books_info %}
-      <li>
-        <strong>{{ book.title }}</strong> by {{ book.author }} - {{
-        price.kyoboPrice }} (Sale Price: {{ price.kyoboSalePrice }} Point:
-        {{price.kyoboPoint}} )
-        <br />
-        Rank: {{ rank.kyoboRank }}, Rating: {{ rank.kyoboRating }}, Reviews: {{
-        rank.kyoboReview }}
-        <br />
-        <a href="{{ price.kyobourl }}">More Info</a>
-      </li>
-      {% endfor %}
-    </ul>
   </body>
 </html>

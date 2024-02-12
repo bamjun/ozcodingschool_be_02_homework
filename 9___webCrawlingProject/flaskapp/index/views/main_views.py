@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from index.models import Books, KyoboRanking, KyoboPrice
+from index.models import books, kyoboranking, kyoboprice
 
 from datetime import datetime
 
@@ -16,12 +16,13 @@ bp = Blueprint('main', __name__, url_prefix='/')
 @bp.route('/')
 def index():
     # Specific date you're interested in
-    specific_date = datetime(2024, 2, 10).date()
+    specific_date = datetime(2024, 2, 13).date()
 
     # ORM query
-    books_info = db.session.query(Books, KyoboPrice, KyoboRanking)\
-        .join(KyoboPrice, Books.isbn == KyoboPrice.isbn)\
-        .join(KyoboRanking, Books.isbn == KyoboRanking.isbn)\
-        .filter(KyoboPrice.inputDate == specific_date).all()
-
+    books_info = db.session.query(books, kyoboprice, kyoboranking)\
+        .join(kyoboprice, books.isbn == kyoboprice.isbn)\
+        .join(kyoboranking, books.isbn == kyoboranking.isbn)\
+        .filter(kyoboprice.inputdate == specific_date)\
+        .order_by(kyoboranking.kyoborank.asc()).all()
+        
     return render_template('main/index.html', books_info=books_info)

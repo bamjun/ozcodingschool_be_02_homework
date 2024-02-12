@@ -8,18 +8,30 @@ from selenium import webdriver
 ChromeDriverManager().install()
 browser = webdriver.Chrome()
 
+
 link_list = []
+updown_list = []
+rank_list = []
 for x in range(1, 6):
     print("*"*10, f'현재 {x} 페이지 수집 중 입니다.', '*'*10)
     url = f'https://product.kyobobook.co.kr/bestseller/online?period=001&dsplDvsnCode=001&dsplTrgtDvsnCode=002&saleCmdtDsplDvsnCode=TOT&page={x}'
     
     browser.get(url)
 
-    datas = browser.find_elements(By.CLASS_NAME, 'auto_overflow_inner a.prod_info')
+    datas = browser.find_elements(By.CLASS_NAME, 'prod_item')
     datas = datas
-    for i in datas:
-        link = i.get_attribute('href')
+    for j in range(len(datas)):
+        i = datas[j]
+        link = i.find_element(By.CLASS_NAME, 'auto_overflow_inner a.prod_info').get_attribute('href')
         link_list.append(link)
+        updown = i.find_element(By.CSS_SELECTOR, '.rank_status').text.split('\n급상승')[0]
+        if updown == '' or updown == 'NEW':
+            updown = '0'
+        updown_list.append(updown)
+        rank = i.find_element(By.CSS_SELECTOR, '.badge_flag').text
+        if rank == '':
+            rank = str((j+1)+((x-1)*20))
+        rank_list.append(rank)
     time.sleep(3)
 
 
@@ -36,6 +48,15 @@ with conn.cursor() as cur:
         link = link_list[x]
         max_attempts = 2
         attempts = 0
+
+        inputDate = datetime.now().strftime('%Y-%m-%d')
+        kyoboRank = rank_list[x]
+
+        check_sql = "SELECT COUNT(*) AS a FROM kyobo_ranking WHERE inputdate = %s and kyoborank = %s"
+        cur.execute(check_sql, (inputDate, kyoboRank))
+        result = cur.fetchone()
+        if result['a'] != 0:
+            continue
 
         while attempts < max_attempts:
             try:
@@ -55,7 +76,7 @@ with conn.cursor() as cur:
                 data_obj = datetime(int(year), int(month), int(day))
                 publishing = data_obj.strftime("%Y-%m-%d")
 
-                inputDate = datetime.now().strftime('%Y-%m-%d')
+                
 
                 isbn = browser.find_element(By.CSS_SELECTOR, '.tbl_row tbody tr td').text
 
@@ -75,8 +96,7 @@ with conn.cursor() as cur:
                 price = browser.find_element(By.CSS_SELECTOR, '.sale_price s.val').text[:-1]
                 kyoboPrice = int(price.replace(',', '').strip())
 
-                kyoboRank = x + 1
-
+                
                 price = browser.find_element(By.CSS_SELECTOR, '.prod_price span.price span.val').text[:-1]
                 kyoboSalePrice = int(price.replace(',', '').strip())
 
@@ -109,7 +129,7 @@ with conn.cursor() as cur:
         check_sql = "SELECT COUNT(*) AS a FROM books WHERE isbn = %s"
 
         # 새 데이터를 삽입하는 SQL 쿼리
-        insert_sql = """INSERT INTO books(isbn, title, author, publisher, publishing, coverUrl)
+        insert_sql = """INSERT INTO books(isbn, title, author, publisher, publishing, coverurl)
                         VALUES(%s, %s, %s, %s, %s, %s)"""
 
         # ISBN 존재 여부 확인
@@ -126,9 +146,12 @@ with conn.cursor() as cur:
             print("이미 존재하는 ISBN입니다. 삽입하지 않습니다.")
 
 
+        
+
+
 
         sql = """INSERT INTO kyobo_price(
-            isbn,inputDate,kyoboPrice,kyoboSalePrice,kyoboPoint, kyobourl
+            isbn,inputdate,kyoboprice,kyobosaleprice,kyobopoint, kyobourl
             )
             VALUES(
                 %s,%s,%s,%s,%s,%s
@@ -138,13 +161,13 @@ with conn.cursor() as cur:
 
 
         sql = """INSERT INTO kyobo_ranking(
-            isbn,inputDate,kyoboRank,kyoboRating,kyoboReview
+            isbn,inputdate,kyoborank,kyoborating,kyoboreview, kyoboupdown
             )
             VALUES(
-                %s,%s,%s,%s,%s
+                %s,%s,%s,%s,%s,%s
             )
             """
-        cur.execute(sql, (isbn,inputDate,kyoboRank,kyoboRating,kyoboReview))
+        cur.execute(sql, (isbn,inputDate,kyoboRank,kyoboRating,kyoboReview, updown_list[x]))
 
 
         conn.commit()

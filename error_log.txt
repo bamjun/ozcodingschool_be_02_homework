@@ -7637,3 +7637,31 @@ Stacktrace:
 	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
 	RtlUserThreadStart [0x00007FFC30AAAA58+40]
 
+2024-02-13 01:41:28 - https://product.kyobobook.co.kr/detail/S000212269844 - 오류 발생(1번째 시도): Message: stale element reference: stale element not found
+  (Session info: chrome=121.0.6167.161); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF73B475E42+3538674]
+	(No symbol) [0x00007FF73B094C02]
+	(No symbol) [0x00007FF73AF45AEB]
+	(No symbol) [0x00007FF73AF4AD39]
+	(No symbol) [0x00007FF73AF4D150]
+	(No symbol) [0x00007FF73AF4D210]
+	(No symbol) [0x00007FF73AF8723B]
+	(No symbol) [0x00007FF73AFAF0AA]
+	(No symbol) [0x00007FF73AF8124A]
+	(No symbol) [0x00007FF73AFAF2C0]
+	(No symbol) [0x00007FF73AFCBDE3]
+	(No symbol) [0x00007FF73AFAEE53]
+	(No symbol) [0x00007FF73AF7F514]
+	(No symbol) [0x00007FF73AF80631]
+	GetHandleVerifier [0x00007FF73B4A6CAD+3738973]
+	GetHandleVerifier [0x00007FF73B4FC506+4089270]
+	GetHandleVerifier [0x00007FF73B4F4823+4057299]
+	GetHandleVerifier [0x00007FF73B1C5C49+720121]
+	(No symbol) [0x00007FF73B0A126F]
+	(No symbol) [0x00007FF73B09C304]
+	(No symbol) [0x00007FF73B09C432]
+	(No symbol) [0x00007FF73B08BD04]
+	BaseThreadInitThunk [0x00007FFC2F8E257D+29]
+	RtlUserThreadStart [0x00007FFC30AAAA58+40]
+
