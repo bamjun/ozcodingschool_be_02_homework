@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 from index.models import books, kyoboranking, kyoboprice
 
@@ -23,6 +23,9 @@ def index():
         .join(kyoboprice, books.isbn == kyoboprice.isbn)\
         .join(kyoboranking, books.isbn == kyoboranking.isbn)\
         .filter(kyoboprice.inputdate == specific_date)\
-        .order_by(kyoboranking.kyoborank.asc()).all()
+        .order_by(kyoboranking.kyoborank.asc())
         
+    page = request.args.get('page', type=int, default=1)  # 페이지
+    books_info = books_info.paginate(page=page, per_page=10)
     return render_template('main/index.html', books_info=books_info)
+

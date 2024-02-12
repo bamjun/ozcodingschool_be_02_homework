@@ -78,6 +78,13 @@
     <img src="images/bootstrap.png" width='500px'>  
     <br>  
 
+    - 페이지네이션 적용하기  
+    ```diff  
+    - 완료 2024 02 12  
+    ```
+    <img src="images/pagenation.png" width='500px'>  
+    <br>  
+
   - chart js 를 활용해서 차트 만들기  
   <br>
 - aws window server에서 가동하게 구현하기  

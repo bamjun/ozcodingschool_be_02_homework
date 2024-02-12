@@ -12,6 +12,11 @@
       crossorigin="anonymous"
     />
     <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
       td {
         vertical-align: middle;
       }
@@ -26,53 +31,43 @@
   </head>
   <body>
     <div class="container mt-3">
-      <div>
-        <a
-          class="social-icon__link"
-          target="_blank"
-          href="https://github.com/bamjun/"
-        >
-          <ion-icon
-            name="logo-github"
-            style="color: rgb(207, 42, 207); font-size: 40px"
-          ></ion-icon>
-        </a>
-      </div>
-      <h1 class="mt-5 mb-3 titletime"></h1>
-
       <div class="container mt-3">
         <table class="table table-sm table-hover">
           <thead>
             <tr>
-              <th style="width: 60px">cover</th>
+              <th style="width: 60px"></th>
               <th>
-                <p>순위</p>
-                <p>undown</p>
+                
               </th>
               <th>
-                <p>제목 | 평점 | 리뷰수</p>
-                <p>작가</p>
-                <p>ISBN | 출판사 | 출판일</p>
+                <p>제목 | 평점 | 리뷰수 | 작가 | ISBN | 출판사 | 출판일</p>
               </th>
               <th>
-                <p>정가</p>
-                <p>판매가</p>
-                <p>적립금</p>
+                <p>정가 | 판매가 | 적립금</p>
               </th>
             </tr>
           </thead>
           <tbody id="data-table" class="table-group-divider">
-            {% for book, price, rank in books_info %}
-            <tr data-href="{{ price.kyobourl }}" style="cursor: pointer;" onclick="window.open(this.getAttribute('data-href'), '_blank');">
+            {% for book, price, rank in books_info.items %}
+            <tr
+              data-href="{{ price.kyobourl }}"
+              style="cursor: pointer"
+              onclick="window.open(this.getAttribute('data-href'), '_blank');"
+            >
               <td><img src="{{ book.coverurl }}" /></td>
               <td>
                 <p>{{ rank.kyoborank }}</p>
                 <p>{{ rank.kyoboupdown }}</p>
               </td>
               <td>
-                <p>{{ book.title }} | {{ rank.kyoborating }} | {{ rank.kyoboreview }}</p>
+                <p>
+                  {{ book.title }} | {{ rank.kyoborating }} | {{
+                  rank.kyoboreview }}
+                </p>
                 <p>{{ book.author }}</p>
-                <p>{{ book.isbn }} | {{ book.publisher }} | {{ book.publishing }} </p>
+                <p>
+                  {{ book.isbn }} | {{ book.publisher }} | {{ book.publishing }}
+                </p>
               </td>
               <td>
                 <p>{{ price.kyoboprice }}</p>
@@ -90,7 +85,57 @@
 
       <!-- 페이지 네이션 코드를 넣어주세요 -->
       <nav aria-label="...">
-        <ul class="pagination justify-content-center"></ul>
+        <!-- 페이징처리 시작 -->
+        <ul class="pagination justify-content-center">
+          <!-- 이전페이지 -->
+          {% if books_info.has_prev %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ books_info.prev_num }}">이전</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a
+              class="page-link"
+              tabindex="-1"
+              aria-disabled="true"
+              href="javascript:void(0)"
+              >이전</a
+            >
+          </li>
+          {% endif %}
+          <!-- 페이지번호 -->
+          {% for page_num in books_info.iter_pages() %} {% if page_num %} {% if
+          page_num != books_info.page %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+          {% else %}
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="javascript:void(0)">{{ page_num }}</a>
+          </li>
+          {% endif %} {% else %}
+          <li class="disabled">
+            <a class="page-link" href="javascript:void(0)">...</a>
+          </li>
+          {% endif %} {% endfor %}
+          <!-- 다음페이지 -->
+          {% if books_info.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ books_info.next_num }}">다음</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a
+              class="page-link"
+              tabindex="-1"
+              aria-disabled="true"
+              href="javascript:void(0)"
+              >다음</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
       </nav>
     </div>
   </body>
