@@ -53,3 +53,64 @@
   - 탄력적IP 주소 사용안해서, 탄력적IP주소 연결해제 했을시, 탄력적IP주소 릴리스 눌러서 완전히 삭제해야 과금안됨.  
   - 릴리스 안하고 1시간 경과시, 과금  
   <img src='images/elasticip.png'>  
+
+# 보안그룹  
+  - ec2 안에 보안그룹 있음.  
+  - 규칙은 허용적으로만 생성가능(어떤거는 불가능하게 설정 못함)  
+
+# ec2인스턴스 삭제는 없고, 종료하면 이후에 자동으로 삭제됨..  
+
+# EBS  
+  - EBS(elastic block store)  
+  - ec2에 여러게 ebs 연결해서 사용가능, 반대로 ebs하나에 여러게의 ec2 연결 불가.  
+  - AMI (Amazone Machine Image)
+    - os가 설치된 형태의 이미지 파일  
+  - 새로 생성 후 인스턴스 연결가능.  
+
+# ELB
+  - ELB(elastic load balancing)  
+    - 부화 분산시킴으로써 안정적으로 서비스를 제공.  
+  - Load Balancer  
+    - 과부화를 나눠준다.  
+  - 유형
+    - ALB
+      - HTTP 헤더 기준으로 트래픽 분배    
+    - NLB
+      - IP 주소 기준으로 트래픽 분배  
+    - CLB
+      - 과거유형  
+
+# EC2 WORDPRESS 생성 과정  
+  - 인스턴스 생성 > 인스턴스 이름 지정 > wordpress bitnami 검색 > ec2 프리티어 버전 설정 > 키페어 설정 > 인스턴스 생성  
+  <img src='images/WP1.png'>  
+  <img src='images/WP2.png'>  
+  <img src='images/WP3.png'>  
+  <img src='images/WP4.png'>  
+  <img src='images/WP5.png'>  
+  <img src='images/WP6.png'>  
+  <img src='images/WP7.png'>  
+
+  - ELB 로드벨런서.  
+  <img src='images/WP8.png'>  
+  <img src='images/WP9.png'>  
+  <img src='images/WP10.png'>  
+  <img src='images/WP11.png'>  
+  <img src='images/WP12.png'>  
+  <img src='images/WP13.png'>  
+  <img src='images/WP14.png'>  
+  <img src='images/WP15.png'>  
+  <img src='images/WP16.png'>  
+  <img src='images/WP17.png'>  
+  <img src='images/WP18.png'>  
+  <img src='images/WP19.png'>  
+  <img src='images/WP20.png'>  
+  <img src='images/WP21.png'>  
+
+
+
+
+
+
+
+# elb 생성할때 네트워크 매핑의 영역을 여러개 생성하면, 어떤 과부화가 올때 좋은 건가. ?  
+# elb 생성해서 여러개의 ec2 연결할때 ec2는 복사해서 사용해야하는건가 ?  
