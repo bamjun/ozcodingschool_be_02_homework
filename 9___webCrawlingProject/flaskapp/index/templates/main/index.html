@@ -44,9 +44,7 @@
           <thead>
             <tr>
               <th style="width: 60px"></th>
-              <th>
-                
-              </th>
+              <th></th>
               <th>
                 <p>제목 | 평점 | 리뷰수 | 작가 | ISBN | 출판사 | 출판일</p>
               </th>
@@ -147,8 +145,6 @@
       </nav>
     </div>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='data.js') }}"></script>
     <script>
@@ -169,6 +165,7 @@
           item.r = scaleToRange(item.r, minR, maxR, 10, 100);
         });
       });
+      
 
       function scaleToRange(value, min, max, newMin, newMax) {
         return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
@@ -183,6 +180,25 @@
         });
       });
       maxY += 1; // 최대 y값보다 1 높게 설정
+
+      let minY = Infinity; // minY를 무한대로 초기화하여, 비교 시작시 모든 값이 더 작게 설정되도록 합니다.
+
+      data.datasets.forEach((dataset) => {
+        dataset.data.forEach((item) => {
+          if (item.y < minY) {
+            // 각 아이템의 y 값이 현재 minY보다 작은지 비교
+            minY = item.y; // 더 작은 값을 찾으면 minY를 업데이트
+          }
+        });
+      });
+
+      minY -= 1; // 최소 y값보다 1 낮게 설정
+
+      data.datasets.forEach((dataset) => {
+        dataset.data.forEach((item) => {
+          item.y = scaleToRange(item.y, minY, maxY, -48, 48);
+        });
+      });
 
       const config = {
         type: "bubble",
@@ -200,12 +216,10 @@
               },
             },
 
-            legend: {
-              position: "top",
-            },
+            legend: false,
             title: {
               display: true,
-              text: "멜론 급상승 버블차트 🦄" + crawltime,
+              text: "급상승 버블차트 🦄" + crawltime,
             },
           },
           scales: {
@@ -217,12 +231,12 @@
               reverse: true, // x축의 순서를 뒤집음
               title: {
                 display: true,
-                text: "순위 ( 버블크기 : 좋아요 )", // x축 설명
+                text: "순위 ( 버블크기 : 리뷰수 )", // x축 설명
               },
             },
             y: {
-              min: 0, // x축의 최소값 설정
-              max: maxY, // x축의 최대값 설정
+              min: -50, // x축의 최소값 설정
+              max: 50, // x축의 최대값 설정
               reverse: false, // x축의 순서를 뒤집음
               title: {
                 display: true,
