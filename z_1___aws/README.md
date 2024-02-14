@@ -202,6 +202,9 @@
 
   - S를 M으로 변경가능, 두개의 M이 발생가능.  
 
+  
+
+
 # mysqlworkbench 와 rds 연동  
 
 ![alt text](images/image-18.png)  
@@ -213,11 +216,78 @@
 - username : rds 생성 후 나타난 id  
 - password : rds 생성 후 제공된 일회용 password  
 
+<a href='https://github.com/soaple/first-met-aws-practice/blob/master/chapter_07/backup.sql'>wordpress bitnami mysql 스키마</a>
+
+
+
 ![alt text](images/image-20.png)
 
+![alt text](images/aimage.png)
+
+-  vim /opt/bitnami/wordpress/wp-config.php
+
+![alt text](images/aimage-1.png)  
+
+-  vim 에디터 접속해서, 워드프레스 db 설정  
+
+![alt text](images/aimage-2.png)
+
+-  sql 정보 수정한 ec2 이미지 생성  
+
+![alt text](images/aimage-3.png)
+
+-  이미지 준비 확인하기  
+
+![alt text](images/aimage-4.png)
+
+-  인바운드 규칙 anywhere 로 변경하기.  
+
+![alt text](images/aimage-5.png)  
+
+-  새로운 시작템플릿 생성하거나, 템플릿 수정해서, 이미지 바꾸기  
+
+![alt text](images/aimage-6.png)
+
+-  db 수정한 이미지로 변경  
+
+![alt text](images/aimage-7.png)
+
+-  시작 템플릿 수정으로 했으면, 기본버전 설정해야함  
+
+![alt text](images/aimage-8.png)  
+
+-  데이터 베이스에 잘들어와 있는거 확인..  
+
+# S3 simple storage service  
+  - 객체 스토리지 특징
+    - 방대한 확장성 및 메타 데이터  
+    - 데이터를 파일로 관리  
+
+![alt text](image.png)  
+
+![alt text](image-1.png)  
+
+  - aws 클라우드 유형  
+    - s3  
+      - 객체 스토리지  
+    - EFS  
+      - 파일 스토리지  
+    - EBS  
+      - 블록 스토리지  
+
+![alt text](image-2.png)  
+
+![alt text](image-3.png)
+
+  - s3 스토리지 클래스 다양함..  
+
+![alt text](image-4.png)  
+
+![alt text](image-5.png)
+
+- s3 리전이 글로벌임. 따로 설정 할필요없음.  
 
 
-<a href='https://github.com/soaple/first-met-aws-practice/blob/master/chapter_07/backup.sql'>wordpress bitnami mysql 스키마</a>
 
 
 admin
