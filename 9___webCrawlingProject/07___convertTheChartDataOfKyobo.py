@@ -1,49 +1,5 @@
-
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
 import pymysql, pass1, time, re
 from datetime import datetime
-from selenium import webdriver
-
-ChromeDriverManager().install()
-browser = webdriver.Chrome()
-
-
-link_list = []
-updown_list = []
-rank_list = []
-for x in range(1, 6):
-    print("*"*10, f'현재 {x} 페이지 수집 중 입니다.', '*'*10)
-    url = f'https://product.kyobobook.co.kr/bestseller/online?period=001&dsplDvsnCode=001&dsplTrgtDvsnCode=002&saleCmdtDsplDvsnCode=TOT&page={x}'
-    
-    browser.get(url)
-
-
-    try:
-        inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
-        match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
-        year, month, day = match.groups()
-        data_obj = datetime(int(year), int(month), int(day))
-        inputDate = data_obj.strftime("%Y-%m-%d")
-    except Exception as e:
-        print(e)
-
-    
-    datas = browser.find_elements(By.CLASS_NAME, 'prod_item')
-    datas = datas
-    for j in range(len(datas)):
-        i = datas[j]
-        link = i.find_element(By.CLASS_NAME, 'auto_overflow_inner a.prod_info').get_attribute('href')
-        link_list.append(link)
-        updown = i.find_element(By.CSS_SELECTOR, '.rank_status').text.split('\n급상승')[0]
-        if updown == '' or updown == 'NEW':
-            updown = '0'
-        updown_list.append(updown)
-        rank = i.find_element(By.CSS_SELECTOR, '.badge_flag').text
-        if rank == '':
-            rank = str((j+1)+((x-1)*20))
-        rank_list.append(rank)
-    time.sleep(3)
 
 
 conn = pymysql.connect(
@@ -55,6 +11,44 @@ conn = pymysql.connect(
 )
 
 with conn.cursor() as cur:
+    data = {"datasets": []}
+    for rank, x in enumerate(lst_all, 1):
+        a = x.select_one(".up")
+        if a:
+            title = x.select_one(".ellipsis.rank01").text.strip()
+            singer = x.select_one(".ellipsis.rank02").text.strip()
+            elbum = x.select_one(".ellipsis.rank03").text.strip()
+            data["datasets"].append(
+                {
+                    "label": f"{singer} - {title}🔼{a.text}",
+                    "data": [
+                        {"x": rank, "y": int(a.text), "r": 10},
+                    ],
+                    "borderColor": f"rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 0.5)",
+                    "backgroundColor": f"rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 0.5)",
+                }
+            )
+
+
+    # 파일로 저장
+    with open("data.js", "w", encoding="utf-8") as file:
+        file.write(
+            "const data = "
+            + json.dumps(data, indent=2, ensure_ascii=False)
+            + "; \n\nconst crawltime = "
+            + json.dumps(gettime, indent=2, ensure_ascii=False)
+            + ";"
+        )
+
+
+
+
+
+
+
+
+
+
     for x in range(len(link_list)):
         link = link_list[x]
         max_attempts = 2

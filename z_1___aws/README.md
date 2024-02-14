@@ -69,9 +69,9 @@
 
 # ELB
   - ELB(elastic load balancing)  
-    - 부화 분산시킴으로써 안정적으로 서비스를 제공.  
+    - 부하 분산시킴으로써 안정적으로 서비스를 제공.  
   - Load Balancer  
-    - 과부화를 나눠준다.  
+    - 과부하를 나눠준다.  
   - 유형
     - ALB
       - HTTP 헤더 기준으로 트래픽 분배    
@@ -108,11 +108,125 @@
   <img src='images/WP22.png'>  
   <img src='images/WP23.png'>  
 
+# Auto Scaling  
+  - 자동으로 크기를 조절한다. 
+  - 트래픽에 따라서 자동으로 서버를 조절한다.  
+  - 자동으로 ec2 인스턴스 개수를 조절.  
+  - elb와 auto scaling 같이 사용  
+  - auto scaling 기본구조  
+  ![alt text](images/image.png)  
+
+<br>
+
+  - Auto Scaling Group (ASG)  
+    - auto scaling 되는 ec2 인스턴스들의 집합  
+    - Cloud Watch와 연동가능. 
+
+
+# 오토스케일링  실습  
+
+  - 이미지 생성해놔야함.  
+
+  ![alt text](images/image-1.png)  
+  ![alt text](images/image-2.png)
+  ![alt text](images/image-3.png)
+  ![alt text](images/image-4.png)
+  ![alt text](images/image-5.png)
+  ![alt text](images/image-6.png)
+  ![alt text](images/image-7.png)
+
+    - 활성화시 ec2 리부팅안됨, 오류발생 위험있음.    
+
+  ![alt text](images/image-8.png)
+
+  - 이미지 생성완료..  
+
+  ![alt text](images/image-9.png)
+  ![alt text](images/image-10.png)
+  ![alt text](images/image-11.png)
+
+  - 가지고있는 ec2 선택  
+
+  ![alt text](images/image-12.png)
 
 
 
+  - auto scaling 가용영역 선택  
+      - 여러개 선택하면, 분산해서 관리함  
+  
+
+  - 부하테스트  
+    - 커널에서 stress 이용해서 부하 태스트  
+    ```cmd  
+    sudo apt-get install stress  
+    stress --cpu 4  
+    ````  
+
+  ![alt text](images/image-13.png)  
+
+  - 커널에서 wordpress 유저 아이디 확인하기.  
+    ```cmd  
+    cat bitnami_credentials
+    ```
+
+# RDS  
+  - Relational Databasae Service 관계형 데이터베이스 서비스  
+  - ELB 혹은 AS 이용해서, ec2 확장해서 이용시, 동일한 저장공간이 아니여서, 동일한 데이터가 보이지 않음.. 이를 방지하기위해서, RDS를 이용해서 동일한 공간에 데이터 저장.  
+  - 완전관리형 관계형 db서비스  
+  - 다양한 db엔진 제공  
+  - db 이중화  
+  - read replica  
+    - 읽기전용  
+
+
+![alt text](images/image-14.png)  
+<a href='https://www.techrepublic.com/blog/the-enterprise-cloud/what-does-a-dba-do-all-day/'>관련링크</a>
+
+  - ec2 기본 내장 저장공간을 사용하는것보단, rds 사용할때 더 효율적  
+
+![alt text](images/image-15.png)
+
+  - M : 읽고쓰기의 역할 master db가 함.  
+  - S : stand by db 대기중인 인스턴스  
+    - 장애가 생겼을때 M(master)의 역활을 대신함.  
+    - 멀티 에이지의 역활을 함.  
+  - R : Read replica 읽기전용 인스턴스  
+    - 비동기 복제가 이루어짐.  
+    - 데이터가 약간 다를수 있음.(실시간 복제)  
+
+![alt text](images/image-16.png)
+
+  - 장애발생시  
+
+![alt text](images/image-17.png)  
+
+  - S를 M으로 변경가능, 두개의 M이 발생가능.  
+
+# mysqlworkbench 와 rds 연동  
+
+![alt text](images/image-18.png)  
+
+![alt text](images/image-19.png)
+
+- connections name : 데이터 베이스 임의 이름.  
+- hostname : rds의 엔드포인트 입력  
+- username : rds 생성 후 나타난 id  
+- password : rds 생성 후 제공된 일회용 password  
+
+![alt text](images/image-20.png)
 
 
 
-# elb 생성할때 네트워크 매핑의 영역을 여러개 생성하면, 어떤 과부화가 올때 좋은 건가. ?  
+<a href='https://github.com/soaple/first-met-aws-practice/blob/master/chapter_07/backup.sql'>wordpress bitnami mysql 스키마</a>
+
+
+admin
+bxic4U144sQEGu8QMRA2
+
+aws 3대장 ec2 rds s3
+
+
+# 오토스케일을 사용할때, 인스턴스 대시보드에 원본의 ec2와 오토스케일로 만든 ec2 두개가 있는데, 과금할때 ec2 요금의 두배로 과금되는지.. ? 두개의 ec2 부과되는거라면, 오토스케일링 기본용량을 0으로 설정해도 되는지.. ?  
+  - 기존에 생성한 ec2는 종료해도 무방, 서비스는 오토스케일로 샐성된 ec2로 제공  
+# elb 생성할때 네트워크 매핑의 영역을 여러개 생성하면, 어떤 과부하가 올때 좋은 건가. ?  
 # elb 생성해서 여러개의 ec2 연결할때 ec2는 복사해서 사용해야하는건가 ?  
