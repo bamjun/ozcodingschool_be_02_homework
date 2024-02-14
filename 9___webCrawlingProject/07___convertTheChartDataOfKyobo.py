@@ -15,10 +15,10 @@ inputDate = "2024-02-13"
 
 
 with conn.cursor() as cur:
-    sql = "SELECT books.title, kyobo_ranking.kyoborank, kyobo_ranking.kyoboreview, kyobo_ranking.kyoboupdown FROM books join kyobo_ranking on books.isbn = kyobo_ranking.isbn where kyobo_ranking.inputdate = %s"
-    cur.execute(sql, (inputDate))
+    sql = "SELECT books.title, kyobo_ranking.kyoborank, kyobo_ranking.kyoboreview, kyobo_ranking.kyoboupdown, kyobo_price.kyobourl FROM books join kyobo_ranking on books.isbn = kyobo_ranking.isbn join kyobo_price on kyobo_price.isbn = books.isbn where kyobo_ranking.inputdate = %s and kyobo_price.inputdate = %s"
+    cur.execute(sql, (inputDate, inputDate))
     result = cur.fetchall()
-    print(result)
+    # print(result)
 
     data = {"datasets": []}
     for x in result:
@@ -31,7 +31,7 @@ with conn.cursor() as cur:
             {
                 "label": f"{x['kyoborank']}. {x['title']} {index_kyoboupdown}",
                 "data": [
-                    {"x": x['kyoborank'], "y": x['kyoboupdown'], "r": x['kyoboreview']},
+                    {"x": x['kyoborank'], "y": x['kyoboupdown'], "r": x['kyoboreview'], "link": x['kyobourl']},
                 ],
                 "borderColor": f"rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 0.5)",
                 "backgroundColor": f"rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 0.5)",

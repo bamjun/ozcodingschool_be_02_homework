@@ -88,7 +88,7 @@
           </tbody>
         </table>
       </div>
-
+      <a id="here"></a>
       <!-- 페이지 네이션 코드를 넣어주세요 -->
       <nav aria-label="...">
         <!-- 페이징처리 시작 -->
@@ -96,7 +96,9 @@
           <!-- 이전페이지 -->
           {% if books_info.has_prev %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ books_info.prev_num }}">이전</a>
+            <a class="page-link" href="?page={{ books_info.prev_num }}#here"
+              >이전</a
+            >
           </li>
           {% else %}
           <li class="page-item disabled">
@@ -113,7 +115,9 @@
           {% for page_num in books_info.iter_pages() %} {% if page_num %} {% if
           page_num != books_info.page %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+            <a class="page-link" href="?page={{ page_num }}#here"
+              >{{ page_num }}</a
+            >
           </li>
           {% else %}
           <li class="page-item active" aria-current="page">
@@ -127,7 +131,9 @@
           <!-- 다음페이지 -->
           {% if books_info.has_next %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ books_info.next_num }}">다음</a>
+            <a class="page-link" href="?page={{ books_info.next_num }}#here"
+              >다음</a
+            >
           </li>
           {% else %}
           <li class="page-item disabled">
@@ -165,7 +171,6 @@
           item.r = scaleToRange(item.r, minR, maxR, 10, 100);
         });
       });
-      
 
       function scaleToRange(value, min, max, newMin, newMax) {
         return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
@@ -249,7 +254,27 @@
 
       const ctx = document.getElementById("myChart");
 
-      new Chart(ctx, config);
+      const booksbubblechart = new Chart(ctx, config);
+
+      booksbubblechart.canvas.onclick = clickBubble;
+
+      function clickBubble(click) {
+        console.log(click);
+        const points = booksbubblechart.getElementsAtEventForMode(
+          click,
+          "nearest",
+          { intersect: true },
+          true
+        );
+
+        if (points.length) {
+          const datasetIndex = points[0].datasetIndex;
+          const dataPoint = points[0].index;
+          const link =
+            booksbubblechart.data.datasets[datasetIndex].data[dataPoint].link;
+          window.open(link, "_blank");
+        }
+      }
     </script>
   </body>
 </html>
