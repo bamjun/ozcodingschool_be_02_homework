@@ -160,22 +160,23 @@
 
   ![alt text](images/markdown-image-1.png)
 
-  - 크롤링 파일 실행해서, 데이터베이스 채우기  [우분투 셀레니움 설치가이드](https://dohokin.com/wp-admin/post.php?post=2018&action=edit)
+  - 크롤링 파일 실행해서, 데이터베이스 채우기  [우분투 셀레니움 설치가이드](https://dohokin.com/?p=2018)  
+    ```diff  
+    - 완료 2024 02 15  
+    ```  
+
+    ![alt text](images/markdown-image-3.png)
+
+    
   
-![alt text](images/markdown-image-2.png)
+  
 
 
-우분투 mysql 
-  root : 1Qjawnsdl!
-  
+
+
+
+
 
 
   스케줄러
   https://wikidocs.net/48485
-
-  리눅스 mysql
-  https://noanomal.tistory.com/328
-
-  리눅스 셀레니움
-  https://sogogi1000inbun.tistory.com/145
-
