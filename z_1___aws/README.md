@@ -263,9 +263,9 @@
     - 방대한 확장성 및 메타 데이터  
     - 데이터를 파일로 관리  
 
-![alt text](image.png)  
+![alt text](images/zimage.png)  
 
-![alt text](image-1.png)  
+![alt text](images/zimage-1.png)  
 
   - aws 클라우드 유형  
     - s3  
@@ -275,28 +275,89 @@
     - EBS  
       - 블록 스토리지  
 
-![alt text](image-2.png)  
+![alt text](images/zimage-2.png)  
 
-![alt text](image-3.png)
+![alt text](images/zimage-3.png)
 
   - s3 스토리지 클래스 다양함..  
 
-![alt text](image-4.png)  
+![alt text](images/zimage-4.png)  
 
-![alt text](image-5.png)
+![alt text](images/zimage-5.png)
 
 - s3 리전이 글로벌임. 따로 설정 할필요없음.  
 
+# cyberduck (s3용 툴)  
+
+  - cyberduck 이용하기 위해서, IAM 키 생성.  
+
+![alt text](images/markdown-image.png)  
+
+![alt text](images/markdown-image-1.png)
+
+![alt text](images/markdown-image-2.png)
+
+![alt text](images/markdown-image-3.png)
+
+![alt text](images/markdown-image-4.png)  
+
+  - 키는 이시점에만 다운로드 가능. csv 파일 다운로드해서 저장하기.  
+
+![alt text](images/markdown-image-5.png)
+
+  - [다운로드페이지](https://cyberduck.io/download/)
+
+# CloudFront
+  - 클라우드 프론트는 CDN 서비스임.  
+
+  ![alt text](images/markdown-image-6.png)
 
 
+# cdn s3 연동 실습하기  
 
-admin
-bxic4U144sQEGu8QMRA2
+![alt text](images/markdown-image-7.png)
 
-aws 3대장 ec2 rds s3
+![alt text](images/markdown-image-8.png)
+  - 같은 이름의 파일이 수정 했을경우, 무효화해야지 업데이트 됨..  
 
+# route 53  
 
-# 오토스케일을 사용할때, 인스턴스 대시보드에 원본의 ec2와 오토스케일로 만든 ec2 두개가 있는데, 과금할때 ec2 요금의 두배로 과금되는지.. ? 두개의 ec2 부과되는거라면, 오토스케일링 기본용량을 0으로 설정해도 되는지.. ?  
-  - 기존에 생성한 ec2는 종료해도 무방, 서비스는 오토스케일로 샐성된 ec2로 제공  
-# elb 생성할때 네트워크 매핑의 영역을 여러개 생성하면, 어떤 과부하가 올때 좋은 건가. ?  
-# elb 생성해서 여러개의 ec2 연결할때 ec2는 복사해서 사용해야하는건가 ?  
+![alt text](images/markdown-image-9.png)
+
+![alt text](images/markdown-image-10.png)
+
+# IAM
+
+![alt text](images/markdown-image-11.png)
+
+- 타 이용자에게 자신의 aws를 임의의 아이디를 제공해서 서비스를 이용하게 함.  
+
+# CloudWatch
+
+  - 클라우드 모니터링 서비스  
+
+  ![alt text](images/markdown-image-12.png)
+
+# DynamoDB
+
+![alt text](images/markdown-image-13.png)
+
+# lambda
+
+ - 서버리스 컴퓨팅 서비스  
+
+ ![alt text](images/markdown-image-14.png)
+
+  - 이미지 리사이징 가능.  
+
+# SDK, CLI  
+
+  - sdk 소프트웨어 개발 키트  
+  - cli 커맨드라인 인터페이스  
+  - shared credentials 공유 자격 증명  
+    - 컴퓨터에 aws자격증명을 설정해서, sdk cli 사용해서 aws 서비스를 사용가능하게 함.  
+
+![alt text](images/markdown-image-15.png)
+
+[관련링크](https://docs.aws.amazon.com/ko_kr/sdkref/latest/guide/file-format.html)  
+
