@@ -149,6 +149,24 @@
 
   - 우분투로 크롤링가능 한지 확인하기 위해서, mysql 정리가 안됬는데, 작동하는지만 확읺고, nginx 까지 넘어감...  정리해야할듯..  
   - aws 서버 지우고 다시 정리하기..  
+
+# aws lightsail 다시 만들기  
+  - 초기설정 [instruction](https://dohokin.com/?p=1982)
+  - 우분투 mysql 설치, 데이터베이스 생성 [instruction](https://dohokin.com/?p=1986)  
+  ```diff  
+  - 완료 2024 02 15  
+  ````  
+  ![alt text](images/markdown-image.png)
+
+  ![alt text](images/markdown-image-1.png)
+
+  - 크롤링 파일 실행해서, 데이터베이스 채우기  [우분투 셀레니움 설치가이드](https://dohokin.com/wp-admin/post.php?post=2018&action=edit)
+  
+![alt text](images/markdown-image-2.png)
+
+
+우분투 mysql 
+  root : 1Qjawnsdl!
   
 
 
