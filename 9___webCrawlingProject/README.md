@@ -153,12 +153,12 @@
 # aws lightsail 다시 만들기  
   - 초기설정 [instruction](https://dohokin.com/?p=1982)
   - 우분투 mysql 설치, 데이터베이스 생성 [instruction](https://dohokin.com/?p=1986)  
-  ```diff  
-  - 완료 2024 02 15  
-  ````  
-  ![alt text](images/markdown-image.png)
+    ```diff  
+    - 완료 2024 02 15  
+    ````  
+    ![alt text](images/markdown-image.png)
 
-  ![alt text](images/markdown-image-1.png)
+    ![alt text](images/markdown-image-1.png)
 
   - 크롤링 파일 실행해서, 데이터베이스 채우기  [우분투 셀레니움 설치가이드](https://dohokin.com/?p=2018)  
     ```diff  
@@ -167,16 +167,15 @@
 
     ![alt text](images/markdown-image-3.png)
 
+  - 스케줄러 이용해서, 새벽시간대에 크롤링 자동실행하기.  [instruction](https://dohokin.com/?p=2028)
+    ```diff  
+    - 완료 2024 02 16  
+    ```  
+    ![alt text](images/markdown-image-4.png)
     
+
+
+
   
   
 
-
-
-
-
-
-
-
-  스케줄러
-  https://wikidocs.net/48485

@@ -361,3 +361,89 @@
 
 [관련링크](https://docs.aws.amazon.com/ko_kr/sdkref/latest/guide/file-format.html)  
 
+
+# 실습
+
+  - ls -al
+    - 리눅스에서 폴더 권한까지 보는 명령어.
+  - sudo chown ubuntu:ubuntu project/
+    - project 폴더에 ubuntu로 권한 변경  
+
+    ![alt text](images/markdown-image-16.png)
+
+  - npm init -y
+    - -y 명령어는 다 yesfh tjfwjd  
+
+    ![alt text](images/markdown-image-17.png)
+
+  - package-lock.json
+    - 버전 잠금  
+
+    ![alt text](images/markdown-image-18.png)
+
+  - vim 에디터 명령어 설정.  
+    - vim ~/ .vimrc
+
+    ![alt text](images/markdown-image-19.png)
+
+    - set autoindent : 들여쓰기 설정
+    - set ts=4 : 들여쓰기 몇칸인지  
+    - set nu : 앞에 줄수 표시
+
+    ![alt text](images/markdown-image-20.png)
+
+  - nodejs 서버 설정 [설정 링크](https://expressjs.com/en/starter/hello-world.html)  
+
+  - nodejs 설정 후 ec2에서 3000번 포트 개방 설정  
+
+    ![alt text](images/markdown-image-21.png)
+
+  - 접속 에러뜰때 프로세서 강제 종료 후 재시작.  
+    - ps -al : 프로세서 확인 명령어  
+    - kill -9 [PID] : 프로세서 종료  
+
+    ![alt text](images/markdown-image-22.png)
+
+  - rm 명령어 조심.  
+
+    ![alt text](images/markdown-image-23.png)  
+
+  - express generator : 패키지  
+    - sudo npx express-generator --view=ejs project
+  
+  - 권한 설정  
+    - sudo chown -R ubuntu:ubuntu project/  
+    - -R : 하위 폴더까지 저네 권한 설정.  
+
+  - npm start : 별도로 설정가능  
+  - vim package.json
+
+  ![alt text](images/markdown-image-24.png)
+
+  - ec2 기본 저장공간에 이미지 저장하기  
+    - api 틀 만들기.  
+    - npm install fs multer  
+
+    ![alt text](images/markdown-image-25.png)
+
+    ![alt text](images/markdown-image-26.png)
+
+    ![alt text](images/markdown-image-28.png)
+
+    ![alt text](images/markdown-image-27.png)
+
+  - 업로드 하고, 업로드 항목 표시  
+
+  ![alt text](images/markdown-image-29.png)    
+
+  - pm2 자동 node 실행  
+
+  ![alt text](images/markdown-image-30.png)
+
+  - 완료
+
+  ![alt text](images/markdown-image-31.png)
+
+- 실제 서비스를 해봐야 좋은건가 느낌이 올듯...  
+
+

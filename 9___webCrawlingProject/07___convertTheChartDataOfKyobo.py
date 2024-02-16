@@ -10,11 +10,15 @@ conn = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor,
 )
 
-inputDate = datetime.now().strftime("%Y-%m-%d")
-inputDate = "2024-02-13"
-
+# inputDate = datetime.now().strftime("%Y-%m-%d")
+# inputDate = "2024-02-13"
 
 with conn.cursor() as cur:
+    sql = "SELECT DISTINCT inputdate FROM kyobo_price ORDER BY inputdate DESC LIMIT 1;"
+    cur.execute(sql)
+    inputDate = cur.fetchone()['inputdate']
+
+
     sql = "SELECT books.title, kyobo_ranking.kyoborank, kyobo_ranking.kyoboreview, kyobo_ranking.kyoboupdown, kyobo_price.kyobourl FROM books join kyobo_ranking on books.isbn = kyobo_ranking.isbn join kyobo_price on kyobo_price.isbn = books.isbn where kyobo_ranking.inputdate = %s and kyobo_price.inputdate = %s"
     cur.execute(sql, (inputDate, inputDate))
     result = cur.fetchall()
@@ -38,12 +42,14 @@ with conn.cursor() as cur:
             }
         )
 
-    # 파일로 저장
-    with open("data.js", "w", encoding="utf-8") as file:
-        file.write(
-            "const data = "
-            + json.dumps(data, indent=2, ensure_ascii=False)
-            + "; \n\nconst crawltime = "
-            + json.dumps(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), indent=2, ensure_ascii=False)
-            + ";"
-        )
+    conn.close()
+
+# 파일로 저장
+with open("data.js", "w", encoding="utf-8") as file:
+    file.write(
+        "const data = "
+        + json.dumps(data, indent=2, ensure_ascii=False)
+        + "; \n\nconst crawltime = "
+        + json.dumps(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), indent=2, ensure_ascii=False)
+        + ";"
+    )
