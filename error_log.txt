@@ -7743,3 +7743,53 @@ Stacktrace:
 	BaseThreadInitThunk [0x00007FFF2FCE257D+29]
 	RtlUserThreadStart [0x00007FFF3062AA58+40]
 
+2024-02-16 22:48:35 - https://product.kyobobook.co.kr/detail/S000212021705 - 오류 발생(1번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":".sale_price s.val"}
+  (Session info: chrome=121.0.6167.162); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CD325E42+3538674]
+	(No symbol) [0x00007FF6CCF44C02]
+	(No symbol) [0x00007FF6CCDF5AEB]
+	(No symbol) [0x00007FF6CCE3BF4E]
+	(No symbol) [0x00007FF6CCE3C0CC]
+	(No symbol) [0x00007FF6CCE7E477]
+	(No symbol) [0x00007FF6CCE5F0EF]
+	(No symbol) [0x00007FF6CCE7BDE3]
+	(No symbol) [0x00007FF6CCE5EE53]
+	(No symbol) [0x00007FF6CCE2F514]
+	(No symbol) [0x00007FF6CCE30631]
+	GetHandleVerifier [0x00007FF6CD356CAD+3738973]
+	GetHandleVerifier [0x00007FF6CD3AC506+4089270]
+	GetHandleVerifier [0x00007FF6CD3A4823+4057299]
+	GetHandleVerifier [0x00007FF6CD075C49+720121]
+	(No symbol) [0x00007FF6CCF5126F]
+	(No symbol) [0x00007FF6CCF4C304]
+	(No symbol) [0x00007FF6CCF4C432]
+	(No symbol) [0x00007FF6CCF3BD04]
+	BaseThreadInitThunk [0x00007FFF2FCE257D+29]
+	RtlUserThreadStart [0x00007FFF3062AA58+40]
+
+2024-02-16 22:48:40 - https://product.kyobobook.co.kr/detail/S000212021705 - 오류 발생(2번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":".sale_price s.val"}
+  (Session info: chrome=121.0.6167.162); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CD325E42+3538674]
+	(No symbol) [0x00007FF6CCF44C02]
+	(No symbol) [0x00007FF6CCDF5AEB]
+	(No symbol) [0x00007FF6CCE3BF4E]
+	(No symbol) [0x00007FF6CCE3C0CC]
+	(No symbol) [0x00007FF6CCE7E477]
+	(No symbol) [0x00007FF6CCE5F0EF]
+	(No symbol) [0x00007FF6CCE7BDE3]
+	(No symbol) [0x00007FF6CCE5EE53]
+	(No symbol) [0x00007FF6CCE2F514]
+	(No symbol) [0x00007FF6CCE30631]
+	GetHandleVerifier [0x00007FF6CD356CAD+3738973]
+	GetHandleVerifier [0x00007FF6CD3AC506+4089270]
+	GetHandleVerifier [0x00007FF6CD3A4823+4057299]
+	GetHandleVerifier [0x00007FF6CD075C49+720121]
+	(No symbol) [0x00007FF6CCF5126F]
+	(No symbol) [0x00007FF6CCF4C304]
+	(No symbol) [0x00007FF6CCF4C432]
+	(No symbol) [0x00007FF6CCF3BD04]
+	BaseThreadInitThunk [0x00007FFF2FCE257D+29]
+	RtlUserThreadStart [0x00007FFF3062AA58+40]
+

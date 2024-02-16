@@ -168,7 +168,7 @@
       // r 값을 1에서 100 사이의 백분율로 스케일링
       data.datasets.forEach((dataset) => {
         dataset.data.forEach((item) => {
-          item.r = scaleToRange(item.r, minR, maxR, 10, 100);
+          item.r = scaleToRange(item.r, minR, maxR, 5, 100);
         });
       });
 
@@ -176,34 +176,36 @@
         return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
       }
 
-      let maxY = 0;
-      data.datasets.forEach((dataset) => {
-        dataset.data.forEach((item) => {
-          if (item.y > maxY) {
-            maxY = item.y;
-          }
-        });
-      });
-      maxY += 1; // 최대 y값보다 1 높게 설정
+      // 높낮이 스케일로 조정 시작
+      // let maxY = 0;
+      // data.datasets.forEach((dataset) => {
+      //   dataset.data.forEach((item) => {
+      //     if (item.y > maxY) {
+      //       maxY = item.y;
+      //     }
+      //   });
+      // });
+      // maxY += 1; // 최대 y값보다 1 높게 설정
 
-      let minY = Infinity; // minY를 무한대로 초기화하여, 비교 시작시 모든 값이 더 작게 설정되도록 합니다.
+      // let minY = Infinity; // minY를 무한대로 초기화하여, 비교 시작시 모든 값이 더 작게 설정되도록 합니다.
 
-      data.datasets.forEach((dataset) => {
-        dataset.data.forEach((item) => {
-          if (item.y < minY) {
-            // 각 아이템의 y 값이 현재 minY보다 작은지 비교
-            minY = item.y; // 더 작은 값을 찾으면 minY를 업데이트
-          }
-        });
-      });
+      // data.datasets.forEach((dataset) => {
+      //   dataset.data.forEach((item) => {
+      //     if (item.y < minY) {
+      //       // 각 아이템의 y 값이 현재 minY보다 작은지 비교
+      //       minY = item.y; // 더 작은 값을 찾으면 minY를 업데이트
+      //     }
+      //   });
+      // });
 
-      minY -= 1; // 최소 y값보다 1 낮게 설정
+      // minY -= 1; // 최소 y값보다 1 낮게 설정
 
-      data.datasets.forEach((dataset) => {
-        dataset.data.forEach((item) => {
-          item.y = scaleToRange(item.y, minY, maxY, -48, 48);
-        });
-      });
+      // data.datasets.forEach((dataset) => {
+      //   dataset.data.forEach((item) => {
+      //     item.y = scaleToRange(item.y, minY, maxY, -48, 48);
+      //   });
+      // });
+      // 높낮이 스케일로 조정 끝
 
       const config = {
         type: "bubble",
@@ -240,8 +242,8 @@
               },
             },
             y: {
-              min: -50, // x축의 최소값 설정
-              max: 50, // x축의 최대값 설정
+              min: -55, // x축의 최소값 설정
+              max: 55, // x축의 최대값 설정
               reverse: false, // x축의 순서를 뒤집음
               title: {
                 display: true,

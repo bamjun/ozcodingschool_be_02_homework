@@ -3,7 +3,11 @@
 
 <br>  
 
-# 2024.02.07. ~
+# 2024.02.07. ~ 2024.02.16.
+
+[사이트 보기](http://topbookscharts.com/)
+
+![alt text](images/markdown-image-5.png)
 
 
 ### 가이드 페이지 [링크](https://legend-palm-1f1.notion.site/0e70a019c8154103907fb13c8b6ee121)  
@@ -172,6 +176,13 @@
     - 완료 2024 02 16  
     ```  
     ![alt text](images/markdown-image-4.png)
+
+  - nginx 까지 적용완료..  
+    ```diff  
+    - 완료 2024 02 16  
+    ```  
+
+  ![alt text](images/markdown-image-6.png)
     
 
 
