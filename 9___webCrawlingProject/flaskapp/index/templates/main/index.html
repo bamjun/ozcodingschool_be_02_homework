@@ -152,8 +152,11 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ url_for('static', filename='data.js') }}"></script>
     <script>
+
+      const data = JSON.parse('{{ data|safe }}');
+      const crawltime = '{{ specific_date|safe }}'
+
       let minR = Math.min(
         ...data.datasets.flatMap((dataset) =>
           dataset.data.map((item) => item.r)

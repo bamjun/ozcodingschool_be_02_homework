@@ -1,4 +1,4 @@
-const data = {
+const data1 = {
   "datasets": [
     {
       "label": "1. EBS 왕초보영어(상)(2024) ⬆️3 리뷰 : 3",

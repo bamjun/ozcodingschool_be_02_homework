@@ -175,6 +175,7 @@
     ```diff  
     - 완료 2024 02 16  
     ```  
+    ![alt text](images/markdown-image-7.png)
     ![alt text](images/markdown-image-4.png)
 
   - nginx 까지 적용완료..  
@@ -185,7 +186,18 @@
   ![alt text](images/markdown-image-6.png)
     
 
+---
+---
 
+# $$\Huge\color{green}\fbox{\Huge \color{yellow}{Improvement}}$$  
+
+- 날짜별로 선택 가능하게 만들기.  
+    - 기존에는 crontab을 이용해서, 매일 아침 9시에 크롤링한 데이터를, 차트에 필요한 js파일로 변하는 과정을 거쳤다.  
+      날자별로 선택했을시, 다른날자 선택했을때, 차트가 최신 데이터만 표시되게 때문에, 페이지불러올때마다 데이터 변환하게 해야함..  
+      flask view에서 변환하게 변경함..   
+    ```diff  
+    + 시작 2024 02 17  
+    ```  
 
   
   

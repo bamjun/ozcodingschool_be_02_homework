@@ -1,13 +1,27 @@
-
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-import pymysql, pass1, time, re
+import time, re, pymysql
 from datetime import datetime
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+
+user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+
+
+chrome_driver_path = '/usr/bin/chromedriver'
+service = Service(executable_path=chrome_driver_path)
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")  # GUI 없이 실행
+chrome_options.add_argument("--no-sandbox")  # Sandbox 프로세스 사용 안 함
+chrome_options.add_argument("--disable-dev-shm-usage")  # /dev/shm 파티션 사용 안 함
+chrome_options.add_argument(f"User-Agent={user}")
+
+# Chrome 실행 파일의 경로를 지정해야 할 경우, 아래 옵션을 사용
+# chrome_options.binary_location = '/path/to/google-chrome'
 
 ChromeDriverManager().install()
-browser = webdriver.Chrome()
-
+browser = webdriver.Chrome(service=service, options=chrome_options)
 
 link_list = []
 updown_list = []
@@ -49,11 +63,11 @@ for x in range(1, 6):
 conn = pymysql.connect(
     host='localhost',
     user='root',
-    password= pass1.password(),
+    password= '1Qjawnsdl!',
     db = 'booksminiproject',
     cursorclass = pymysql.cursors.DictCursor
 )
-
+index_range = 0
 with conn.cursor() as cur:
     for x in range(len(link_list)):
         link = link_list[x]
@@ -72,6 +86,7 @@ with conn.cursor() as cur:
         while attempts < max_attempts:
             try:
                 browser.get(link)
+
                 title = browser.find_element(By.CLASS_NAME, 'prod_title').text
                 author = browser.find_element(By.CLASS_NAME, 'author').text
 
@@ -157,6 +172,7 @@ with conn.cursor() as cur:
             print("이미 존재하는 ISBN입니다. 삽입하지 않습니다.")
 
 
+        
 
         # ISBN이 테이블에 존재하는지 확인하는 SQL 쿼리
         check_sql = "SELECT COUNT(*) FROM kyobo_ranking WHERE inputdate = %s and isbn = %s;"
@@ -170,7 +186,6 @@ with conn.cursor() as cur:
             print("RANK이미 존재하는 ISBN입니다. 삽입하지 않습니다.")
             continue
             
-
 
 
         sql = """INSERT INTO kyobo_price(
@@ -195,15 +210,30 @@ with conn.cursor() as cur:
 
         conn.commit()
         time.sleep(2)
+        
+        index_range += 1
+        if index_range == 10:
+            index_range = 0
+            browser.quit()
+            time.sleep(10)
+            
+            user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
 
 
+            chrome_driver_path = '/usr/bin/chromedriver'
+            service = Service(executable_path=chrome_driver_path)
+
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument("--headless")  # GUI 없이 실행
+            chrome_options.add_argument("--no-sandbox")  # Sandbox 프로세스 사용 안 함
+            chrome_options.add_argument("--disable-dev-shm-usage")  # /dev/shm 파티션 사용 안 함
+            chrome_options.add_argument(f"User-Agent={user}")
+            ChromeDriverManager().install()
+            browser = webdriver.Chrome(service=service, options=chrome_options)
+            
+
+            
+        
+        
 
 conn.close()
-
-
-
-
-
-
-
-
