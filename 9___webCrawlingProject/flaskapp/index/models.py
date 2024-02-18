@@ -9,6 +9,8 @@ class books(db.Model):
     publisher = db.Column(db.String(255))
     publishing = db.Column(db.Date)
     coverurl = db.Column(db.Text)
+    category = db.Column(db.String(20))
+
 
 class kyoboranking(db.Model):
     __tablename__ = 'kyobo_ranking'
