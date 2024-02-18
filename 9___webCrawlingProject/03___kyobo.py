@@ -5,6 +5,9 @@ import pymysql, pass1, time, re
 from datetime import datetime
 from selenium import webdriver
 
+# import platform
+# >>> platform.system()
+
 ChromeDriverManager().install()
 browser = webdriver.Chrome()
 
@@ -22,6 +25,7 @@ for x in range(1, 6):
     try:
         inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
         match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
+        print(type(match))
         year, month, day = match.groups()
         data_obj = datetime(int(year), int(month), int(day))
         inputDate = data_obj.strftime("%Y-%m-%d")
@@ -159,7 +163,7 @@ with conn.cursor() as cur:
 
 
         # ISBN이 테이블에 존재하는지 확인하는 SQL 쿼리
-        check_sql = "SELECT COUNT(*) FROM kyobo_ranking WHERE inputdate = %s and isbn = %s;"
+        check_sql = "SELECT COUNT(*) AS a FROM kyobo_ranking WHERE inputdate = %s and isbn = %s;"
 
         # ISBN 존재 여부 확인
         cur.execute(check_sql, (inputDate, isbn))

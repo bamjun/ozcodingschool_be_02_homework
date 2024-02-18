@@ -34,6 +34,14 @@
     </style>
   </head>
   <body>
+    
+    <select class="form-select" aria-label="Default select date" id="select_date">
+      <option selected>조회 원하는 날짜를 선택해주세요.</option>
+      {% for x in select_date %}
+      <option value="{{ x }}">{{ x }}</option>
+      {% endfor %}
+    </select>
+    
     <div class="chartcontainer">
       <canvas id="myChart"></canvas>
     </div>
@@ -151,6 +159,15 @@
       </nav>
     </div>
 
+    <script>
+      // select 요소의 변경 이벤트를 감지하여 페이지 이동
+      document.getElementById('select_date').addEventListener('change', function() {
+        // 선택된 옵션의 값 가져오기
+        var selectedValue = this.value;
+        // 선택된 값에 따라 적절한 페이지로 이동
+        window.location.href = '/detail/' + selectedValue; // 이동할 페이지 URL
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 

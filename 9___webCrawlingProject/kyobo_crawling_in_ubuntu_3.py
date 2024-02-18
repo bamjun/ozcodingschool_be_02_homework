@@ -5,6 +5,11 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
+
+
+
+
+
 user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
 
 
@@ -175,7 +180,7 @@ with conn.cursor() as cur:
         
 
         # ISBN이 테이블에 존재하는지 확인하는 SQL 쿼리
-        check_sql = "SELECT COUNT(*) FROM kyobo_ranking WHERE inputdate = %s and isbn = %s;"
+        check_sql = "SELECT COUNT(*) AS a FROM kyobo_ranking WHERE inputdate = %s and isbn = %s;"
 
         # ISBN 존재 여부 확인
         cur.execute(check_sql, (inputDate, isbn))
