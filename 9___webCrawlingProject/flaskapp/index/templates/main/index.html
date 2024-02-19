@@ -43,6 +43,24 @@
       .chartcontainer {
         width: 100%;
       }
+      #toggleLabels {
+        width: 20%;
+      }
+      #input_date_index {
+        float: left;        
+      }
+      #toggleLabels {
+        position: absolute;
+        float: right;        
+        left: 50%; /* 버튼을 가운데 정렬합니다. */
+        transform: translateX(-50%); /* 정확한 중앙 정렬을 위해 사용합니다. */
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+      }
+
     </style>
   </head>
   <body>
@@ -53,10 +71,15 @@
       <option value="{{ x }}">{{ x }}</option>
       {% endfor %}
     </select>
-    
+
     <div class="chartcontainer">
+      <div>
+        <div id="input_date_index"></div>
+        <button id="toggleLabels">전체 데이터 안보이기</button>
+      </div>
       <canvas id="myChart"></canvas>
     </div>
+
 
     <div class="container mt-3">
       <div class="container mt-3">
@@ -180,7 +203,7 @@
         window.location.href = '/detail/' + selectedValue; // 이동할 페이지 URL
       });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
     <script>
 
       const data = JSON.parse('{{ data|safe }}');
@@ -246,20 +269,21 @@
           responsive: true,
           plugins: {
             tooltip: {
+              enabled: true,
               callbacks: {
-                label: function (context) {
-                  // context 객체에서 필요한 데이터를 추출
-                  let label = context.dataset.label || "";
-                  return label;
-                },
-              },
+                label: function(context) {
+                  // 데이터 포인트의 `tooltip` 속성에 접근
+                  const tooltipLabel = context.raw.tooltip;
+                  return tooltipLabel;
+                }
+              }
             },
-
-            legend: false,
-            title: {
+            // 라벨표시
+            legend: {
               display: true,
-              text: "급상승 버블차트 🦄" + crawltime,
+              position: 'top',
             },
+            title: false,
           },
           scales: {
             x: {
@@ -293,7 +317,7 @@
       booksbubblechart.canvas.onclick = clickBubble;
 
       function clickBubble(click) {
-        console.log(click);
+        // console.log(click);
         const points = booksbubblechart.getElementsAtEventForMode(
           click,
           "nearest",
@@ -309,6 +333,28 @@
           window.open(link, "_blank");
         }
       }
+      document.getElementById('input_date_index').textContent = '🦄 ' + crawltime
+
+      // 버튼 클릭 이벤트 리스너를 추가합니다.
+      document.getElementById('toggleLabels').addEventListener('click', function() {
+        let toggleLabels_button = this
+        let isHidden_index
+        if (toggleLabels_button.textContent != '전체 데이터 안보이기') {
+          toggleLabels_button.textContent = '전체 데이터 안보이기';
+          isHidden_index = true
+        } else {
+          toggleLabels_button.textContent = '전체 데이터 보이기';
+          isHidden_index = false
+        }
+        
+        data.datasets.forEach((dataset, index) => {
+          booksbubblechart.setDatasetVisibility(index, isHidden_index); // 모든 데이터 세트를 표시하거나 숨깁니다.
+        });
+        booksbubblechart.update(); // 차트를 업데이트하여 변경사항을 적용합니다.
+        
+      });
+
+
     </script>
   </body>
 </html>

@@ -111,6 +111,12 @@ try:
                     data_obj = datetime(int(year), int(month), int(day))
                     publishing = data_obj.strftime("%Y-%m-%d")
 
+                    category = browser.find_elements(By.CLASS_NAME, 'breadcrumb_item')
+                    if category[1].text == '국내도서':
+                        category = f"{category[2].text}"
+                    else:
+                        category = f"{category[1].text} - {category[2].text}"
+
                     
 
                     isbn = browser.find_element(By.CSS_SELECTOR, '.tbl_row tbody tr td').text
@@ -164,8 +170,8 @@ try:
             check_sql = "SELECT COUNT(*) AS a FROM books WHERE isbn = %s"
 
             # 새 데이터를 삽입하는 SQL 쿼리
-            insert_sql = """INSERT INTO books(isbn, title, author, publisher, publishing, coverurl)
-                            VALUES(%s, %s, %s, %s, %s, %s)"""
+            insert_sql = """INSERT INTO books(isbn, title, author, publisher, publishing, coverurl, category)
+                            VALUES(%s, %s, %s, %s, %s, %s, %s)"""
 
             # ISBN 존재 여부 확인
             cur.execute(check_sql, (isbn))
@@ -175,7 +181,7 @@ try:
             # result[0]은 COUNT(*)의 결과, 즉 매칭되는 행의 수를 나타냅니다.
             if result['a'] == 0:
                 # ISBN이 테이블에 존재하지 않으므로 새 레코드 삽입
-                cur.execute(insert_sql, (isbn, title, author, publisher, publishing, coverUrl))
+                cur.execute(insert_sql, (isbn, title, author, publisher, publishing, coverUrl, category))
                 print("새로운 레코드가 삽입되었습니다.")
             else:
                 print("이미 존재하는 ISBN입니다. 삽입하지 않습니다.")

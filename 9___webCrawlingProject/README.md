@@ -217,6 +217,9 @@
     ```  
     ![alt text](images/markdown-image-8.png)
 
+  - 20240219 오늘도 동일한 에러가 출력된다. 일단 내일은 서버 재부팅하고 바로 크롤링 실행하게 변경..  
+
+    ![alt text](images/markdown-image-10.png)
 
 <br>  
 
@@ -231,7 +234,11 @@
   - views, html 파일 변경 차트에 적용시키기.  
     ```diff  
     + 시작 2024 02 18  
+    - 완료 2024 02 19
     ```  
+
+    ![alt text](images/markdown-image-11.png)
+
 
 <br>  
 
