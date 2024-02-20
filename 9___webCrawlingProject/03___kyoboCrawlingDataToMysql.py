@@ -33,6 +33,7 @@ try:
     link_list = []
     updown_list = []
     rank_list = []
+    inputDate = ''
     for x in range(1, 6):
         print("*"*10, f'현재 {x} 페이지 수집 중 입니다.', '*'*10)
         url = f'https://product.kyobobook.co.kr/bestseller/online?period=001&dsplDvsnCode=001&dsplTrgtDvsnCode=002&saleCmdtDsplDvsnCode=TOT&page={x}'
@@ -41,14 +42,17 @@ try:
 
 
         try:
-            inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
-            match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
-            print(type(match))
-            year, month, day = match.groups()
-            data_obj = datetime(int(year), int(month), int(day))
-            inputDate = data_obj.strftime("%Y-%m-%d")
+            if inputDate == '':
+                inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
+                match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
+                year, month, day = match.groups()
+                data_obj = datetime(int(year), int(month), int(day))
+                inputDate = data_obj.strftime("%Y-%m-%d")
         except Exception as e:
             print(e)
+
+        if inputDate == '':
+            break
 
         
         datas = browser.find_elements(By.CLASS_NAME, 'prod_item')

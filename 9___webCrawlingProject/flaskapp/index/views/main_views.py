@@ -9,11 +9,6 @@ import random, json
 
 bp = Blueprint('main', __name__, url_prefix='/')
 
-# @bp.route('/hello')
-# def hello_pybo():
-#     return 'Hello, Pybo!'
-
-
 @bp.route('/')
 def index():
     now = datetime.now()
@@ -71,72 +66,9 @@ def get_unique_input_dates():
     return dates_list
 
 
-# def dataForBubbleChart(books_info):
-#     data = {"datasets": []}
-
-#     category_data = {}
-
-#     for b, p, r in books_info:
-#         index_kyoboupdown = r.kyoboupdown
-#         index_review = r.kyoboreview
-
-#         if index_kyoboupdown < 0:
-#             index_kyoboupdown_tip = f"⬇️{abs(int(index_kyoboupdown))}"
-#         else:
-#             index_kyoboupdown_tip = f"⬆️{index_kyoboupdown}"
-#             if index_kyoboupdown > 54:
-#                 index_kyoboupdown = 54
-#             elif index_kyoboupdown > 49:
-#                 index_kyoboupdown = 49
-#             elif index_kyoboupdown < -54:
-#                 index_kyoboupdown = -54
-#             elif index_kyoboupdown < -49:
-#                 index_kyoboupdown = -49
-
-
-#         if b.category not in category_data:
-#             category_data[b.category] = {
-#                 "label": b.category,
-#                 "data": [
-#                     {
-#                         "x": r.kyoborank, 
-#                         "y": index_kyoboupdown, 
-#                         "r": index_review, 
-#                         "link": p.kyobourl, 
-#                         "tooltip": f"{r.kyoborank}. {b.title} ⭐{b.category} {index_kyoboupdown_tip} 리뷰 : {index_review}",
-#                     },
-#                 ],
-#                 "borderColor": f"rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 0.5)",
-#                 "backgroundColor": f"rgba({random.randint(0, 255)}, {random.randint(0, 255)}, {random.randint(0, 255)}, 0.5)",
-#             }
-#         else:
-#             category_data[b.category]["data"].append(
-#                 {
-#                     "x": r.kyoborank, 
-#                     "y": index_kyoboupdown, 
-#                     "r": index_review, 
-#                     "link": p.kyobourl, 
-#                     "tooltip": f"{r.kyoborank}. {b.title} ⭐{b.category} {index_kyoboupdown_tip} 리뷰 : {index_review}",
-#                 },
-#             )
-#     for x in category_data.values():
-#         data["datasets"].append(x)
-        
-#     return data
-
-
-# def calculate_colors(n):
-#     # 색상 간격 계산
-#     interval = 255 / (n - 1) if n > 1 else 255
-#     colors = [
-#         f"rgba({int(i * interval)}, {int(255 - i * interval)}, {int(255 - i * interval)}, 0.5)"
-#         for i in range(n)
-#     ]
-#     return colors
-
 def calculate_colors(n):
     colors = [
-        f"hsla({int(i * 360 / n)}, 100%, 50%, 0.5)"
+        f"hsla({random.randint(0,360)}, 100%, {random.randint(30,60)}%, 0.5)"
         for i in range(n)
     ]
     return colors
@@ -167,8 +99,8 @@ def dataForBubbleChart(books_info):
                     "link": p.kyobourl, 
                     "tooltip": f"{r.kyoborank}. {b.title} ⭐{b.category} {index_kyoboupdown_tip} 리뷰 : {index_review}",
                 }],
-                "borderColor": colors[color_index],
-                "backgroundColor": colors[color_index],
+                "borderColor": f"hsla({random.randint(0,360)}, 100%, 50%, 0.5)",
+                "backgroundColor": f"hsla({random.randint(0,360)}, 100%, {random.randint(30,60)}%, 0.5)",
             }
         else:
             category_data[b.category]["data"].append({

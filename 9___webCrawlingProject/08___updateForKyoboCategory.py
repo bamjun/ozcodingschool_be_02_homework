@@ -55,6 +55,8 @@ with conn.cursor() as cur:
             else:
                 category = f"{category[1].text} - {category[2].text}"
 
+            print(x['isbn'], category)
+            
             sql = 'UPDATE books SET category = %s WHERE isbn = %s'
             cur.execute(sql, (category, x['isbn']))
 
