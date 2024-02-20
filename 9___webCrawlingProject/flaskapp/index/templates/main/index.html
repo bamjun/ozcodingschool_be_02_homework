@@ -111,7 +111,7 @@
               <th style="width: 60px"></th>
               <th></th>
               <th>
-                <p>제목 | 평점 | 리뷰수 | 작가 | ISBN | 출판사 | 출판일</p>
+                <p>제목 | 평점 | 리뷰수 | 카테고리 | 작가 | ISBN | 출판사 | 출판일</p>
               </th>
               <th>
                 <p>정가 | 판매가 | 적립금</p>
@@ -135,7 +135,7 @@
                   {{ book.title }} | {{ rank.kyoborating }} | {{
                   rank.kyoboreview }}
                 </p>
-                <p>{{ book.author }}</p>
+                <p>{{ book.category }} | {{ book.author }}</p>
                 <p>
                   {{ book.isbn }} | {{ book.publisher }} | {{ book.publishing }}
                 </p>
