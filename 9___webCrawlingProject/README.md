@@ -221,6 +221,13 @@
 
     ![alt text](images/markdown-image-10.png)
 
+  - 20240221 해결책을 찾은듯 셀레니움 옵션에서 실행할때마다 설치하는 코드로 변경하고, 과부하를 막기위해 10분 지나면 강제 종료하는 코드로 바꿧다.  
+  - 내일 경과를 봐야할듯..  
+
+    ![alt text](images/markdown-image-13.png)  
+    
+    ![alt text](images/markdown-image-12.png)
+
 <br>  
 
 --- 

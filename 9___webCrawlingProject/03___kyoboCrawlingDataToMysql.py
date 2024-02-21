@@ -12,8 +12,8 @@ if platform.system() == 'Windows':
 else:
     user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
 
-    chrome_driver_path = '/usr/bin/chromedriver'
-    service = Service(executable_path=chrome_driver_path)
+    # chrome_driver_path = '/usr/bin/chromedriver'
+    # service = Service(executable_path=chrome_driver_path)
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")  # GUI 없이 실행
@@ -23,7 +23,8 @@ else:
     # Chrome 실행 파일의 경로를 지정해야 할 경우, 아래 옵션을 사용
     # chrome_options.binary_location = '/path/to/google-chrome'
     ChromeDriverManager().install()
-    browser = webdriver.Chrome(service=service, options=chrome_options)
+    # browser = webdriver.Chrome(service=service, options=chrome_options)
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
 
 
@@ -33,7 +34,6 @@ try:
     link_list = []
     updown_list = []
     rank_list = []
-    inputDate = ''
     for x in range(1, 6):
         print("*"*10, f'현재 {x} 페이지 수집 중 입니다.', '*'*10)
         url = f'https://product.kyobobook.co.kr/bestseller/online?period=001&dsplDvsnCode=001&dsplTrgtDvsnCode=002&saleCmdtDsplDvsnCode=TOT&page={x}'
@@ -42,17 +42,15 @@ try:
 
 
         try:
-            if inputDate == '':
-                inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
-                match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
-                year, month, day = match.groups()
-                data_obj = datetime(int(year), int(month), int(day))
-                inputDate = data_obj.strftime("%Y-%m-%d")
+            inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
+            match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
+            print(type(match))
+            print(match)
+            year, month, day = match.groups()
+            data_obj = datetime(int(year), int(month), int(day))
+            inputDate = data_obj.strftime("%Y-%m-%d")
         except Exception as e:
             print(e)
-
-        if inputDate == '':
-            break
 
         
         datas = browser.find_elements(By.CLASS_NAME, 'prod_item')
