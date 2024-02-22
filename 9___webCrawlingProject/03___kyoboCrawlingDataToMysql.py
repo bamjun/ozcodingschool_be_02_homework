@@ -34,24 +34,28 @@ try:
     link_list = []
     updown_list = []
     rank_list = []
+    inputDate = ''
     for x in range(1, 6):
         print("*"*10, f'현재 {x} 페이지 수집 중 입니다.', '*'*10)
         url = f'https://product.kyobobook.co.kr/bestseller/online?period=001&dsplDvsnCode=001&dsplTrgtDvsnCode=002&saleCmdtDsplDvsnCode=TOT&page={x}'
         
         browser.get(url)
 
-
+        # inputDate데이터 저장하기  
         try:
-            inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
-            match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
-            print(type(match))
-            print(match)
-            year, month, day = match.groups()
-            data_obj = datetime(int(year), int(month), int(day))
-            inputDate = data_obj.strftime("%Y-%m-%d")
+            if inputDate == '':  # 이미 크롤링 했으면 실행안함.  
+                inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
+                match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
+                print(type(match))
+                print(match)  # None으로 크롤링할때 있음..  
+                year, month, day = match.groups()
+                data_obj = datetime(int(year), int(month), int(day))
+                inputDate = data_obj.strftime("%Y-%m-%d")
         except Exception as e:
             print(e)
 
+        if inputDate == '':
+            exit('inputDate 없음', '종료')
         
         datas = browser.find_elements(By.CLASS_NAME, 'prod_item')
         datas = datas
@@ -79,6 +83,7 @@ try:
     )
 
     index_range = 0
+    index_for_exit = 0
     with conn.cursor() as cur:
         for x in range(len(link_list)):
             link = link_list[x]
@@ -227,19 +232,12 @@ try:
 
             conn.commit()
             time.sleep(2)
+            index_for_exit += 1
+            if index_for_exit >= 20:
+                exit('20번 크롤링함 과부하 막기위해 종료.')
+
 
 except Exception as e:
     print(f"오류 발생: {e}")
     with open('error_log.txt', 'a') as file:  # 'a' 모드는 파일에 내용을 추가합니다.
         file.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {e}\n")
-
-finally:
-    conn.close()
-
-
-
-
-
-
-
-

@@ -26618,3 +26618,8 @@ Stacktrace:
 	BaseThreadInitThunk [0x00007FFF2FCE257D+29]
 	RtlUserThreadStart [0x00007FFF3062AA58+40]
 
+2024-02-22 09:31:15 - (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다)")
+2024-02-22 09:35:23 - (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다)")
+2024-02-22 09:46:50 - (1062, "Duplicate entry '9791193842003' for key 'books.PRIMARY'")
+2024-02-22 09:46:50 - (1062, "Duplicate entry '9791193842003' for key 'books.PRIMARY'")
+2024-02-22 09:46:51 - (1062, "Duplicate entry '9791193842003' for key 'books.PRIMARY'")
