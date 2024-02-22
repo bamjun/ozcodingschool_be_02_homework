@@ -228,6 +228,11 @@
     
     ![alt text](images/markdown-image-12.png)
 
+  - 20240222 크론탭으로 강제종료 했더니, 종료가 확실히 안되는거 같다, 코드로 크롤링20번하면 종료하게 함.  
+  - cpu 점유율 60프로 넘어가면, 서버 다운됨. .  
+    
+    ![alt text](images/markdown-image-15.png)
+
 <br>  
 
 --- 
@@ -262,3 +267,5 @@
     + 시작 2024 02 18  
     - 완료 2024 02 18
     ```  
+
+    ![alt text](images/markdown-image-14.png)
