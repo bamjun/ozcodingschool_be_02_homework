@@ -86,7 +86,7 @@ def dataForBubbleChart(books_info):
         index_kyoboupdown = r.kyoboupdown
         index_review = r.kyoboreview
         index_kyoboupdown = max(min(r.kyoboupdown, 54), -54)  # 값 조정
-        index_kyoboupdown_tip = f"⬆️{abs(index_kyoboupdown)}" if index_kyoboupdown >= 0 else f"⬇️{abs(index_kyoboupdown)}"
+        index_kyoboupdown_tip = f"⬆️{abs(index_kyoboupdown)}" if index_kyoboupdown > 0 else "❄️0" if index_kyoboupdown == 0 else f"⬇️{abs(index_kyoboupdown)}"
 
         if b.category not in category_data:
             color_index = len(category_data)  # 현재 카테고리 인덱스를 색상 인덱스로 사용

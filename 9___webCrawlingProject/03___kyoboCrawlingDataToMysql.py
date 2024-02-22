@@ -233,8 +233,8 @@ try:
             conn.commit()
             time.sleep(2)
             index_for_exit += 1
-            if index_for_exit >= 20:
-                exit('20번 크롤링함 과부하 막기위해 종료.')
+            if index_for_exit >= 15:
+                exit('15번 크롤링함 과부하 막기위해 종료.')
 
 
 except Exception as e:
