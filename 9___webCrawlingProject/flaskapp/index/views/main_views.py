@@ -83,10 +83,11 @@ def dataForBubbleChart(books_info):
     colors = calculate_colors(len(unique_categories))
     
     for b, p, r in books_info:
-        index_kyoboupdown = r.kyoboupdown
+        index_kyoboupdown_raw = r.kyoboupdown
         index_review = r.kyoboreview
-        index_kyoboupdown = max(min(r.kyoboupdown, 54), -54)  # 값 조정
-        index_kyoboupdown_tip = f"⬆️{abs(index_kyoboupdown)}" if index_kyoboupdown > 0 else "❄️0" if index_kyoboupdown == 0 else f"⬇️{abs(index_kyoboupdown)}"
+        index_kyoboupdown = max(min(index_kyoboupdown_raw, 54), -54)  # 값 조정
+        # 급등 순위 버블차트에서 54위일경우, 차트에서만 54까지보이고, 툴팁에서는 실제 순위로 보이게하기  
+        index_kyoboupdown_tip = f"⬆️{abs(index_kyoboupdown_raw)}" if index_kyoboupdown_raw > 0 else "❄️0" if index_kyoboupdown_raw == 0 else f"⬇️{abs(index_kyoboupdown_raw)}"
 
         if b.category not in category_data:
             color_index = len(category_data)  # 현재 카테고리 인덱스를 색상 인덱스로 사용
