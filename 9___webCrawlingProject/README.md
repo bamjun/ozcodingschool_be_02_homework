@@ -214,6 +214,7 @@
   - 03___kyoboCrawlingDataToMysql 로 코드 통합 내일(19일) 잘 되는지 봐야할듯...  
     ```diff  
     + 시작 2024 02 18  
+    - 완료 2024 02 23
     ```  
     ![alt text](images/markdown-image-8.png)
 
@@ -232,6 +233,10 @@
   - cpu 점유율 60프로 넘어가면, 서버 다운됨. .  
     
     ![alt text](images/markdown-image-15.png)
+
+  - 20240223 크롤링 15번하면 종료하게 바꾸고, 실행했더니, cpu 점유율 40%선에서 크롤링이 끝난다 이정도면 될듯..  
+  
+    ![alt text](images/markdown-image-16.png)
 
 <br>  
 
