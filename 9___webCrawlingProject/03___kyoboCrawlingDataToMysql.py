@@ -11,23 +11,13 @@ if platform.system() == 'Windows':
     browser = webdriver.Chrome()
 else:
     user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
-
-    # chrome_driver_path = '/usr/bin/chromedriver'
-    # service = Service(executable_path=chrome_driver_path)
-
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")  # GUI 없이 실행
     chrome_options.add_argument("--no-sandbox")  # Sandbox 프로세스 사용 안 함
     chrome_options.add_argument("--disable-dev-shm-usage")  # /dev/shm 파티션 사용 안 함
     chrome_options.add_argument(f"User-Agent={user}")
-    # Chrome 실행 파일의 경로를 지정해야 할 경우, 아래 옵션을 사용
-    # chrome_options.binary_location = '/path/to/google-chrome'
     ChromeDriverManager().install()
-    # browser = webdriver.Chrome(service=service, options=chrome_options)
     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-
-
-
 
 
 try:
@@ -42,20 +32,19 @@ try:
         browser.get(url)
 
         # inputDate데이터 저장하기  
+        # inputDate 교보문고 베스트 일일데이터에서 테이블 위에 데이터기준 날짜나와있음.  
         try:
             if inputDate == '':  # 이미 크롤링 했으면 실행안함.  
                 inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
                 match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
                 print(type(match))
                 print(match)  # None으로 크롤링할때 있음..  
-                year, month, day = match.groups()
-                data_obj = datetime(int(year), int(month), int(day))
-                inputDate = data_obj.strftime("%Y-%m-%d")
+                if match != None:
+                    year, month, day = match.groups()
+                    data_obj = datetime(int(year), int(month), int(day))
+                    inputDate = data_obj.strftime("%Y-%m-%d")
         except Exception as e:
             print(e)
-
-        if inputDate == '':
-            exit('inputDate 없음', '종료')
         
         datas = browser.find_elements(By.CLASS_NAME, 'prod_item')
         datas = datas
@@ -73,6 +62,9 @@ try:
             rank_list.append(rank)
         time.sleep(3)
 
+        # inputDate 교보문고 베스트 일일데이터에서 테이블 위에 데이터기준 날짜나와있음.  
+        if inputDate == '':
+            exit('inputDate 없음', '종료')
 
     conn = pymysql.connect(
         host='localhost',
@@ -168,11 +160,6 @@ try:
                         time.sleep(2)
 
 
-
-
-
-
-
             # ISBN이 테이블에 존재하는지 확인하는 SQL 쿼리
             check_sql = "SELECT COUNT(*) AS a FROM books WHERE isbn = %s"
 
@@ -193,8 +180,6 @@ try:
             else:
                 print("이미 존재하는 ISBN입니다. 삽입하지 않습니다.")
 
-
-
             # ISBN이 테이블에 존재하는지 확인하는 SQL 쿼리
             check_sql = "SELECT COUNT(*) AS a FROM kyobo_ranking WHERE inputdate = %s and isbn = %s;"
 
@@ -208,8 +193,6 @@ try:
                 continue
                 
 
-
-
             sql = """INSERT INTO kyobo_price(
                 isbn,inputdate,kyoboprice,kyobosaleprice,kyobopoint, kyobourl
                 )
@@ -218,7 +201,6 @@ try:
                 )
                 """
             cur.execute(sql, (isbn,inputDate,kyoboPrice,kyoboSalePrice,kyoboPoint, link))
-
 
             sql = """INSERT INTO kyobo_ranking(
                 isbn,inputdate,kyoborank,kyoborating,kyoboreview, kyoboupdown
@@ -229,13 +211,11 @@ try:
                 """
             cur.execute(sql, (isbn,inputDate,kyoboRank,kyoboRating,kyoboReview, updown_list[x]))
 
-
             conn.commit()
             time.sleep(2)
             index_for_exit += 1
             if index_for_exit >= 15:
                 exit('15번 크롤링함 과부하 막기위해 종료.')
-
 
 except Exception as e:
     print(f"오류 발생: {e}")
