@@ -1,15 +1,17 @@
-import pymysql, pass1, time, re, platform
+import pymysql, pass1, time, re, platform, json
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from datetime import datetime
+from datetime import datetime, timedelta
 from selenium import webdriver
 
 # 로컬환경의 윈도우와 서버 환경 리눅스에서 시작하는 코드 구분.  
 if platform.system() == 'Windows':
+    data_json_path = 'C:\Projects\oz_coding\ozcodingschool_be_02_homework\9___webCrawlingProject\data.json'
     ChromeDriverManager().install()
     browser = webdriver.Chrome()
 else:
+    data_json_path = '/home/ubuntu/projects/data.json'
     user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")  # GUI 없이 실행
@@ -21,50 +23,82 @@ else:
 
 
 try:
-    link_list = []
-    updown_list = []
-    rank_list = []
-    inputDate = ''
-    for x in range(1, 6):
-        print("*"*10, f'현재 {x} 페이지 수집 중 입니다.', '*'*10)
-        url = f'https://product.kyobobook.co.kr/bestseller/online?period=001&dsplDvsnCode=001&dsplTrgtDvsnCode=002&saleCmdtDsplDvsnCode=TOT&page={x}'
-        
-        browser.get(url)
+    now = datetime.now()
+    # 하루 전 날짜
+    one_day_before = now - timedelta(days=1)
+    # 하루 전 날짜를 문자열로 포맷팅
+    index_today_ymd = one_day_before.strftime("%Y-%m-%d")
 
-        # inputDate데이터 저장하기  
-        # inputDate 교보문고 베스트 일일데이터에서 테이블 위에 데이터기준 날짜나와있음.  
-        try:
-            if inputDate == '':  # 이미 크롤링 했으면 실행안함.  
-                inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
-                match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
-                print(type(match))
-                print(match)  # None으로 크롤링할때 있음..  
-                if match != None:
-                    year, month, day = match.groups()
-                    data_obj = datetime(int(year), int(month), int(day))
-                    inputDate = data_obj.strftime("%Y-%m-%d")
-        except Exception as e:
-            print(e)
-        
-        datas = browser.find_elements(By.CLASS_NAME, 'prod_item')
-        datas = datas
-        for j in range(len(datas)):
-            i = datas[j]
-            link = i.find_element(By.CLASS_NAME, 'auto_overflow_inner a.prod_info').get_attribute('href')
-            link_list.append(link)
-            updown = i.find_element(By.CSS_SELECTOR, '.rank_status').text.split('\n급상승')[0]
-            if updown == '' or updown == 'NEW':
-                updown = '0'
-            updown_list.append(updown)
-            rank = i.find_element(By.CSS_SELECTOR, '.badge_flag').text
-            if rank == '':
-                rank = str((j+1)+((x-1)*20))
-            rank_list.append(rank)
-        time.sleep(3)
+    # JSON 데이터를 파일에서 불러오기
+    with open(data_json_path, 'r') as json_file:
+        data = json.load(json_file)
 
-        # inputDate 교보문고 베스트 일일데이터에서 테이블 위에 데이터기준 날짜나와있음.  
-        if inputDate == '':
-            exit('inputDate 없음', '종료')
+    # 불러온 데이터 사용하기
+    link_list = data['link_list']
+    updown_list = data['updown_list']
+    rank_list = data['rank_list']
+    inputDate = data['inputDate']
+
+    if inputDate != index_today_ymd:
+        link_list = []
+        updown_list = []
+        rank_list = []
+        inputDate = ''
+        for x in range(1, 6):
+            print("*"*10, f'현재 {x} 페이지 수집 중 입니다.', '*'*10)
+            url = f'https://product.kyobobook.co.kr/bestseller/online?period=001&dsplDvsnCode=001&dsplTrgtDvsnCode=002&saleCmdtDsplDvsnCode=TOT&page={x}'
+            
+            browser.get(url)
+
+            # inputDate데이터 저장하기  
+            # inputDate 교보문고 베스트 일일데이터에서 테이블 위에 데이터기준 날짜나와있음.  
+            try:
+                if inputDate == '':  # 이미 크롤링 했으면 실행안함.  
+                    inputDate = browser.find_element(By.CSS_SELECTOR, '#baseDateText').text
+                    match = re.search(r'(\d+)년 (\d+)월 (\d+)일', inputDate)
+                    print(type(match))
+                    print(match)  # None으로 크롤링할때 있음..  
+                    if match != None:
+                        year, month, day = match.groups()
+                        data_obj = datetime(int(year), int(month), int(day))
+                        inputDate = data_obj.strftime("%Y-%m-%d")
+            except Exception as e:
+                print(e)
+            
+            datas = browser.find_elements(By.CLASS_NAME, 'prod_item')
+            datas = datas
+            for j in range(len(datas)):
+                i = datas[j]
+                link = i.find_element(By.CLASS_NAME, 'auto_overflow_inner a.prod_info').get_attribute('href')
+                link_list.append(link)
+                updown = i.find_element(By.CSS_SELECTOR, '.rank_status').text.split('\n급상승')[0]
+                if updown == '' or updown == 'NEW':
+                    updown = '0'
+                updown_list.append(updown)
+                rank = i.find_element(By.CSS_SELECTOR, '.badge_flag').text
+                if rank == '':
+                    rank = str((j+1)+((x-1)*20))
+                rank_list.append(rank)
+            time.sleep(3)
+
+        data = {
+            "link_list": link_list,
+            "updown_list": updown_list,
+            "rank_list": rank_list,
+            "inputDate": inputDate
+        }
+
+        # JSON 형식으로 변환
+        json_data = json.dumps(data, indent=4)
+
+        # JSON 데이터를 파일로 저장
+        with open(data_json_path, 'w') as json_file:
+            json_file.write(json_data)
+
+
+    # inputDate 교보문고 베스트 일일데이터에서 테이블 위에 데이터기준 날짜나와있음.  
+    if inputDate == '':
+        exit('inputDate 없음', '종료')
 
     conn = pymysql.connect(
         host='localhost',
@@ -214,8 +248,10 @@ try:
             conn.commit()
             time.sleep(2)
             index_for_exit += 1
-            if index_for_exit >= 15:
-                exit('15번 크롤링함 과부하 막기위해 종료.')
+            # 상세페이지 크롤링 몇번할건지, 선택하기  
+            index_crawling_times = 5
+            if index_for_exit >= index_crawling_times:
+                exit(f'{index_crawling_times}번 크롤링함 과부하 막기위해 종료.')
 
 except Exception as e:
     print(f"오류 발생: {e}")
