@@ -289,6 +289,9 @@
   - 크론탭 5~8시까지 10분마다 작동.  
   - 
   ![alt text](images/markdown-image-18.png)  
+
+  ![alt text](images/markdown-image-19.png)  
+
   
     ```diff  
     + 시작 2024 02 26  

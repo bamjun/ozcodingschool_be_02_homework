@@ -195,3 +195,6 @@
 ![alt text](images/markdown-image-46.png)
 
 # yum , apt 파일설치   
+
+[링크](https://tartan-steel-3da.notion.site/x-e64f2bfc7d6849958dd2af254fb42bd8)  
+![alt text](images/markdown-image-47.png)  
