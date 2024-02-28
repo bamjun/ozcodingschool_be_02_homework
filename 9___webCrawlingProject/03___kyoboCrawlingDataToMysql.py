@@ -39,7 +39,8 @@ try:
     rank_list = data['rank_list']
     inputDate = data['inputDate']
 
-    if inputDate != index_today_ymd:
+
+    if inputDate != index_today_ymd or len(rank_list) != 100:
         link_list = []
         updown_list = []
         rank_list = []
