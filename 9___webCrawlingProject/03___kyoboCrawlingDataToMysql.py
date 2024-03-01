@@ -120,6 +120,7 @@ try:
             # inputDate = datetime.now().strftime('%Y-%m-%d')
             kyoboRank = rank_list[x]
 
+            # kyobo_ranking에 아직 데이터가 없으면.  
             check_sql = "SELECT COUNT(*) AS a FROM kyobo_ranking WHERE inputdate = %s and kyoborank = %s"
             cur.execute(check_sql, (inputDate, kyoboRank))
             result = cur.fetchone()
@@ -131,7 +132,58 @@ try:
                 try:
                     browser.get(link)
 
+                    elements = browser.find_elements(By.CLASS_NAME, 'prod_title')
+
+                    if elements:  # elements 리스트가 비어 있지 않다면, 즉 요소가 하나라도 있다면
+                        print(elements[0].text)  # 첫 번째 요소의 텍스트를 출력
+                    else:
+                        print('prod_title 클래스가 없습니다.')
+                        index_login_text = browser.find_element(By.CSS_SELECTOR, '.form_ip').get_attribute('placeholder')
+                        if index_login_text == '아이디를 입력해 주세요.':
+                            isbn = link.split('/')[-1]
+                            book_detail = f'https://search.kyobobook.co.kr/search?keyword={isbn}&gbCode=TOT&target=total'
+                            browser.get(book_detail)
+                            # select_book_container = browser.find_element(By.XPATH,"//span[contains(@id, 'cmdtName_{isbn}')]/ancestor::li[contains(@class, 'prod_item')]")
+                            select_book_container = browser.find_element(By.XPATH, f"//span[contains(@id, 'cmdtName_{isbn}')]/ancestor::li[contains(@class, 'prod_item')]")
+
+                            title = select_book_container.find_element(By.CSS_SELECTOR, f'#cmdtName_{isbn}').text
+
+                            author = select_book_container.find_element(By.CSS_SELECTOR, '.author.rep').text
+                            
+                            element_prod_publish = select_book_container.find_element(By.CSS_SELECTOR, '.prod_publish')
+                            publisher = element_prod_publish.find_element(By.CSS_SELECTOR, '.text').text
+
+                            div_element = select_book_container.find_element(By.CSS_SELECTOR, '.date')
+                            # <a> 태그의 텍스트와 " · " 문자열을 제거하여 최종 텍스트 추출
+                            publishing = div_element.text.replace(publisher, '').replace(' · ', '').strip()
+                            match = re.search(r'(\d+)년 (\d+)월 (\d+)일', publishing)
+                            year, month, day = match.groups()
+                            data_obj = datetime(int(year), int(month), int(day))
+                            publishing = data_obj.strftime("%Y-%m-%d")
+
+                            coverUrl = 'https://plus.unsplash.com/premium_photo-1675725088296-8a02e3902750?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+                            category = '성인인증'
+
+                            kyoboRating = select_book_container.find_element(By.CSS_SELECTOR, '.review_klover_text').text
+
+                            kyoboReview = select_book_container.find_element(By.CSS_SELECTOR, '.review_desc').text
+                            kyoboReview = kyoboReview.replace("(", "").replace(")", "").replace(",", "")
+
+                            element_price_container = select_book_container.find_element(By.CSS_SELECTOR, '.prod_price')
+                            kyoboPrice = element_price_container.find_element(By.CSS_SELECTOR, '.price_normal')
+                            kyoboPrice = kyoboPrice.find_element(By.CSS_SELECTOR, '.val').text.replace(",", "").replace("원", "")
+
+                            kyoboSalePrice = element_price_container.find_element(By.CSS_SELECTOR, '.price')
+                            kyoboSalePrice = kyoboSalePrice.find_element(By.CSS_SELECTOR, '.val').text.replace(",", "")
+
+                            kyoboPoint = element_price_container.find_element(By.CSS_SELECTOR, '.point').text.replace(",", "")
+                            match = re.search(r"(\d+)p", kyoboPoint)
+                            kyoboPoint = match.group(1) if match else ''
+
+
                     title = browser.find_element(By.CLASS_NAME, 'prod_title').text
+
                     author = browser.find_element(By.CLASS_NAME, 'author').text
 
                     a_element = browser.find_element(By.CSS_SELECTOR, 'div.prod_info_text.publish_date a.btn_publish_link')
@@ -245,12 +297,12 @@ try:
                 )
                 """
             cur.execute(sql, (isbn,inputDate,kyoboRank,kyoboRating,kyoboReview, updown_list[x]))
-
+            
             conn.commit()
             time.sleep(2)
             index_for_exit += 1
             # 상세페이지 크롤링 몇번할건지, 선택하기  
-            index_crawling_times = 90
+            index_crawling_times = 5
             if index_for_exit >= index_crawling_times:
                 exit(f'{index_crawling_times}번 크롤링함 과부하 막기위해 종료.')
 
