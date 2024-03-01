@@ -127,6 +127,7 @@ try:
                 continue
 
             while attempts < max_attempts:
+                attempts += 1
                 try:
                     browser.get(link)
 
@@ -185,7 +186,6 @@ try:
                     break  # try 블록이 성공적으로 실행되면 반복문 종료
                 except Exception as e:
                     print(f"오류 발생: {e}")
-                    attempts += 1
                     with open('error_log.txt', 'a') as file:  # 'a' 모드는 파일에 내용을 추가합니다.
                         file.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {link} - 오류 발생({attempts}번째 시도): {e}\n")
                     if attempts == max_attempts:
@@ -250,7 +250,7 @@ try:
             time.sleep(2)
             index_for_exit += 1
             # 상세페이지 크롤링 몇번할건지, 선택하기  
-            index_crawling_times = 5
+            index_crawling_times = 90
             if index_for_exit >= index_crawling_times:
                 exit(f'{index_crawling_times}번 크롤링함 과부하 막기위해 종료.')
 
