@@ -130,3 +130,52 @@ DynamoDB에서는 강력 일관성 읽기를 사용할 때 추가 비용이 발�
 
 ![alt text](images/markdown-image-26.png)
 
+
+
+# $$\Huge\color{purple}\fbox{\Huge \color{pink}{learned}}$$
+- configparser  
+  - yaml과 비슷한 파이썬 표준라이브러리.  
+
+`ConfigParser`는 파이썬 표준 라이브러리의 일부로, INI 파일 형식으로 저장된 구성 파일을 읽고 쓰는 데 사용됩니다. 이 모듈을 사용하여 애플리케이션 설정, 사용자 설정, 프로그램 상태 등을 파일에 저장하고 불러올 수 있습니다. `ConfigParser`는 간단한 구조의 텍스트 파일을 파싱하여 프로그램에서 쉽게 접근할 수 있는 데이터 구조로 만들어 줍니다.
+
+INI 파일은 섹션으로 나뉘어 있으며, 각 섹션은 키와 값의 쌍을 포함합니다. 이러한 형식은 사람이 읽고 쓰기 쉬워서 간단한 구성 데이터를 저장하는 데 자주 사용됩니다. 예를 들어, 다음은 `ConfigParser`로 읽고 쓸 수 있는 INI 파일의 예입니다:
+
+```ini
+[settings]
+resolution = 1024x768
+fullscreen = True
+
+[user]
+name = johndoe
+email = johndoe@example.com
+```
+
+### 기본 사용 방법
+
+`ConfigParser`를 사용하여 INI 파일을 읽고 쓰는 기본적인 방법은 다음과 같습니다:
+
+#### 구성 파일 읽기
+
+```python
+import configparser
+
+config = configparser.ConfigParser()
+config.read('example.ini')
+
+# 섹션과 키를 사용하여 설정 값에 접근
+resolution = config['settings']['resolution']
+fullscreen = config.getboolean('settings', 'fullscreen')  # 타입 변환도 지원
+```
+
+#### 구성 파일 쓰기
+
+```python
+config = configparser.ConfigParser()
+config['settings'] = {'resolution': '1920x1080', 'fullscreen': 'yes'}
+config['user'] = {'name': 'janedoe', 'email': 'janedoe@example.com'}
+
+with open('example.ini', 'w') as configfile:
+    config.write(configfile)
+```
+
+`ConfigParser`는 다양한 데이터 타입을 지원하며, 특히 `get` 메서드를 사용하면 문자열 외에도 정수(`getint`), 부울(`getboolean`), 실수(`getfloat`) 등으로 값을 변환할 수 있습니다. 이러한 기능을 통해 애플리케이션의 설정을 쉽게 관리하고 사용할 수 있습니다.
