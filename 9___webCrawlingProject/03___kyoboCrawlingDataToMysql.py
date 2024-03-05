@@ -1,9 +1,12 @@
-import pymysql, pass1, time, re, platform, json
+import pymysql, pass1, time, re, platform, json, configparser
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from datetime import datetime, timedelta
 from selenium import webdriver
+
+config = configparser.ConfigParser()
+config.read('crawling_config.ini')
 
 # 로컬환경의 윈도우와 서버 환경 리눅스에서 시작하는 코드 구분.  
 if platform.system() == 'Windows':
@@ -219,14 +222,19 @@ try:
                     # 첫 번째 매칭된 숫자만 추출 (문자열 리스트에서 첫 번째 요소를 정수로 변환)
                     kyoboReview = int(review[0]) if review else None
 
-
-
-                    price = browser.find_element(By.CSS_SELECTOR, '.sale_price s.val').text[:-1]
-                    kyoboPrice = int(price.replace(',', '').strip())
+                    
 
                     
                     price = browser.find_element(By.CSS_SELECTOR, '.prod_price span.price span.val').text[:-1]
                     kyoboSalePrice = int(price.replace(',', '').strip())
+
+                    price_element = browser.find_elements(By.CSS_SELECTOR, '.sale_price s.val')
+                    if price_element:
+                        price = price_element[0].text[:-1]
+                        kyoboPrice = int(price.replace(',', '').strip())
+                    else:
+                        kyoboPrice = kyoboSalePrice
+
 
                     point = browser.find_element(By.CSS_SELECTOR, '.point_text').text[:-1]
                     kyoboPoint = int(point.replace(',', '').strip())
@@ -302,7 +310,7 @@ try:
             time.sleep(2)
             index_for_exit += 1
             # 상세페이지 크롤링 몇번할건지, 선택하기  
-            index_crawling_times = 5
+            index_crawling_times = int(config['crawling']['setting_crawling_times'])
             if index_for_exit >= index_crawling_times:
                 exit(f'{index_crawling_times}번 크롤링함 과부하 막기위해 종료.')
 
