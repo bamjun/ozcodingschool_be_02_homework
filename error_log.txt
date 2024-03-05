@@ -28851,3 +28851,222 @@ Stacktrace:
 	RtlUserThreadStart [0x00007FFF9618AA58+40]
 
 2024-03-05 10:15:05 - (2003, "Can't connect to MySQL server on 'localhost' ([WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다)")
+2024-03-05 17:41:29 - 'crawling'
+2024-03-05 17:42:14 - 'crawling'
+2024-03-05 17:45:35 - 'crawling'
+2024-03-05 17:47:36 - 'crawling'
+2024-03-05 17:49:15 - 'crawling'
+2024-03-05 17:50:16 - 'crawling'
+2024-03-05 17:58:01 - 'crawling'
+2024-03-05 17:58:28 - 'crawling'
+2024-03-05 17:59:29 - 'crawling'
+2024-03-05 19:13:08 - Quitter.__call__() takes from 1 to 2 positional arguments but 3 were given
+2024-03-05 19:14:33 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(1번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.prod_info_text.publish_date a.btn_publish_link"}
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5B398ED]
+	(No symbol) [0x00007FF6A5B39A2C]
+	(No symbol) [0x00007FF6A5B7A967]
+	(No symbol) [0x00007FF6A5B5BCDF]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 19:14:39 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(2번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.prod_info_text.publish_date a.btn_publish_link"}
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5B398ED]
+	(No symbol) [0x00007FF6A5B39A2C]
+	(No symbol) [0x00007FF6A5B7A967]
+	(No symbol) [0x00007FF6A5B5BCDF]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 19:24:39 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(1번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.prod_info_text.publish_date a.btn_publish_link"}
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5B398ED]
+	(No symbol) [0x00007FF6A5B39A2C]
+	(No symbol) [0x00007FF6A5B7A967]
+	(No symbol) [0x00007FF6A5B5BCDF]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 19:24:45 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(2번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.prod_info_text.publish_date a.btn_publish_link"}
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5B398ED]
+	(No symbol) [0x00007FF6A5B39A2C]
+	(No symbol) [0x00007FF6A5B7A967]
+	(No symbol) [0x00007FF6A5B5BCDF]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 19:37:54 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(1번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.prod_info_text.publish_date a.btn_publish_link"}
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5B398ED]
+	(No symbol) [0x00007FF6A5B39A2C]
+	(No symbol) [0x00007FF6A5B7A967]
+	(No symbol) [0x00007FF6A5B5BCDF]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 19:37:59 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(2번째 시도): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.prod_info_text.publish_date a.btn_publish_link"}
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5B398ED]
+	(No symbol) [0x00007FF6A5B39A2C]
+	(No symbol) [0x00007FF6A5B7A967]
+	(No symbol) [0x00007FF6A5B5BCDF]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 19:45:13 - https://product.kyobobook.co.kr/detail/S000212567347 - 오류 발생(1번째 시도): Message: stale element reference: stale element not found
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5AF9261]
+	(No symbol) [0x00007FF6A5AFB6EB]
+	(No symbol) [0x00007FF6A5AFB7B0]
+	(No symbol) [0x00007FF6A5B34D9B]
+	(No symbol) [0x00007FF6A5B5BC9A]
+	(No symbol) [0x00007FF6A5B2F09A]
+	(No symbol) [0x00007FF6A5B5BEB0]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 20:41:57 - Quitter.__call__() takes from 1 to 2 positional arguments but 3 were given
+2024-03-05 20:43:47 - https://product.kyobobook.co.kr/detail/S000212607405 - 오류 발생(1번째 시도): Message: stale element reference: stale element not found
+  (Session info: chrome=122.0.6261.95); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A5CCAD22+56930]
+	(No symbol) [0x00007FF6A5C3F622]
+	(No symbol) [0x00007FF6A5AF42E5]
+	(No symbol) [0x00007FF6A5AF9261]
+	(No symbol) [0x00007FF6A5AFB6EB]
+	(No symbol) [0x00007FF6A5AFB7B0]
+	(No symbol) [0x00007FF6A5B34D9B]
+	(No symbol) [0x00007FF6A5B5BC9A]
+	(No symbol) [0x00007FF6A5B2F09A]
+	(No symbol) [0x00007FF6A5B5BEB0]
+	(No symbol) [0x00007FF6A5B781E2]
+	(No symbol) [0x00007FF6A5B5BA43]
+	(No symbol) [0x00007FF6A5B2D438]
+	(No symbol) [0x00007FF6A5B2E4D1]
+	GetHandleVerifier [0x00007FF6A6046AAD+3709933]
+	GetHandleVerifier [0x00007FF6A609FFED+4075821]
+	GetHandleVerifier [0x00007FF6A609817F+4043455]
+	GetHandleVerifier [0x00007FF6A5D69756+706710]
+	(No symbol) [0x00007FF6A5C4B8FF]
+	(No symbol) [0x00007FF6A5C46AE4]
+	(No symbol) [0x00007FF6A5C46C3C]
+	(No symbol) [0x00007FF6A5C368F4]
+	BaseThreadInitThunk [0x00007FFCF5B1257D+29]
+	RtlUserThreadStart [0x00007FFCF6EEAA58+40]
+
+2024-03-05 20:48:33 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(1번째 시도): 'WebElement' object is not subscriptable
+2024-03-05 20:48:39 - https://product.kyobobook.co.kr/detail/S000212613910 - 오류 발생(2번째 시도): 'WebElement' object is not subscriptable

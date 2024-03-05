@@ -5,15 +5,19 @@ from selenium.webdriver.common.by import By
 from datetime import datetime, timedelta
 from selenium import webdriver
 
-config = configparser.ConfigParser()
-config.read('crawling_config.ini')
 
 # 로컬환경의 윈도우와 서버 환경 리눅스에서 시작하는 코드 구분.  
 if platform.system() == 'Windows':
+    config = configparser.ConfigParser()
+    config.read('C:\Projects\oz_coding\ozcodingschool_be_02_homework\9___webCrawlingProject\crawling_config.ini')
+
     data_json_path = 'C:\Projects\oz_coding\ozcodingschool_be_02_homework\9___webCrawlingProject\data.json'
     ChromeDriverManager().install()
     browser = webdriver.Chrome()
 else:
+    config = configparser.ConfigParser()
+    config.read('/home/ubuntu/projects/crawling_config.ini')
+
     data_json_path = '/home/ubuntu/projects/data.json'
     user = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
     chrome_options = webdriver.ChromeOptions()
@@ -137,12 +141,46 @@ try:
 
                     elements = browser.find_elements(By.CLASS_NAME, 'prod_title')
 
+                    check_adult_runed = False
                     if elements:  # elements 리스트가 비어 있지 않다면, 즉 요소가 하나라도 있다면
                         print(elements[0].text)  # 첫 번째 요소의 텍스트를 출력
                     else:
                         print('prod_title 클래스가 없습니다.')
                         index_login_text = browser.find_element(By.CSS_SELECTOR, '.form_ip').get_attribute('placeholder')
                         if index_login_text == '아이디를 입력해 주세요.':
+                            category_dict = {
+                                1: "소설",
+                                3: "시/에세이",
+                                5: "인문",
+                                7: "가정/육아",
+                                8: "요리",
+                                9: "건강",
+                                11: "취미/실용/스포츠",
+                                13: "경제/경영",
+                                15: "자기계발",
+                                17: "정치/사회",
+                                19: "역사/문화",
+                                21: "종교",
+                                23: "예술/대중문화",
+                                25: "중/고등참고서",
+                                26: "기술/공학",
+                                27: "외국어",
+                                29: "과학",
+                                31: "취업/수험서",
+                                32: "여행",
+                                33: "컴퓨터/IT",
+                                35: "잡지",
+                                38: "청소년",
+                                39: "초등참고서",
+                                41: "유아(0~7세)",
+                                42: "어린이(초등)",
+                                47: "만화",
+                                50: "대학교재",
+                                53: "한국소개도서",
+                                59: "교보오리지널"
+                            }
+
+                            check_adult_runed = True
                             isbn = link.split('/')[-1]
                             book_detail = f'https://search.kyobobook.co.kr/search?keyword={isbn}&gbCode=TOT&target=total'
                             browser.get(book_detail)
@@ -164,9 +202,9 @@ try:
                             data_obj = datetime(int(year), int(month), int(day))
                             publishing = data_obj.strftime("%Y-%m-%d")
 
-                            coverUrl = 'https://plus.unsplash.com/premium_photo-1675725088296-8a02e3902750?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-
-                            category = '성인인증'
+                            # coverUrl = 'https://plus.unsplash.com/premium_photo-1675725088296-8a02e3902750?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                            # 19 숫자 그림
+                            # category = '성인인증'
 
                             kyoboRating = select_book_container.find_element(By.CSS_SELECTOR, '.review_klover_text').text
 
@@ -184,64 +222,82 @@ try:
                             match = re.search(r"(\d+)p", kyoboPoint)
                             kyoboPoint = match.group(1) if match else ''
 
+                            element = select_book_container.find_element(By.CSS_SELECTOR, '.prod_info')
+                            # Get the onclick attribute as text
+                            onclick_text = element.get_attribute("onclick")
+                            # Use regular expressions to find all instances of numbers in the string
+                            isbn = re.search(r'(\d{13})', onclick_text).group(1)
+                            match = re.search(r'setWebRecommShop\(\s*"[^"]*"\s*,\s*"[^"]*"\s*,\s*"(\d+)"', onclick_text)
 
-                    title = browser.find_element(By.CLASS_NAME, 'prod_title').text
+                            if match:
+                                number = match.group(1)
+                                print("Extracted number:", number)
+                            else:
+                                print("Number not found")
 
-                    author = browser.find_element(By.CLASS_NAME, 'author').text
-
-                    a_element = browser.find_element(By.CSS_SELECTOR, 'div.prod_info_text.publish_date a.btn_publish_link')
-                    publisher = a_element.text
-
-                    # <div> 태그 안의 텍스트 추출 (전체 div의 텍스트에서 <a> 태그의 텍스트를 제외한 나머지)
-                    div_element = browser.find_element(By.CSS_SELECTOR, 'div.prod_info_text.publish_date')
-                    # <a> 태그의 텍스트와 " · " 문자열을 제거하여 최종 텍스트 추출
-                    publishing = div_element.text.replace(publisher, '').replace(' · ', '').strip()
-                    match = re.search(r'(\d+)년 (\d+)월 (\d+)일', publishing)
-                    year, month, day = match.groups()
-                    data_obj = datetime(int(year), int(month), int(day))
-                    publishing = data_obj.strftime("%Y-%m-%d")
-
-                    category = browser.find_elements(By.CLASS_NAME, 'breadcrumb_item')
-                    if category[1].text == '국내도서':
-                        category = f"{category[2].text}"
-                    else:
-                        category = f"{category[1].text} - {category[2].text}"
-
-                    
-
-                    isbn = browser.find_element(By.CSS_SELECTOR, '.tbl_row tbody tr td').text
+                            category = category_dict[int(number[:2])]
+                            coverUrl = 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/' + str(isbn) + '.jpg'
 
 
-                    kyoboRating = browser.find_element(By.CSS_SELECTOR, '.caption-badge.caption-secondary span.val').text
-                    if kyoboRating == '':
-                        kyoboRating = 0
+                    if not check_adult_runed:
+                        title = browser.find_element(By.CLASS_NAME, 'prod_title').text
+
+                        author = browser.find_element(By.CLASS_NAME, 'author').text
+
+                        a_element = browser.find_element(By.CSS_SELECTOR, 'div.prod_info_text.publish_date a.btn_publish_link')
+                        publisher = a_element.text
+
+                        # <div> 태그 안의 텍스트 추출 (전체 div의 텍스트에서 <a> 태그의 텍스트를 제외한 나머지)
+                        div_element = browser.find_element(By.CSS_SELECTOR, 'div.prod_info_text.publish_date')
+                        # <a> 태그의 텍스트와 " · " 문자열을 제거하여 최종 텍스트 추출
+                        publishing = div_element.text.replace(publisher, '').replace(' · ', '').strip()
+                        match = re.search(r'(\d+)년 (\d+)월 (\d+)일', publishing)
+                        year, month, day = match.groups()
+                        data_obj = datetime(int(year), int(month), int(day))
+                        publishing = data_obj.strftime("%Y-%m-%d")
+
+                        category = browser.find_elements(By.CLASS_NAME, 'breadcrumb_item')
+                        if category[1].text == '국내도서':
+                            category = f"{category[2].text}"
+                        else:
+                            category = f"{category[1].text} - {category[2].text}"
+
+                        
+
+                        isbn = browser.find_element(By.CSS_SELECTOR, '.tbl_row tbody tr td').text
 
 
-                    text = browser.find_element(By.CSS_SELECTOR, '.product_detail_area.klover_review_wrap p.title_heading').text
-                    review = re.findall(r'\((\d+)\)', text.replace(',',''))
-                    # 첫 번째 매칭된 숫자만 추출 (문자열 리스트에서 첫 번째 요소를 정수로 변환)
-                    kyoboReview = int(review[0]) if review else None
-
-                    
-
-                    
-                    price = browser.find_element(By.CSS_SELECTOR, '.prod_price span.price span.val').text[:-1]
-                    kyoboSalePrice = int(price.replace(',', '').strip())
-
-                    price_element = browser.find_elements(By.CSS_SELECTOR, '.sale_price s.val')
-                    if price_element:
-                        price = price_element[0].text[:-1]
-                        kyoboPrice = int(price.replace(',', '').strip())
-                    else:
-                        kyoboPrice = kyoboSalePrice
+                        kyoboRating = browser.find_element(By.CSS_SELECTOR, '.caption-badge.caption-secondary span.val').text
+                        if kyoboRating == '':
+                            kyoboRating = 0
 
 
-                    point = browser.find_element(By.CSS_SELECTOR, '.point_text').text[:-1]
-                    kyoboPoint = int(point.replace(',', '').strip())
+                        text = browser.find_element(By.CSS_SELECTOR, '.product_detail_area.klover_review_wrap p.title_heading').text
+                        review = re.findall(r'\((\d+)\)', text.replace(',',''))
+                        # 첫 번째 매칭된 숫자만 추출 (문자열 리스트에서 첫 번째 요소를 정수로 변환)
+                        kyoboReview = int(review[0]) if review else None
 
-                    # cover_url,isbn,input_date,title,author,publisher,publishing,rating,review,price,ranking,salePrice,point
+                        
 
-                    coverUrl = browser.find_element(By.CSS_SELECTOR, '.portrait_img_box.portrait img').get_attribute('src')
+                        
+                        price = browser.find_element(By.CSS_SELECTOR, '.prod_price span.price span.val').text[:-1]
+                        kyoboSalePrice = int(price.replace(',', '').strip())
+
+                        price_element = browser.find_elements(By.CSS_SELECTOR, '.sale_price s.val')
+                        if price_element:
+                            price = price_element[0].text[:-1]
+                            kyoboPrice = int(price.replace(',', '').strip())
+                        else:
+                            kyoboPrice = kyoboSalePrice
+
+
+                        point = browser.find_element(By.CSS_SELECTOR, '.point_text').text[:-1]
+                        kyoboPoint = int(point.replace(',', '').strip())
+
+                        # cover_url,isbn,input_date,title,author,publisher,publishing,rating,review,price,ranking,salePrice,point
+
+                        # coverUrl = browser.find_element(By.CSS_SELECTOR, '.portrait_img_box.portrait img').get_attribute('src')
+                        coverUrl = 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/' + str(isbn) + '.jpg'
 
                     break  # try 블록이 성공적으로 실행되면 반복문 종료
                 except Exception as e:
@@ -308,6 +364,7 @@ try:
             
             conn.commit()
             time.sleep(2)
+
             index_for_exit += 1
             # 상세페이지 크롤링 몇번할건지, 선택하기  
             index_crawling_times = int(config['crawling']['setting_crawling_times'])
@@ -315,6 +372,6 @@ try:
                 exit(f'{index_crawling_times}번 크롤링함 과부하 막기위해 종료.')
 
 except Exception as e:
-    print(f"오류 발생: {e}")
+    print(f"오류 발생: {e} 최상단 오류")
     with open('error_log.txt', 'a') as file:  # 'a' 모드는 파일에 내용을 추가합니다.
         file.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {e}\n")
