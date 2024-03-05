@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Instagram API Test</h1>
+        
+        <button id="fetch-users">Fetch Users</button>
+        
+        <section>
+            <h2>Create User</h2>
+            <input type="text" id="create-username" placeholder="Username">
+            <button id="create-user">Create User</button>
+        </section>
+        
+        <section>
+            <h2>Add Post to User</h2>
+            <input type="text" id="post-username" placeholder="Username">
+            <input type="text" id="post-title" placeholder="Post Title">
+            <button id="add-post">Add Post</button>
+        </section>
+        
+        <section>
+            <h2>Delete User</h2>
+            <input type="text" id="delete-username" placeholder="Username">
+            <button id="delete-user">Delete User</button>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('fetch-users').addEventListener('click', function() {
+            fetch('/users')
+                .then(response => response.json())
+                .then(data => console.log(data));
+        });
+
+        document.getElementById('create-user').addEventListener('click', function() {
+            const username = document.getElementById('create-username').value;
+            fetch('/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: username })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+        });
+
+        document.getElementById('add-post').addEventListener('click', function() {
+            const username = document.getElementById('post-username').value;
+            const title = document.getElementById('post-title').value;
+            fetch(`/users/post/${username}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title: title })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+        });
+
+        document.getElementById('delete-user').addEventListener('click', function() {
+            const username = document.getElementById('delete-username').value;
+            fetch(`/users/${username}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+        });
+    </script>
+</body>
+</html>

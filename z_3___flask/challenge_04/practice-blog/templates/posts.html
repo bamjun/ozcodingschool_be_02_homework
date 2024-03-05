@@ -64,7 +64,33 @@
         }
 
         function loadPosts() {
-            // 기존 loadPosts 함수 내용
+            axios.get('/posts')
+        .then(function (response) {
+            const posts = response.data;
+            const postsList = document.getElementById("postsList");
+            postsList.innerHTML = ''; // Clear existing posts
+
+            posts.forEach(function(post) {
+                const postItem = document.createElement("li");
+                postItem.textContent = `Title: ${post.title}, Content: ${post.content}`;
+                
+                // Optional: Add an Edit button for each post
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.onclick = function() {
+                    loadPostForEditing(post.id);
+                };
+                
+                // Append the edit button to the post item
+                postItem.appendChild(editButton);
+
+                // Append the post item to the list
+                postsList.appendChild(postItem);
+            });
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
         }
 
         function loadPostForEditing(id) {
