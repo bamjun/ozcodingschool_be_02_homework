@@ -5,17 +5,20 @@
 
 ## 설치순서(윈도우)  
 - 가상환경 설치  
+  `bash`
   ```bash  
   python -m venv .venv  
   ```  
 
 - 가상환경 진입  
+  `bash`
   ```bash  
   cd '\.venv\Scripts\'  
   . activate  
   ```  
 
 - poetry 설치  
+  `bash`
   ```bash  
   pip install poetry  
   poetry --version  # 버전확인을 통해 정상적으로 설치 됐는지 확인.  
@@ -23,9 +26,10 @@
 
 - poetry 초기화  
   - pyproject.toml 파일을 설정하는 과정  
-  ```bash  
-  poetry init  
-  ```  
+  `bash`
+    ```bash  
+    poetry init  
+    ```  
     ![alt text](images/markdown-image.png)  
     1. **Package Name**: 프로젝트 또는 패키지의 이름입니다. 일반적으로 프로젝트의 디렉토리 이름을 기본값으로 사용합니다.
     2. **Version**: 패키지의 시작 버전입니다. 일반적으로 **`0.1.0`**으로 시작하며, 개발 진행에 따라 버전을 업데이트합니다.
@@ -38,9 +42,10 @@
 
 - 장고설치 하기 poetry add django  
   - pip install django 와 똑같은 명령어임.  
-```bash  
-poetry add django  
-```  
+  `bash`
+    ```bash  
+    poetry add django  
+    ```  
   - 이 과정에서 .venv 디렉토리와 poetry.lock 파일이 생성되거나 업데이트됩니다.  
   - poetry.lock 파일은 프로젝트의 의존성 트리에 대한 정확한 스냅샷을 제공합니다.  
 
@@ -55,7 +60,8 @@ poetry add django
 - django-admin  
 
 ## 장고설치 프로젝트 시작하기  
-django-admin startproject [기본 폴더이름] [설치할 경로( "." 현재 경로에 설치)]
+django-admin startproject [기본 폴더이름] [설치할 폴더]  
+  `bash`
 ```bash  
 django-admin startproject config . 
 ```  
@@ -63,7 +69,7 @@ django-admin startproject config .
 ![alt text](images/markdown-image-2.png)  
 
 ## 장고에 앱추가.  
-- python manage.py startapp [앱이름]
+  `bash`
 ```bash  
 python manage.py startapp feeds  
 ```  
@@ -71,30 +77,30 @@ python manage.py startapp feeds
 ## config-urls에 include로 관리  
 - 앱단위로 url 관리하기  
   - include('[앱이름.ruls'])  
-  ```python  
-  # config/urls.py
-  from django.urls import include  
-  urlpatterns = [
-    path('feeds/', include('feeds.urls'))
-  ]
+  `python`
+    ```python  
+    # config/urls.py
+    from django.urls import include  
+    urlpatterns = [
+      path('feeds/', include('feeds.urls'))
+    ]
 
-  #feeds/urls.py
-  from django.urls import path
-  from . import views
-  urlpatterns = [
-    path('', views.func1),
-    ...
-  ]
-  ```  
+    #feeds/urls.py
+    from django.urls import path
+    from . import views
+    urlpatterns = [
+      path('', views.func1),
+      ...
+    ]
+    ```  
 
 # model  
-- python manage.py startapp [앱이름]  
+  `bash`
 ```bash
-#bash  
 python manage.py startapp boards  
 ```  
+`python`
 ```python  
-#python  
 #boards/models.py  
 class Board(models.Model):
     title = models.CharField(max_length=30)
@@ -116,7 +122,7 @@ from .models import Board
 @admin.register(Board)
 class BoardAdmin(admin.ModelAdmin):
     pass
-```  
+  `bash`
 ```bash  
 #db에 테이블 만들기.  
 python manage.py makemigrations 
@@ -125,9 +131,8 @@ python manage.py migrate
 #테이블 생성 하기.  
 ```
 
-## 장고 쉘에서 모델 확인하기  
+  `bash`
 ```bash  
-#bash  
 python manage.py shell  
 from boards.models import Board  
 
@@ -147,5 +152,19 @@ board.save()
 - admin 등록  
 - makemigrations, migrate  
 
-
 # Admin pannel  
+![alt text](images/markdown-image-4.png)  
+![alt text](images/markdown-image-5.png)  
+- name으로 테이블 보이게 하기  
+  `python`
+  ```python  
+  #users/models.py  
+  class User(models.Model):
+    ...
+
+    def __str__(self):
+        return self.name
+        # or 위에꺼 아니면, 아래처럼도 가능,  
+        return f"{self.name} / ({self.age} 살)"
+  ```  
+
