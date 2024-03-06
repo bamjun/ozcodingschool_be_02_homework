@@ -6,9 +6,9 @@
 ## 설치순서(윈도우)  
 - 가상환경 설치  
   `bash`
-  ```bash  
-  python -m venv .venv  
-  ```  
+    ```bash  
+    python -m venv .venv  
+    ```  
 
 - 가상환경 진입  
   `bash`
@@ -96,9 +96,9 @@ python manage.py startapp feeds
 
 # model  
   `bash`
-```bash
-python manage.py startapp boards  
-```  
+  ```bash
+  python manage.py startapp boards  
+  ```  
 `python`
 ```python  
 #boards/models.py  
@@ -122,17 +122,16 @@ from .models import Board
 @admin.register(Board)
 class BoardAdmin(admin.ModelAdmin):
     pass
-  `bash`
+```
+
+`bash`
 ```bash  
 #db에 테이블 만들기.  
 python manage.py makemigrations 
 #아직 테이블 생성전.models의 클래스에 따라 sql문 변환  
 python manage.py migrate  
 #테이블 생성 하기.  
-```
 
-  `bash`
-```bash  
 python manage.py shell  
 from boards.models import Board  
 
@@ -167,4 +166,38 @@ board.save()
         # or 위에꺼 아니면, 아래처럼도 가능,  
         return f"{self.name} / ({self.age} 살)"
   ```  
+
+- admin pannel 커스텀마이징  
+  - 리스트 수정  
+    `python`
+    ```python  
+    #users/admin.py
+    @admin.register(User)
+    class UserAdmin(admin.ModelAdmin):
+      list_display = ['name', 'description', 'age', 'gender']
+    ```
+    ![alt text](images/markdown-image-6.png)  
+
+  - 필터 추가  
+    `python`
+    ```python  
+    #users/admin.py
+    @admin.register(User)
+    class UserAdmin(admin.ModelAdmin):
+      list_display = ['name', 'description', 'age', 'gender']
+      list_filter = ['age', 'gender']
+    ```  
+    ![alt text](images/markdown-image-7.png)  
+
+  - 검색기능 추가  
+    `python`
+    ```python  
+    #users/admin.py
+    @admin.register(User)
+    class UserAdmin(admin.ModelAdmin):
+      list_display = ['name', 'description', 'age', 'gender']
+      list_filter = ['age', 'gender']
+      search_fields = ['name']
+    ```  
+    ![alt text](images/markdown-image-8.png)  
 
