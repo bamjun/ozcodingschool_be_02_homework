@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "flaskapp"
+version = "0.1.0"
+description = "exstra_class_python_framework_by_duckbae"
+authors = ["bamjun <khy5116@naver.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
