@@ -57,6 +57,7 @@
 - 가상환경 활성화 이후 이미 가상환경 활성화 이므로 poetry shell 명령어 없이 진행.  
 - 포이트리 초기화 하기  
   - poetry init  
+  
   `bash shell`
   ```bash  
   poetry init  
@@ -80,28 +81,29 @@
      ```bash  
      Compatible Python versions [^3.12]:  3.10  
      ```  
-- poetry env use [파이썬 버전경로]
-  `bash shell`
-  ```bash  
-  poetry env use "C:\Users\khy51\AppData\Local\Programs\Python\Python311\python.exe"
+- poetry env use [파이썬 버전경로]  
+    `bash shell`
+    ```bash  
+    poetry env use "C:\Users\khy51\AppData\Local\Programs\Python\Python311\python.exe"
   ```
 
 - 만약에 아래와 같은 경고문이 나온다면, toml 파일에서 파이썬 버전 설정해주기  
 ![alt text](images/markdown-image-3.png)  
   - '^' 기호는 설정한 버전보다 위에 버전이면 가능하게 설정하는 표시임.  
-`.toml`
-```bash  
-[tool.poetry.dependencies]
-python = "3.11.7"
-# or
-python = "^3.11.7"
-```
+
+    `.toml`
+    ```bash  
+    [tool.poetry.dependencies]
+    python = "3.11.7"
+    # or
+    python = "^3.11.7"
+    ```
 
 - poetry shell 입력해서 poetry 가상환경 진입하기.  
-`bash shell`
-```bash  
-poetry shell  
-```
+    `bash shell`
+    ```bash  
+    poetry shell  
+    ```
 
 - poetry env info 로 현재 가상환경과 기본 경로 확인가능  
 ![alt text](images/markdown-image-4.png)  
