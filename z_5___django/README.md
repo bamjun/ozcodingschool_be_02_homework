@@ -201,4 +201,7 @@ board.save()
     ```  
     ![alt text](images/markdown-image-8.png)  
 
+# ORM  
+- dir(models)
+  - 사용할수있는 함수 출력  
 
