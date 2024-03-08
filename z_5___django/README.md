@@ -205,3 +205,11 @@ board.save()
 - dir(models)
   - 사용할수있는 함수 출력  
 
+# REST api (Representational State Transfer) [공식사이트](https://www.django-rest-framework.org/)  
+- 설치하기   
+
+  `bash shell`
+  ```bash  
+  poetry add djangorestframework  
+  ```  
+
