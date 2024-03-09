@@ -312,3 +312,17 @@
   + 시작 2024 03 05  
   - 완료 2024 03 05  
   ```  
+
+- 리눅스 cpu 사용율 50프로 넘어가면 크롬 종료 하게 작성  
+  - top 명령어로 cpu 점유율 확인결과 크롤링이 끝난상태에서도 chrome이 실행중임, 에러로 비정상적으로 종료되어서 계속 켜져있는듯..  
+  - 크롤링 시작 1분전에 chrome 전체 종료  
+  
+  ```diff  
+  - 2024 03 09  
+  ```  
+  
+  ![alt text](images/markdown-image-20.png)  
+
+  ![alt text](images/markdown-image-21.png)  
+
+  ![alt text](images/markdown-image-22.png)  
