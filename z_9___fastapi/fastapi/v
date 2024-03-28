@@ -1,0 +1,2 @@
+. fastapi-backend-class/.venv/Scripts/activate
+cd 'fastapi-backend-class'
