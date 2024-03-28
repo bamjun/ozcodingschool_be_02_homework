@@ -98,7 +98,75 @@
 
 <br>
 
+- 다양한 서버 실행 방법
+
+1. **프로그래밍 방식으로 직접 실행하기:**
+FastAPI 애플리케이션을 프로그램 내부에서 직접 실행하는 가장 일반적인 방법입니다.
+    
+    ```python
+    import uvicorn
+    
+    if __name__ == "__main__":
+        uvicorn.run("main:app", port=8000, log_level="info")
+    ```
+    
+    - python main.py
+    
+    만약, 위 내용이 없다면
+    
+    ```bash
+    > uvicorn main:app --port 8000 --log-level info
+    ```
+    
+2. **Config와 Server 인스턴스 사용하기:**
+더 많은 구성 옵션과 서버 수명 주기 제어가 필요할 때 사용합니다.
+    
+    ```python
+    import uvicorn
+    
+    if __name__ == "__main__":
+        config = uvicorn.Config("main:app", port=8000, log_level="info")
+        server = uvicorn.Server(config)
+        server.run()
+    ```
+    
+3. **Gunicorn과 함께 사용하기:**
+프로덕션 환경에서는 Gunicorn을 사용하는 것이 권장됩니다. Gunicorn은 프로세스 관리 및 부하 분산 기능을 제공합니다.
+    
+    ```
+    gunicorn example:app -w 4 -k uvicorn.workers.UvicornWorker
+    ```
+
+# FastAPI APIRouter  
+
+- `items.py` 파일생성.  
+
+    &darr; `fastapi-backend-class\` &darr; `bash shell`
+    ```bash
+    touch items.py
+    ```
+
+- `items.py` 코드 작성.  
+
+  &darr; `fastapi-backend-class\` &darr; `items.py`
+  ```python
+  from fastapi import APIRouter
+
+  router = APIRouter()
+
+  @router.get("/api/v1/items/{item_id}/", 
+              status_code=200, 
+              tags=["items", "payment"], 
+              summary="특정 아이템 가져오기", 
+              description="Item 모델에서 item_id 값을 가지고 특정 아이템 조회")
+  def get_item(item_id: int):
+      return {'items': item_id}
+  ```
+
+- `main.py` 에 items 라우터 추가하기  
 - 
+
+
 
 <br>  
 
