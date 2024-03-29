@@ -166,6 +166,12 @@ FastAPI 애플리케이션을 프로그램 내부에서 직접 실행하는 가�
 - `main.py` 에 items 라우터 추가하기  
 - 
 
+# Pydantic [교제](https://visioneer.notion.site/04-FastAPI-Pydantic-c24aeb89038245019d97da2fec8a9eb7)
+
+- `models.py` 파일 만들기  
+
+# Async&Sync [교제](https://visioneer.notion.site/05-FastAPI-Async-Sync-40801ec50fc4494f943da883d79ee614)  
+
 
 
 <br>  
