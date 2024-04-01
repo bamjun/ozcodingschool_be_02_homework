@@ -38,4 +38,10 @@ def update_user(user_id: int, user_update: UserUpdate, db: Session = Depends(get
     return updated_user
 
 
-def delete_user(): pass
+@router.delete('/{user_id}')
+def delete_user(user_id: int, db: Session = Depends(get_db)):
+    deleted_user = crud_orm.delete_user(db, user_id)
+
+    if deleted_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return deleted_user

@@ -31,3 +31,7 @@ class UserCreate(UserBase):
 class UserUpdate(UserBase):
     email: str | None = None
     password: str | None = None
+    # 3.10 버전 이하는 아래처럼
+    # from typing import Optional
+    # email: Optional[str] | None = None
+    # password: Optional[str] | None = None
