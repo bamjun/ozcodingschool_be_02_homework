@@ -230,6 +230,12 @@ FastAPI 애플리케이션을 프로그램 내부에서 직접 실행하는 가�
 
 - 비밀번호 해쉬화를 위한 bcrypt 설치  
 
+# https://teachablemachine.withgoogle.com/train  
+[라마 깃](https://github.com/meta-llama/llama)  
+[텐서플로우 이미지 넷](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2)  
+
+
+
 
 <br>  
 
