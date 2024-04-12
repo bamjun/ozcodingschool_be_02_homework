@@ -1,4 +1,5 @@
 #!"C:\Program Files\Git\git-bash.exe"
+
 set -euo pipefail
 # export COLOR_GREEN='\e[0;32m'
 # export COLOR_NC='\e[0m' # No Color
